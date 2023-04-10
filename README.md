@@ -62,6 +62,7 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 #
 
 ### 🛠️INSTALLATION [termux]
+###### Firstly install termux-api f-droid or playstore and type following commands in termux
 ``` sh
 cd $HOME
 apt-get update -y

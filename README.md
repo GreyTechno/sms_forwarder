@@ -25,7 +25,7 @@
 #
 <h2 align="left">🚀 ABOUT</h2>
 <p align="center">
-hello world !
+SMS_Forwarder can be used in Termux to forward text messages from one device to another using Linux command-line utilities. The advantages of using SMS Forwarder in Termux are that it allow users to automate the sms forwarding process using Python scripts, and it provides a secure way to forward messages as it uses end-to-end encryption to ensure that the messages are not intercepted or read by unauthorized parties. This offers advanced functionality and customization options that are not available on other platforms. Additionally, SMS_Forwarder in Termux provides multiple sms forwarding options, including forwarding SMS via number or email. Overall, SMS Forwarder in Termux is a useful tool for people who want to stay connected across multiple devices.
 </p>
 
 <h2 align="left">AVAILABLE ON</h2>
@@ -44,12 +44,10 @@ hello world !
 
 <h2 align="left">FEATURES</h2>
 <li> Configurable settings </li>
-<li> Filter options to block unwanted messages </li>
 <li> Multiple forwarding options including phone numbers, email addresses and etc</li>
 <li> Automatic forwarding </li>
 <li> Lightweight and efficient </li>
-<li> Manual forwarding </li>
-<li> Encryption for secure and private forwarding </li>
+li> Encryption for secure and private forwarding </li>
 <li> Unstable Tool </li>
 <li> Update Maintainence </li>
 <li> Auto Update Features </li>
@@ -79,7 +77,13 @@ cd $HOME && apt-get update -y && apt-get upgrade -y && pkg install git python -y
 ```
 #### 💻 FOR START JUST TYPE
 ``` sh
-smsforwarder
+cd $HOME
+cd SMS_Forwarder
+python sms_forwarder.py
+```
+> Or, Use Single Line Command
+``` sh
+python $HOME/SMS_Forwarder/sms_forwarder.py
 ```
 #
 

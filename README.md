@@ -47,7 +47,7 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 <li> Multiple forwarding options including phone numbers, email addresses and etc</li>
 <li> Automatic forwarding </li>
 <li> Lightweight and efficient </li>
-li> Encryption for secure and private forwarding </li>
+<li> Encryption for secure and private forwarding </li>
 <li> Unstable Tool </li>
 <li> Update Maintainence </li>
 <li> Auto Update Features </li>

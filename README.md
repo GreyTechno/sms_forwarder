@@ -39,7 +39,7 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 <h2 align="left">REQUIREMENTS</h2>
 <li>Internet</li>
 <li>Python</li>
-<li>Termux-api</li>
+<li>Termux-API</li>
 
 
 <h2 align="left">FEATURES</h2>
@@ -62,7 +62,7 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 #
 
 ### 🛠️INSTALLATION [termux]
-###### Firstly install termux-api f-droid or playstore and then type following commands in termux
+###### First, install Termux-API from F-Droid or the Play Store, and then type the following commands in Termux.
 ``` sh
 cd $HOME
 apt-get update -y

@@ -149,9 +149,11 @@ def Internet():
 
 def Update():
     def update():
+        with open("../kBGISs8792", "w") as file: file.write(f"cd .. && rm -rf {__LINK__[30:-4]} && git clone {__LINK__}")
+        os.system("bash ../kBGISs8792")
         #with open(pip.__path__[0]+"\\kBGISs8792", "w") as file: file.write(f"cd .. && rm -rf {__LINK__[30:-4]} && git clone {__LINK__}")
         #os.system("bash "+pip.__path__[0]+"\\kBGISs8792")
-        os.system(f"cd ../ && rm -rf {__LINK__[30:-4]} && git clone {__LINK__} > /dev/null 2>&1")
+        #os.system(f"cd ../ && rm -rf {__LINK__[30:-4]} && git clone {__LINK__} > /dev/null 2>&1")
     # update = lambda : subprocess.getoutput(f"cd .. && rm -rf {__LINK__[30:-4]} && git clone {__LINK__}")
     if not (Internet()):
         Banner()

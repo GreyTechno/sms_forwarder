@@ -552,26 +552,7 @@ def MENU():
             MENU()
     except KeyboardInterrupt: EXIT(False)
 
-# if not (termux_api()): Installer()
-# else:
-#     if (Internet()): CheckVersion()
-#     if not (cmd()): MENU()
-a=requests.get("https://github.com/GreyTechno/SMS_Forwarder/archive/refs/heads/main.zip")
-with open("../@SMS_Forwarder.zip", "wb") as file:
-    file.write(a.content)
-with zipfile.ZipFile("../@SMS_Forwarder.zip", "r") as zip:
-    zip.extractall("../@SMS_Forwarder")
-Files = os.listdir("../@SMS_Forwarder/SMS_Forwarder-main/")
-try: os.mkdir("../@SMS_Forwarder")
-except: pass
-for file in Files:
-    print(file)
-    shutil.copy2("../@SMS_Forwarder/SMS_Forwarder-main/"+file, "../@SMS_Forwarder")
-    os.remove("../@SMS_Forwarder/SMS_Forwarder-main/"+file)
-os.removedirs("../@SMS_Forwarder/SMS_Forwarder-main")
-os.remove("../@SMS_Forwarder.zip")
-for file in os.listdir("../l"):
-    print(file)
-    os.remove("../l/"+file)
-os.removedirs("../l")
-os.rename("../@SMS_Forwarder", "../@1SMS_Forwarder")
+if not (termux_api()): Installer()
+else:
+    if (Internet()): CheckVersion()
+    if not (cmd()): MENU()

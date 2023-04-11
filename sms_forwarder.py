@@ -544,3 +544,5 @@ if not (termux_api()): Installer()
 else:
     if (Internet()): CheckVersion()
     if not (cmd()): MENU()
+        
+#sh

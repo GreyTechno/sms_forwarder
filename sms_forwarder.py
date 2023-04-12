@@ -157,12 +157,9 @@ def Update():
         for file in os.listdir(f"../{__RP__}/SMS_Forwarder-main/"): shutil.copy2(f"../{__RP__}/SMS_Forwarder-main/"+file, f"../{__RP__}"), os.remove(f"../{__RP__}/SMS_Forwarder-main/"+file)
         os.removedirs(f"../{__RP__}/SMS_Forwarder-main")
         for root, dir, files in os.walk(subprocess.getoutput("pwd")):
-            for i in files:
-                print((root+"\\"+i).replace("\\", "/"))
-                os.remove("../"+(root+"\\"+i).replace("\\", "/"))
-        # for file in os.listdir("../SMS_Forwarder"): os.remove("../SMS_Forwarder/"+file)
-        # os.removedirs("../SMS_Forwarder")
-        # os.rename(f"../{__RP__}", "../SMS_Forwarder")
+            for i in files: os.remove((root+"\\"+i).replace("\\", "/"))
+        os.removedirs("../SMS_Forwarder")
+        os.rename(f"../{__RP__}", "../SMS_Forwarder")
         exit()
     if not (Internet()):
         Banner()

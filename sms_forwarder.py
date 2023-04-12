@@ -202,6 +202,7 @@ def Update():
         for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
         sys.stdout.write("\r"+finaltxt)
         with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
+        subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle Command Copy On Your ClipBoard !")
 
 def CheckVersion():
     version = requests.get("https://raw.githubusercontent.com/GreyTechno/SMS_Forwarder/main/.version").json()["version"]
@@ -539,7 +540,7 @@ def MENU():
         elif (Input == "3") or (Input == "03") or (Input == "three"): About()
         elif (Input == "4") or (Input == "04") or (Input == "four"): Usage()
         elif (Input == "5") or (Input == "05") or (Input == "five"): Update()
-        elif (Input == "6") or (Input == "06") or (Input == "six"): os.system("am start -a android.intent.action.VIEW -d https://github.com/GreyTechno > /dev/null 2 > &1 "), MENU()
+        elif (Input == "6") or (Input == "06") or (Input == "six"): os.system("termux-open-url https://github.com/GreyTechno"), MENU()
         elif (Input == "7") or (Input == "07") or (Input == "seven"): EXIT()
         else: 
             center(f"{red}╔══════════════════════════════════════════╗",5)

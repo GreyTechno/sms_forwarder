@@ -415,7 +415,7 @@ def SendSMS(TO, SVE):
                         else: SendNumber(to, data["body"])
                     ID += SmsID
             else: SMSLBAR()
-    except KeyboardInterrupt: EXIT(False)
+    except KeyboardInterrupt: MENU()
     except json.decoder.JSONDecodeError :
         finaltxt=""
         for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "

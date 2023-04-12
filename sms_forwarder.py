@@ -257,7 +257,7 @@ def EXIT(G=True):
         Banner()
     # Print a centered message with a decorative border
     center(f"{red}╔══════════════════════════════════════════╗", 5)
-    center(f"{red}║ {yellow}THANKS FOR USING...!! {red}║", 15)
+    center(f"{red}║          {yellow}THANKS FOR USING...!!           {red}║", 15)
     center(f"{red}╚══════════════════════════════════════════╝", 5)
     # Exit the program
     exit()

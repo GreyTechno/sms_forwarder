@@ -160,9 +160,7 @@ def Update():
             for i in files: os.remove((root+"\\"+i).replace("\\", "/"))
         os.chdir("..")
         os.system("rm -rf SMS_Forwarder")
-        # os.removedirs("SMS_Forwarder")
         os.rename(f"{__RP__}", "SMS_Forwarder")
-        exit()
     if not (Internet()):
         Banner()
         center(f"{red}╔══════════════════════════════════════════╗", 5)
@@ -186,25 +184,24 @@ def Update():
             sleep(2)
             MENU()
     else:
-        update()
-        # Banner()
-        # UPDATE = threading.Thread(target=update)
-        # UPDATE.start()
-        # while UPDATE.is_alive(): AnimLOAD(" Updating...", "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏", 1, 0.05)
-        # UPDATE.join()
-        # Banner()
-        # center(f"{red}╔══════════════════════════════════════════╗", 5)
-        # center(f"{red}║          {white}Updateing Completed !           {red}║", 15)
-        # center(f"{red}╚══════════════════════════════════════════╝", 5)
-        # center(f"{red}╔══════════════════════════════════════════╗", 5)
-        # center(f"{red}║              {yellow}Now Just Type               {red}║", 15)
-        # center(f"{red}╠══════════════════════════════════════════╣",5)
-        # center(f"{red}║ {white}python ~/SMS_Forwarder/sms_forwarder.py  {red}║",15)
-        # center(f"{red}╚══════════════════════════════════════════╝", 5)
-        # finaltxt=""
-        # for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
-        # sys.stdout.write("\r"+finaltxt)
-        # with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
+        Banner()
+        UPDATE = threading.Thread(target=update)
+        UPDATE.start()
+        while UPDATE.is_alive(): AnimLOAD(" Updating...", "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏", 1, 0.05)
+        UPDATE.join()
+        Banner()
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(f"{red}║          {white}Updateing Completed !           {red}║", 15)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(f"{red}║              {yellow}Now Just Type               {red}║", 15)
+        center(f"{red}╠══════════════════════════════════════════╣",5)
+        center(f"{red}║ {white}python ~/SMS_Forwarder/sms_forwarder.py  {red}║",15)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        finaltxt=""
+        for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
+        sys.stdout.write("\r"+finaltxt)
+        with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
 
 def CheckVersion():
     version = requests.get("https://raw.githubusercontent.com/GreyTechno/SMS_Forwarder/main/.version").json()["version"]

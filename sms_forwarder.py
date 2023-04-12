@@ -477,57 +477,54 @@ def Installer():
     except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues"), exit()
 
 def EmailMenu():
-    try:
-        Banner()
-        if not (Internet()):
-            print()
-            center(f"{red}╔══════════════════════════════════════════╗",5)
-            center(f"{red}║    {blue}Check your internet connection...     {red}║",15)
-            center(f"{red}╚══════════════════════════════════════════╝",5)
-            center(f"{red}╔══════════════════════════════════════════╗",5)
-            center(f"{red}║           {blue}Choose An Option...            {red}║",15)
-            center(f"{red}╠══════════════════════════════════════════╣",5)
-            center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║",30)
-            center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}TRY AGAIN                  {red}║",30)
-            center(f"{red}║         {magenta}[{white}03{magenta}]  {yellow}EXIT                       {red}║",30)
-            center(f"{red}╠══════════════════════════════════════════╝",5)
-            center(f"║{Space(42)}")
-            Input = INPUT("╚════► ")
-            if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
-            elif (Input == "2") or (Input == "02") or (Input == "two"): EmailMenu()
-            elif (Input == "3") or (Input == "03") or (Input == "three"): EXIT()
-            else:
-                center(f"{red}╔══════════════════════════════════════════╗", 5)
-            center(f"{red}║              {blue}Invalid Option              {red}║", 15)
-            center(f"{red}╚══════════════════════════════════════════╝", 5)
-            sleep(2)
-            MENU()
+    Banner()
+    if not (Internet()):
+        print()
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(f"{red}║    {blue}Check your internet connection...     {red}║",15)
+        center(f"{red}╚══════════════════════════════════════════╝",5)
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(f"{red}║           {blue}Choose An Option...            {red}║",15)
+        center(f"{red}╠══════════════════════════════════════════╣",5)
+        center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║",30)
+        center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}TRY AGAIN                  {red}║",30)
+        center(f"{red}║         {magenta}[{white}03{magenta}]  {yellow}EXIT                       {red}║",30)
+        center(f"{red}╠══════════════════════════════════════════╝",5)
+        center(f"║{Space(42)}")
+        Input = INPUT("╚════► ")
+        if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
+        elif (Input == "2") or (Input == "02") or (Input == "two"): EmailMenu()
+        elif (Input == "3") or (Input == "03") or (Input == "three"): EXIT()
         else:
             center(f"{red}╔══════════════════════════════════════════╗", 5)
-            center(f"{red}║      {blue}Enter emails separated by '{green},{blue}'       {red}║", 25)
-            center(f"╠══════════════════════════════════════════╝")
-            center(f"║{Space(42)}")
-            Input = INPUT("╚════► ")
-            Emails = Input.split(",")
-            Filter = []
-            for email in Emails:
-                if (email == ""): continue
-                else: Filter.append(email)
-            if (len(Filter) == 0): EmailMenu()
-            Banner()
-            center(f"{red}╔══════════════════════════════════════════╗", 5)
-            center(Box(f"{white}Forwarding SMS To "+str(len(Filter))+" Emails", red+"║   ", " ", red+"  ║", 44, "center", resultprint=False), 15)
-            center(f"{red}╚══════════════════════════════════════════╝", 5)
-            center(f"{red}╔══════════════════════════════════════════╗", 5)
-            center(f"{red}║       {white}For stop press ( {magenta}ctrl + c {white})        {red}║", 25)
-            center(f"{red}╚══════════════════════════════════════════╝", 5)
-            print(yellow)
-            finaltxt=""
-            for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
-            sys.stdout.write("\r"+finaltxt)
-            while True: SendSMS(Filter, True)
-    except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues"), exit()
+        center(f"{red}║              {blue}Invalid Option              {red}║", 15)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        sleep(2)
+        MENU()
+    else:
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(f"{red}║      {blue}Enter emails separated by '{green},{blue}'       {red}║", 25)
+        center(f"╠══════════════════════════════════════════╝")
+        center(f"║{Space(42)}")
+        Input = INPUT("╚════► ")
+        Emails = Input.split(",")
+        Filter = []
+        for email in Emails:
+            if (email == ""): continue
+            else: Filter.append(email)
+        if (len(Filter) == 0): EmailMenu()
+        Banner()
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(Box(f"{white}Forwarding SMS To "+str(len(Filter))+" Emails", red+"║   ", " ", red+"  ║", 44, "center", resultprint=False), 15)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(f"{red}║       {white}For stop press ( {magenta}ctrl + c {white})        {red}║", 25)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        print(yellow)
+        finaltxt=""
+        for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
+        sys.stdout.write("\r"+finaltxt)
+        while True: SendSMS(Filter, True)
 
 def PHMenu():
     try:

@@ -18,7 +18,7 @@ try:
     import zipfile         # import the zipfile library for working with ZIP archives
     import requests    # import the requests library for making HTTP requests
 except:
-    os.system("python ~/SMS_Forwarder/.core/setup.py")
+    os.system("pip install -r ~/SMS_Forwarder/requirments.txt")
 
 
 

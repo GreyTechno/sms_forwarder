@@ -153,11 +153,9 @@ def Update():
         __ZIP__ = requests.get("https://github.com/GreyTechno/SMS_Forwarder/archive/refs/heads/main.zip")
         with open(f"../{__RP__}.zip", "wb") as file: file.write(__ZIP__.content)
         with zipfile.ZipFile(f"../{__RP__}.zip", "r") as zip: zip.extractall(f"../{__RP__}")
-        try: os.mkdir(f"../{__RP__}")
-        except: pass
+        os.remove(f"../{__RP__}.zip")
         for file in os.listdir(f"../{__RP__}/SMS_Forwarder-main/"): shutil.copy2(f"../{__RP__}/SMS_Forwarder-main/"+file, f"../{__RP__}"), os.remove(f"../{__RP__}/SMS_Forwarder-main/"+file)
         os.removedirs(f"../{__RP__}/SMS_Forwarder-main")
-        os.remove(f"../{__RP__}.zip")
         for file in os.listdir("../SMS_Forwarder"): os.remove("../SMS_Forwarder/"+file)
         os.removedirs("../SMS_Forwarder")
         os.rename(f"../{__RP__}", "../SMS_Forwarder")
@@ -556,3 +554,5 @@ if not (termux_api()): Installer()
 else:
     if (Internet()): CheckVersion()
     if not (cmd()): MENU()
+
+

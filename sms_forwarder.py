@@ -602,7 +602,8 @@ def MENU():
     except Exception as e: print(f"{red}{e}{reset} !\n{yellow}Repost this issues at {blue}https://github.com/GreyTechno/SMS_Forwarder/issues"), subprocess.getoutput("termux-open-url https://github.com/GreyTechno/SMS_Forwarder/issues")
 
 if (__name__ == "__main__"):
+    sys.stdout.write(f"\r{yellow}Checking Updates...") 
     if not (termux_api()): Installer()
     else:
-        if (Internet()): print(f"{yellow}Checking Updates..."), CheckVersion()
+        if (Internet()): sys.stdout.write(f"\r{yellow}Checking Updates..."), CheckVersion()
         if not (cmd()): MENU()

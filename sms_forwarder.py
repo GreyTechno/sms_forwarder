@@ -483,11 +483,11 @@ def SendNumber(to, data):                 # Define a function called SendNumber 
         except: return False                    # Return False if an exception occurred during message sending or message checking
     if not (SendNumberCheck(to, data)):        # Call the nested function SendNumberCheck with the specified number and data, and check if it returned False
         finaltxt=""
-        for i in range(((Arrange(os.get_terminal_size().columns).columns) - 2) // 2)-21): finaltxt += " "   # Generate a message to be displayed if message sending failed
+        for i in range(((Arrange(os.get_terminal_size().columns).columns) - 2) // 2)-21: finaltxt += " "   # Generate a message to be displayed if message sending failed
         sys.stdout.write("\r"+finaltxt+f"{magenta}[{red}!{magenta}] {white}Could Not Send Message      {yellow}"), print(), print()   # Display the message
     else:                                     # If SendNumberCheck returned True
         finaltxt=""
-        for i in range(((Arrange(os.get_terminal_size().columns).columns) - 2) // 2)-21): finaltxt += " "   # Generate a message to be displayed if message sending succeeded
+        for i in range(((Arrange(os.get_terminal_size().columns).columns) - 2) // 2)-21: finaltxt += " "   # Generate a message to be displayed if message sending succeeded
         sys.stdout.write("\r"+finaltxt+f"{magenta}[{yellow}*{magenta}] {white}Message Send                {yellow}"), print(), print()  # Display the message
 
 STORE, ID = [], ""

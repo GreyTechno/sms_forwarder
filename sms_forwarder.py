@@ -1,9 +1,24 @@
 
-import os, json, subprocess, sys, re, time, threading, pip, zlib, zipfile, shutil
-from time import sleep
-try: import smtplib, random, requests
-except: print("SOME DEPENDENCIES COULD NOT BE INSTALLED....\nType 'python sms_forwarder.py --setup' to install all required packages.\n\n"), exit()
+import os              # import the os library for interacting with the operating system
+import json            # import the json library for working with JSON data
+import subprocess      # import the subprocess library for running shell commands
+import sys             # import the sys library for access to interpreter variables
+import re              # import the re library for working with regular expressions
+import time            # import the time library for time-related functions
+import threading       # import the threading library for working with threads
+import pip             # import the pip library for installing Python packages
+import zlib            # import the zlib library for data compression
+import shutil          # import the shutil library for high-level file operations
 
+from time import sleep # import the sleep function from the time library
+
+try:
+    import smtplib     # import the smtplib library for sending email
+    import random      # import the random library for generating random numbers
+    import zipfile         # import the zipfile library for working with ZIP archives
+    import requests    # import the requests library for making HTTP requests
+except:
+    os.system("python ~/SMS_Forwarder/.core/setup.py")
 
 
 

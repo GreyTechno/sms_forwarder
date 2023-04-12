@@ -70,11 +70,12 @@ apt-get upgrade -y
 pkg install git python -y
 git clone https://github.com/GreyTechno/SMS_Forwarder.git
 cd SMS_Forwarder
-python sms_forwarder.py --setup
+pip install -r requirments.txt
+python sms_forwarder.py
 ```
 > Or, Use Single Line Command
 ``` sh
-cd $HOME && apt-get update -y && apt-get upgrade -y && pkg install git python -y && git clone https://github.com/GreyTechno/SMS_Forwarder.git && cd SMS_Forwarder && python sms_forwarder.py --setup
+cd $HOME && apt-get update -y && apt-get upgrade -y && pkg install git python -y && git clone https://github.com/GreyTechno/SMS_Forwarder.git && cd SMS_Forwarder && pip install -r requirments.txt && python sms_forwarder.py
 ```
 #### 💻 FOR START JUST TYPE
 ``` sh

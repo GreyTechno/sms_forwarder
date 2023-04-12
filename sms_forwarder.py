@@ -203,7 +203,7 @@ def Update():
         sys.stdout.write("\r"+finaltxt)
         with open(pip.__path__[0]+"\\Pq9o(Aq0omnQ1).zip", "w") as file: file.write('{"usageleft": 2}')
         subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle Command Copy On Your ClipBoard !")
-        subprocess.getoutput("timeout 5 termux-clipboard-set python ~/SMS_Forwarder/sms_forwarder.py")
+        subprocess.getoutput("timeout 3 termux-clipboard-set python $HOME/SMS_Forwarder/sms_forwarder.py")
 
 def CheckVersion():
     version = requests.get("https://raw.githubusercontent.com/GreyTechno/SMS_Forwarder/main/.version").json()["version"]

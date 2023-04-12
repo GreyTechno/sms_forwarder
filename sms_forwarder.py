@@ -159,8 +159,9 @@ def Update():
         for root, dir, files in os.walk(subprocess.getoutput("pwd")):
             for i in files: os.remove((root+"\\"+i).replace("\\", "/"))
         os.chdir("..")
-        os.removedirs("SMS_Forwarder")
-        # os.rename(f"../{__RP__}", "../SMS_Forwarder")
+        os.system("rm -rf SMS_Forwarder")
+        # os.removedirs("SMS_Forwarder")
+        os.rename(f"{__RP__}", "SMS_Forwarder")
         exit()
     if not (Internet()):
         Banner()

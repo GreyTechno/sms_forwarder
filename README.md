@@ -73,7 +73,7 @@ git clone https://github.com/GreyTechno/SMS_Forwarder.git
 ```
 > Or, Use Single Line Command
 ``` sh
-apt update -y && apt upgrade -y && pkg install git python -y && cd ~ && git clone https://github.com/GreyTechno/SMS_Forwarder.git && cd SMS_Forwarder && python setup.py
+apt update -y && apt upgrade -y && pkg install git python -y && pip install requests secure-smtplib && cd ~ && git clone https://github.com/GreyTechno/SMS_Forwarder.git
 ```
 #### 💻 FOR START JUST TYPE
 ``` sh

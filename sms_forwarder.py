@@ -13,12 +13,9 @@ import zipfile         # import the zipfile library for working with ZIP archive
 import importlib.util
 
 from time import sleep # import the sleep function from the time library
+try: import requests, smtplib
+except: print("SOME DEPENDENCIES COULD NOT BE INSTALLED....\nType to install all required packages.\n\npip install requests secure-smtplib\n"), exit()
 
-
-if (importlib.util.find_spec("smtplib") == None) or (importlib.util.find_spec("requests") == None):
-    os.system("python ~/SMS_Forwarder/setup.py")
-else:
-    import requests, smtplib
 
 
 __VERSION__ = "0.1"  # sets a string value of "0.1" to the variable __VERSION__ for define tool version
@@ -49,7 +46,7 @@ def cmd():
             if (CMD == "-h") or (CMD == "--help"): Usage()  # if CMD is "-h" or "--help", call the Usage function
             elif (CMD == "-v") or (CMD == "--version"): print(__VERSION__)  # if CMD is "-v" or "--version", print the version number
             elif (CMD == "-u") or (CMD == "--update"): Update()  # if CMD is "-u" or "--update", call the Update function
-            elif (CMD == "-s") or (CMD == "--setup"): os.system("python ~/SMS_Forwarder/setup.py")  # if CMD is "-s" or "--setup", call the Installer function
+            elif (CMD == "-s") or (CMD == "--setup"): os.system("pip install requests secure-smtplib")  # if CMD is "-s" or "--setup", call the Installer function
             elif (CMD == "-e") or (CMD == "--email"): EmailMenu()  # if CMD is "-e" or "--email", call the EmailMenu function
             elif (CMD == "-p") or (CMD == "--phnum"): PHMenu()  # if CMD is "-p" or "--phnum", call the PHMenu function
             elif (CMD == "-a") or (CMD == "--about"): About()  # if CMD is "-a" or "--about", call the About function
@@ -638,7 +635,7 @@ def MENU():
 if (__name__ == "__main__"):
     sys.stdout.write(f"\r{yellow}Checking Updates...") # prints the message "Checking Updates..." to the console with the text color in yellow.
     # The termux_api() function is called and checks if the Termux API is available on the device. If the API is not available, the Installer() function is called to install the Termux API
-    if not (termux_api()): os.system("python ~/SMS_Forwarder/setup.py")
+    if not (termux_api()): os.system("pip install requests secure-smtplib")
     # If the API is available, Internet() function is called to check if there is an internet connection. If there is an internet connection, CheckVersion() function is called to check for updates.
     else:
         # Finally, if there is no command detected (i.e., cmd() returns False), the MENU() function is called to display the main menu.

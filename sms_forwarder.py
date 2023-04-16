@@ -17,7 +17,7 @@ except: print("SOME DEPENDENCIES COULD NOT BE INSTALLED....\nType to install all
 
 
 
-__VERSION__ = "0.2"  # sets a string value of "0.2" to the variable __VERSION__ for define tool version
+__VERSION__ = "0.3"  # sets a string value of "0.3" to the variable __VERSION__ for define tool version
 __LINK__ = "https://github.com/GreyTechno/SMS_Forwarder.git"  # sets a string value of the project's GitHub link to the variable __LINK__
 
 clear = lambda : os.system("clear")  # defines a lambda function that clears the terminal screen using the "clear" command on Unix-based systems

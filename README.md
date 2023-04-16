@@ -2,7 +2,7 @@
 <a href="#"><img title="MR_GT" src="https://img.shields.io/badge/Auther-MR.GT-SCRIPT?colorA=%23ff8100&colorB=%23017e40&colorC=%23ff0000&style=for-the-badge"></a>
 <br>
 <a href="#"><img title="Tool_SMS Forwarder" src="https://img.shields.io/badge/Tool-SMS_Forwarder-green.svg"></a>
-<a href="#"><img title="Version_0.1" src="https://img.shields.io/badge/Version-0.1-green.svg"></a>
+<a href="#"><img title="Version_0.3" src="https://img.shields.io/badge/Version-0.3-green.svg"></a>
 </p>
 
 <h2 align="center">

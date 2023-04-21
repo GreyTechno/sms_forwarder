@@ -1,0 +1,4 @@
+{
+    "main": "sms_forwarder.py",
+    "version": "0.3"
+}

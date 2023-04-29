@@ -64,26 +64,16 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 ### 🛠️INSTALLATION
 ###### First, install Termux and Termux-API from F-Droid or the Play Store, and then type the following commands in Termux.
 ``` sh
-apt update -y
-apt upgrade -y
-pkg install git python -y
+pkg install python -y
 pip install requests secure-smtplib
-cd ~
-git clone https://github.com/GreyTechno/SMS_Forwarder.git
-```
-> Or, Use Single Line Command
-``` sh
-apt update -y && apt upgrade -y && pkg install git python -y && pip install requests secure-smtplib && cd ~ && git clone https://github.com/GreyTechno/SMS_Forwarder.git
+pip install gtf
+gtf -i SMS_Forwarder
 ```
 #### 💻 FOR START JUST TYPE
 ``` sh
-cd $HOME/SMS_Forwarder
-python sms_forwarder.py
+gtf run SMS_Forwarder
 ```
-> Or, Use Single Line Command
-``` sh
-python $HOME/SMS_Forwarder/sms_forwarder.py
-```
+
 #
 
 

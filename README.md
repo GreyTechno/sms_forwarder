@@ -66,12 +66,12 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 ``` sh
 pkg install python -y
 pip install requests secure-smtplib
-pip install gtf
-gtf -i SMS_Forwarder
+pip install gtci
+gtci install SMS_Forwarder
 ```
 #### 💻 FOR START JUST TYPE
 ``` sh
-gtf run SMS_Forwarder
+gtci run SMS_Forwarder
 ```
 
 #

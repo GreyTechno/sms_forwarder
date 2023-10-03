@@ -1,6 +1,6 @@
 {
     "auther": "MR_GT",
     "version": "1.0.6",
-    "main": "sms_forwarder",
+    "main": "main.py",
     "zipurl": "https://github.com/GreyTechno/sms_forwarder/archive/refs/heads/main.zip"
 }

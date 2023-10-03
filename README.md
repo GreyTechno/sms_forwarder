@@ -32,10 +32,10 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 </p>
 
 <h2 align="left">AVAILABLE ON</h2>
-<li>Termux</li>
+<li><a href="https://wiki.termux.com/wiki/Main_Page">Termux</a></li>
 
 <h2 align="left">TESTED ON</h2>
-<li>Termux</li>
+<li><a href="https://wiki.termux.com/wiki/Main_Page">Termux</a></li>
 
 
 

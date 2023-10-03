@@ -29,7 +29,7 @@ if sys.version_info >= (3, 6): import zipfile
 else: import zipfile36 as zipfile
 
 
-Current_Version = "1.0.7"
+Current_Version = "1.0.8"
 
 
 def color():
@@ -1688,41 +1688,45 @@ def update():
         if (_update == "y") or (_update == "yes"): main_work = True
         else: main_work = False
         
-    try:
-        if (main_work):
-            current_path = os.getcwd()
-            if not "TWK5XME9V704" in current_path.split("\\"):
-                os.chdir("..")
-                shutil.rmtree("sms_forwarder")
-                url = "https://github.com/GreyTechno/sms_forwarder/archive/refs/heads/main.zip" + "?raw=true"
-                rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
-                zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
-                toolname = zipname.split("$")[0]
-                block_size = 1024
-                response = requests.get(url, stream=True)
-                total_size = int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length'])
-                with open(f"{rname}.zip", 'wb') as f:
-                    for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
-                        f.write(data)
-                with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
-                os.remove(f"{rname}.zip")
-                shutil.copytree(f"{os.getcwd()}/{rname}/{zipname}", toolname)
-                shutil.rmtree(rname)
-                os.chdir(toolname)
-                with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
-                banner()
-                echo_top()
-                echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
-                echo(f"{reset}{bold}{white}for start now just type{reset}")
-                echo_bottom()
-                echo_top()
-                current_path = current_path.replace('\\', '/').replace("sms_forwarder", "")
-                echo(f"{reset}{bold}{yellow}{current_path}{toolname}/main.py{reset}")
-                echo_bottom()
-                subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
-                subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
-                exit()
-            else:
+    if (main_work):
+        current_path = os.getcwd()
+        if not "TWK5XME9V704" in current_path.split("\\"):
+            os.chdir("..")
+            shutil.rmtree("sms_forwarder")
+            url = "https://github.com/GreyTechno/sms_forwarder/archive/refs/heads/main.zip" + "?raw=true"
+            rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
+            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
+            toolname = zipname.split("$")[0]
+            block_size = 1024
+            try:
+                    response = requests.get(url, stream=True)
+                    total_size = int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length'])
+                    with open(f"{rname}.zip", 'wb') as f:
+                        for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
+                            f.write(data)
+            except:
+                    response = requests.get(url).text
+                    with open(f"{rname}.zip", 'wb') as f:
+                        f.write(response)
+            with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
+            os.remove(f"{rname}.zip")
+            shutil.copytree(f"{os.getcwd()}/{rname}/{zipname}", toolname)
+            shutil.rmtree(rname)
+            os.chdir(toolname)
+            with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+            banner()
+            echo_top()
+            echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
+            echo(f"{reset}{bold}{white}for start now just type{reset}")
+            echo_bottom()
+            echo_top()
+            current_path = current_path.replace('\\', '/').replace("sms_forwarder", "")
+            echo(f"{reset}{bold}{yellow}{current_path}{toolname}/main.py{reset}")
+            echo_bottom()
+            subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
+            subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
+            exit()
+        else:
                 root_path = pip.__path__[0]
                 os.chdir(root_path)
                 os.chdir("..")
@@ -1755,13 +1759,7 @@ def update():
                 subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
                 subprocess.getoutput(f"timeout 3 termux-clipboard-set gtci run {toolname}")
                 exit()
-    except :
-        banner()
-        echo_top()
-        echo(f"{bold}{white}Could Not Fetch Detail Retrying..{reset}")
-        echo_bottom()
-        sleep(2)
-        update()
+
     else: main_menu()
 
 def help():

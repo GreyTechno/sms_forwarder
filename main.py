@@ -29,7 +29,7 @@ if sys.version_info >= (3, 6): import zipfile
 else: import zipfile36 as zipfile
 
 
-Current_Version = "1.0.6"
+Current_Version = "1.0.7"
 
 
 def color():
@@ -1691,34 +1691,17 @@ def update():
         if not "TWK5XME9V704" in current_path.split("\\"):
             os.chdir("..")
             shutil.rmtree("sms_forwarder")
-            url = "https://github.com/GreyTechno/sms_forwarder/archive/refs/heads/main.zip" + "?raw=true"
-            rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
-            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
-            toolname = zipname.split("$")[0]
-            block_size = 1024
-            response = requests.get(url, stream=True)
-            total_size = int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length'])
-            with open(f"{rname}.zip", 'wb') as f:
-                for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
-                    f.write(data)
-            with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
-            os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}/{rname}/{zipname}", toolname)
-            shutil.rmtree(rname)
-            os.chdir(toolname)
-            with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+            os.system("gtci -i sms_forwarder")
             banner()
             echo_top()
             echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
             echo(f"{reset}{bold}{white}for start now just type{reset}")
             echo_bottom()
             echo_top()
-            current_path = current_path.replace('\\', '/').replace("sms_forwarder", "")
-            echo(f"{reset}{bold}{yellow}{current_path}{toolname}/main.py{reset}")
+            echo(f"{reset}{bold}{yellow}gtci run {toolname}{reset}")
             echo_bottom()
             subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
-            subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
-            exit()
+            subprocess.getoutput(f"timeout 3 termux-clipboard-set gtci run {toolname}")
         else:
             root_path = pip.__path__[0]
             os.chdir(root_path)

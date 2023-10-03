@@ -25,7 +25,10 @@
 #
 <h2 align="left">🚀 ABOUT</h2>
 <p align="center">
-SMS_Forwarder can be used in Termux to forward text messages from one device to another using Linux command-line utilities. The advantages of using SMS Forwarder in Termux are that it allow users to automate the sms forwarding process using Python scripts, and it provides a secure way to forward messages as it uses end-to-end encryption to ensure that the messages are not intercepted or read by unauthorized parties. This offers advanced functionality and customization options that are not available on other platforms. Additionally, SMS_Forwarder in Termux provides multiple sms forwarding options, including forwarding SMS via number or email. Overall, SMS Forwarder in Termux is a useful tool for people who want to stay connected across multiple devices.
+sms_forwarder can be used in Termux to forward text messages from one device to another using Linux command-line utilities. The advantages of using sms_forwarder in Termux are that it allows users to automate the SMS forwarding process using Python scripts and provides a secure way to forward messages. It employs end-to-end encryption to ensure that the messages are not intercepted or read by unauthorized parties, offering advanced functionality and customization options that are not typically available on other platforms.
+</p>
+<p align="center">
+Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options, including forwarding via phone number, email, between Termux instances, displaying on a web page, and forwarding to Telegram. This versatility makes sms_forwarder a valuable tool for individuals who want to maintain seamless connectivity across multiple devices
 </p>
 
 <h2 align="left">AVAILABLE ON</h2>
@@ -43,15 +46,18 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 
 
 <h2 align="left">FEATURES</h2>
-<li> Configurable settings </li>
-<li> Multiple forwarding options including phone numbers, email addresses and etc</li>
-<li> Automatic forwarding </li>
-<li> Lightweight and efficient </li>
-<li> Encryption for secure and private forwarding </li>
-<li> Unstable Tool </li>
-<li> Update Maintainence </li>
-<li> Auto Update Features </li>
-<li> Easy For Beginners </li>
+<li><b> Configurable Settings</b> : Users can customize various settings according to their preferences, allowing for a personalized SMS forwarding experience.</li>
+<li><b> Multiple Forwarding Options</b> : SMS_Forwarder supports a range of forwarding methods, including forwarding to phone numbers, email addresses, other Termux instances, web pages, and Telegram channels.</li>
+<li><b> Automatic Forwarding</b> : The application offers automated SMS forwarding, reducing the need for manual intervention and ensuring messages are consistently forwarded to the desired destination.</li>
+<li><b> Lightweight and Efficient</b> : SMS_Forwarder is designed to be lightweight and resource-efficient, ensuring that it runs smoothly on a wide range of devices without causing performance issues.</li>
+<li><b> Encryption for Secure and Private Forwarding</b> : Messages are forwarded with end-to-end encryption, guaranteeing that they remain confidential and secure throughout the forwarding process.</li>
+<li><b> Update Maintenance</b> : Regular updates and maintenance are provided to enhance the functionality and address any issues or vulnerabilities that may arise.</li>
+<li><b> Auto Update Features</b> : Users have the option to enable auto-updates, ensuring that they always have access to the latest features and security enhancements.</li>
+<li><b> User-Friendly for Beginners</b> : SMS_Forwarder is designed with user-friendliness in mind, making it accessible and easy to use for individuals, including those who may be new to Termux and Python scripting.</li>
+<li><b> Customizable Notifications</b> : Users can configure notification settings to receive alerts or updates about forwarded messages based on their preferences.</li>
+<li><b> Cross-Device Connectivity</b> : SMS_Forwarder facilitates seamless connectivity across multiple devices, allowing users to access their forwarded messages wherever they are.</li>
+
+<b>hese features make SMS_Forwarder a versatile and powerful tool for managing and forwarding SMS messages in a way that suits individual needs and preferences.</b>
 
 
 #
@@ -65,13 +71,14 @@ SMS_Forwarder can be used in Termux to forward text messages from one device to 
 ###### First, install Termux and Termux-API from F-Droid or the Play Store, and then type the following commands in Termux.
 ``` sh
 pkg install python -y
-pip install requests secure-smtplib
-pip install gtf
-gtf -i SMS_Forwarder
+pip install gtci
+gtf install sms_forwarder
 ```
+<li><b><i> Try gtci -h</i></b></li>
+
 #### 💻 FOR START JUST TYPE
 ``` sh
-gtf run SMS_Forwarder
+gtci run sms_forwarder
 ```
 
 #

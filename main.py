@@ -423,6 +423,8 @@ def on_webpage():
     host         = "127.0.0.1"
     _key         = "JLAHGuBSDJUGDhju"
 
+    with open(jsonfile, "w") as file:
+        file.write("[]")
 
     localserver = lambda : subprocess.getoutput(f"python {sys.argv[0]} {user_password} {user_port} {jsonfile} {loginfile} {inboxfile} {host} {_key}")
     _localserver = threading.Thread(target=localserver)
@@ -1754,9 +1756,95 @@ def update():
 
 def help():
     def summery():
-        pass
+        banner()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}1. {yellow}Forward SMS Termux To Termux{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Allows you to forward SMS messages from one Termux instance to another.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}2. {yellow}Forward SMS In Telegram{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Enables forwarding of SMS messages to a Telegram chat or group.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}3. {yellow}Forward SMS On Web Page{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Provides an option to view and forward SMS messages through a web page interface.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}4. {yellow}Forward SMS Via Email{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Allows you to send SMS messages to an email address.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}5. {yellow}Forward SMS To Phone{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Forwards SMS messages to another phone number.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}6. {yellow}Update{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Check for updates and update the application if necessary.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}7. {yellow}Help{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Display this help menu to guide you through the available options.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}8. {yellow}About{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Learn more about the application, its version, and creators.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}9. {yellow}More{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Access additional features or options not listed here.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{bold}{blue}10. {yellow}Exit{reset}")
+        echo("══", red+"╠", "╣", "═")
+        for text in handle_text_overflow("Quit the application.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        for text in handle_text_overflow("Choose the option number to access its functionality or type 'Exit' to quit the application.", total_area() - 6):
+            echo(f"{reset}{bold}{white}{text}{reset}")
+        echo_bottom()
     def video():
-        pass
+        banner()
+        print()
+        echo_top()
+        echo(f"{reset}{bold}{white}Video Not Available...{reset}")
+        echo_bottom()
+        print()
+        echo_top()
+        echo(f"{reset}{bold}{lightcyan}For Back Press Enter{reset}")
+        echo("══", red+"╠", "╝", "═")
+        echo("  ", red+"║", " ")
+        center_input(f"╚════► {yellow}")
+        help()
 
     banner()
     echo_top()
@@ -1815,10 +1903,14 @@ def help():
 
 def about():
     banner()
+    print()
     echo_top()
-    for text in handle_text_overflow("sms_forwarder can be used in Termux to forward text messages from one device to another device using Linux CommandLine utilities The advantages of using sms forwarder in Termux are that it allow users to automate the sms forwarding process using Python scripts, and it provides a secure way to forward messages as it uses end-to-end encryption to ensure that the messages are not intercepted or read by unauthorized parties This offers advanced functionality and customization options that are not available on other platforms Additionally sms_forwarder in Termux provides multiple forwarding options including forwarding sms on termux to termux, forwarding sms on web server, forwarding sms on email or phone numbers. Overall, sms_forwarder in Termux is a useful tool for people who want to stay connected across multiple devices.", total_area() - 6):
+    echo(f"{bold}{white}About sms_forwarder{reset}")
+    echo("══", red+"╠", "╣", "═")
+    for text in handle_text_overflow("sms_forwarder can be used in Termux to forward text messages from one device to another using Linux command-line utilities. The advantages of using sms_forwarder in Termux are that it allows users to automate the SMS forwarding process using Python scripts and provides a secure way to forward messages. It employs end-to-end encryption to ensure that the messages are not intercepted or read by unauthorized parties, offering advanced functionality and customization options that are not typically available on other platforms. Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options, including forwarding via phone number, email, between Termux instances, displaying on a web page, and forwarding to Telegram. This versatility makes sms_forwarder a valuable tool for individuals who want to maintain seamless connectivity across multiple devices", total_area() - 6):
         echo(f"{reset}{bold}{white}{text}{reset}")
     echo_bottom()
+    print()
     print()
     echo_top()
     echo(f"{reset}{bold}{white}For Back Press Enter{reset}")

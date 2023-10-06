@@ -29,7 +29,7 @@ if sys.version_info >= (3, 6): import zipfile
 else: import zipfile36 as zipfile
 
 
-Current_Version = "1.0.8"
+Current_Version = "1.0.9"
 
 
 def color():
@@ -296,6 +296,630 @@ def on_telegram():
     center_input(f"╚════► {yellow}")
     main_menu()
 
+total_capture = 0
+def localhost(password, port, jsonfile, loginfile, inboxfile, host="127.0.0.1"):
+    app = Flask("sms_forwarder")
+    set_password = password
+    @app.route('/', methods=['GET', 'POST'])
+    def index():
+        global total_capture
+        if (request.method == 'POST'):
+            password = request.form['password']
+            if (password == set_password):
+                while True:
+                    log_events = json.loads(open(jsonfile, "r").read())
+                    len_data = len(log_events)
+                    if total_capture > 99:
+                        total_capture = 0
+                        with open(jsonfile, "w") as file:
+                            file.write("[]")
+                        Inner_html = '''<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>Sms Forwarder - Inbox</title>
+        <style>
+            /* Reset some default styles */
+            body, ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            /* Global styles */
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            /* Header styles */
+            header {
+                background-color: #2d89ef;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+
+            h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+            /* Navigation styles */
+            nav ul {
+                background-color: #f0f0f0;
+                text-align: center;
+                padding: 10px;
+            }
+
+            nav li {
+                display: inline;
+                margin: 0 10px;
+            }
+
+            nav .reload-button {
+                display: inline-block;
+                background-color: #5e6e17fb;
+                color: white;
+                padding: 10px 100px;
+                border-radius: 5px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            /* Email list styles */
+            .email-list {
+                padding: 20px;
+            }
+
+            .email-item {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                margin: 10px 0;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            .email-item:hover {
+                background-color: #f5f5f5;
+                transform: translateY(-2px);
+            }
+
+            .email-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .sender {
+                font-weight: bold;
+            }
+
+            .subject {
+                flex-grow: 1;
+                margin-left: 20px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .date {
+                font-size: 12px;
+                color: #888;
+            }
+
+            .email-details {
+                display: none;
+                background-color: #f0f0f0;
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
+            .email-item.expanded .email-details {
+                display: block;
+            }
+
+            a {
+                text-decoration: none;
+                color: #2d89ef;
+                font-weight: bold;
+            }
+            /* Define the animation */
+            @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.5);
+            }
+            100% {
+                transform: scale(0.1);
+            }
+            }
+
+            /* Apply the animation class */
+            .animate {
+            animation: pulse 1s infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 style="font-family: algerian; font-size: 50px; color: black;">SMS FORWARDER</h1>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="reload-button" id="reloadInbox">Refresh</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <ul>
+                <!-- hgcs_1 -->
+                <!-- hgcs_2 -->
+                <!-- hgcs_3 -->
+                <!-- hgcs_4 -->
+                <!-- hgcs_5 -->
+                <!-- hgcs_6 -->
+                <!-- hgcs_7 -->
+                <!-- hgcs_8 -->
+                <!-- hgcs_9 -->
+                <!-- hgcs_10 -->
+                <!-- hgcs_11 -->
+                <!-- hgcs_12 -->
+                <!-- hgcs_13 -->
+                <!-- hgcs_14 -->
+                <!-- hgcs_15 -->
+                <!-- hgcs_16 -->
+                <!-- hgcs_17 -->
+                <!-- hgcs_18 -->
+                <!-- hgcs_19 -->
+                <!-- hgcs_20 -->
+                <!-- hgcs_21 -->
+                <!-- hgcs_22 -->
+                <!-- hgcs_23 -->
+                <!-- hgcs_24 -->
+                <!-- hgcs_25 -->
+                <!-- hgcs_26 -->
+                <!-- hgcs_27 -->
+                <!-- hgcs_28 -->
+                <!-- hgcs_29 -->
+                <!-- hgcs_30 -->
+                <!-- hgcs_31 -->
+                <!-- hgcs_32 -->
+                <!-- hgcs_33 -->
+                <!-- hgcs_34 -->
+                <!-- hgcs_35 -->
+                <!-- hgcs_36 -->
+                <!-- hgcs_37 -->
+                <!-- hgcs_38 -->
+                <!-- hgcs_39 -->
+                <!-- hgcs_40 -->
+                <!-- hgcs_41 -->
+                <!-- hgcs_42 -->
+                <!-- hgcs_43 -->
+                <!-- hgcs_44 -->
+                <!-- hgcs_45 -->
+                <!-- hgcs_46 -->
+                <!-- hgcs_47 -->
+                <!-- hgcs_48 -->
+                <!-- hgcs_49 -->
+                <!-- hgcs_50 -->
+                <!-- hgcs_51 -->
+                <!-- hgcs_52 -->
+                <!-- hgcs_53 -->
+                <!-- hgcs_54 -->
+                <!-- hgcs_55 -->
+                <!-- hgcs_56 -->
+                <!-- hgcs_57 -->
+                <!-- hgcs_58 -->
+                <!-- hgcs_59 -->
+                <!-- hgcs_60 -->
+                <!-- hgcs_61 -->
+                <!-- hgcs_62 -->
+                <!-- hgcs_63 -->
+                <!-- hgcs_64 -->
+                <!-- hgcs_65 -->
+                <!-- hgcs_66 -->
+                <!-- hgcs_67 -->
+                <!-- hgcs_68 -->
+                <!-- hgcs_69 -->
+                <!-- hgcs_70 -->
+                <!-- hgcs_71 -->
+                <!-- hgcs_72 -->
+                <!-- hgcs_73 -->
+                <!-- hgcs_74 -->
+                <!-- hgcs_75 -->
+                <!-- hgcs_76 -->
+                <!-- hgcs_77 -->
+                <!-- hgcs_78 -->
+                <!-- hgcs_79 -->
+                <!-- hgcs_80 -->
+                <!-- hgcs_81 -->
+                <!-- hgcs_82 -->
+                <!-- hgcs_83 -->
+                <!-- hgcs_84 -->
+                <!-- hgcs_85 -->
+                <!-- hgcs_86 -->
+                <!-- hgcs_87 -->
+                <!-- hgcs_88 -->
+                <!-- hgcs_89 -->
+                <!-- hgcs_90 -->
+                <!-- hgcs_91 -->
+                <!-- hgcs_92 -->
+                <!-- hgcs_93 -->
+                <!-- hgcs_94 -->
+                <!-- hgcs_95 -->
+                <!-- hgcs_96 -->
+                <!-- hgcs_97 -->
+                <!-- hgcs_98 -->
+                <!-- hgcs_99 -->
+                <!-- hgcs_100 -->
+            </ul>
+        </main>
+        <script>
+            // JavaScript to toggle email details visibility
+            const emailItems = document.querySelectorAll('.email-item');
+            
+            emailItems.forEach(emailItem => {
+                emailItem.addEventListener('click', () => {
+                    emailItem.classList.toggle('expanded');
+                });
+            });
+        
+            // JavaScript to reload the inbox
+            const reloadButton = document.getElementById('reloadInbox');
+            reloadButton.addEventListener('click', () => {
+                reloadButton.classList.add('animate');
+                setTimeout(function() {
+                    reloadButton.classList.remove('animate');
+                }, 1000);
+                location.reload();
+            });
+        
+            // JavaScript to reload the inbox every 10 seconds
+            const reloadEvery7Seconds = () => {
+                location.reload();
+            };
+        
+            // Call the reload function initially and then every 10 seconds
+            setTimeout(reloadEvery7Seconds, 7000); // Call it initially
+        </script>
+        
+    </body>
+    </html>
+    '''
+                        with open(f"templates/{inboxfile}", "w") as file:
+                                    file.write(Inner_html)
+                    if (len_data != total_capture):
+                            try:
+                                unsended_info  = int(str(len_data - total_capture).replace("-", ""))
+                                unsend_message = log_events[-unsended_info:]
+                                for unsended_count in range(unsended_info):
+                                    total_capture += 1
+
+                                    name = unsend_message[unsended_count].get("sender")
+                                    number = unsend_message[unsended_count].get("number")
+                                    date = unsend_message[unsended_count].get("date")
+                                    message = unsend_message[unsended_count].get("message")
+
+                                    Html = open(f"templates/{inboxfile}").read()
+                                    Items = f'''
+                    <li class="email-item">
+                        <div class="email-header">
+                            <span class="sender">{name}</span>
+                            <span class="subject">{number}</span>
+                            <span class="date">{date}</span>
+                        </div>
+                        <div class="email-details">
+                            <p>{message}</p>
+                        </div>
+                    </li>'''
+
+                                    with open(f"templates/{inboxfile}", "w") as file:
+                                        file.write(Html.replace(f"<!-- hgcs_{total_capture} -->", Items))
+                            except IndexError: pass
+                    else:
+                        return render_template(inboxfile)
+            else: return render_template(loginfile)
+        return render_template(loginfile)
+    app.run(debug=True, host=host, port=port)
+    
+    with open(jsonfile, "w") as file:
+        file.write("[]")
+    Inner_html = '''<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>Sms Forwarder - Inbox</title>
+        <style>
+            /* Reset some default styles */
+            body, ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            /* Global styles */
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            /* Header styles */
+            header {
+                background-color: #2d89ef;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+
+            h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+            /* Navigation styles */
+            nav ul {
+                background-color: #f0f0f0;
+                text-align: center;
+                padding: 10px;
+            }
+
+            nav li {
+                display: inline;
+                margin: 0 10px;
+            }
+
+            nav .reload-button {
+                display: inline-block;
+                background-color: #5e6e17fb;
+                color: white;
+                padding: 10px 100px;
+                border-radius: 5px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            /* Email list styles */
+            .email-list {
+                padding: 20px;
+            }
+
+            .email-item {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                margin: 10px 0;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            .email-item:hover {
+                background-color: #f5f5f5;
+                transform: translateY(-2px);
+            }
+
+            .email-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .sender {
+                font-weight: bold;
+            }
+
+            .subject {
+                flex-grow: 1;
+                margin-left: 20px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .date {
+                font-size: 12px;
+                color: #888;
+            }
+
+            .email-details {
+                display: none;
+                background-color: #f0f0f0;
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
+            .email-item.expanded .email-details {
+                display: block;
+            }
+
+            a {
+                text-decoration: none;
+                color: #2d89ef;
+                font-weight: bold;
+            }
+            /* Define the animation */
+            @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.5);
+            }
+            100% {
+                transform: scale(0.1);
+            }
+            }
+
+            /* Apply the animation class */
+            .animate {
+            animation: pulse 1s infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 style="font-family: algerian; font-size: 50px; color: black;">SMS FORWARDER</h1>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="reload-button" id="reloadInbox">Refresh</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <ul>
+                <!-- hgcs_1 -->
+                <!-- hgcs_2 -->
+                <!-- hgcs_3 -->
+                <!-- hgcs_4 -->
+                <!-- hgcs_5 -->
+                <!-- hgcs_6 -->
+                <!-- hgcs_7 -->
+                <!-- hgcs_8 -->
+                <!-- hgcs_9 -->
+                <!-- hgcs_10 -->
+                <!-- hgcs_11 -->
+                <!-- hgcs_12 -->
+                <!-- hgcs_13 -->
+                <!-- hgcs_14 -->
+                <!-- hgcs_15 -->
+                <!-- hgcs_16 -->
+                <!-- hgcs_17 -->
+                <!-- hgcs_18 -->
+                <!-- hgcs_19 -->
+                <!-- hgcs_20 -->
+                <!-- hgcs_21 -->
+                <!-- hgcs_22 -->
+                <!-- hgcs_23 -->
+                <!-- hgcs_24 -->
+                <!-- hgcs_25 -->
+                <!-- hgcs_26 -->
+                <!-- hgcs_27 -->
+                <!-- hgcs_28 -->
+                <!-- hgcs_29 -->
+                <!-- hgcs_30 -->
+                <!-- hgcs_31 -->
+                <!-- hgcs_32 -->
+                <!-- hgcs_33 -->
+                <!-- hgcs_34 -->
+                <!-- hgcs_35 -->
+                <!-- hgcs_36 -->
+                <!-- hgcs_37 -->
+                <!-- hgcs_38 -->
+                <!-- hgcs_39 -->
+                <!-- hgcs_40 -->
+                <!-- hgcs_41 -->
+                <!-- hgcs_42 -->
+                <!-- hgcs_43 -->
+                <!-- hgcs_44 -->
+                <!-- hgcs_45 -->
+                <!-- hgcs_46 -->
+                <!-- hgcs_47 -->
+                <!-- hgcs_48 -->
+                <!-- hgcs_49 -->
+                <!-- hgcs_50 -->
+                <!-- hgcs_51 -->
+                <!-- hgcs_52 -->
+                <!-- hgcs_53 -->
+                <!-- hgcs_54 -->
+                <!-- hgcs_55 -->
+                <!-- hgcs_56 -->
+                <!-- hgcs_57 -->
+                <!-- hgcs_58 -->
+                <!-- hgcs_59 -->
+                <!-- hgcs_60 -->
+                <!-- hgcs_61 -->
+                <!-- hgcs_62 -->
+                <!-- hgcs_63 -->
+                <!-- hgcs_64 -->
+                <!-- hgcs_65 -->
+                <!-- hgcs_66 -->
+                <!-- hgcs_67 -->
+                <!-- hgcs_68 -->
+                <!-- hgcs_69 -->
+                <!-- hgcs_70 -->
+                <!-- hgcs_71 -->
+                <!-- hgcs_72 -->
+                <!-- hgcs_73 -->
+                <!-- hgcs_74 -->
+                <!-- hgcs_75 -->
+                <!-- hgcs_76 -->
+                <!-- hgcs_77 -->
+                <!-- hgcs_78 -->
+                <!-- hgcs_79 -->
+                <!-- hgcs_80 -->
+                <!-- hgcs_81 -->
+                <!-- hgcs_82 -->
+                <!-- hgcs_83 -->
+                <!-- hgcs_84 -->
+                <!-- hgcs_85 -->
+                <!-- hgcs_86 -->
+                <!-- hgcs_87 -->
+                <!-- hgcs_88 -->
+                <!-- hgcs_89 -->
+                <!-- hgcs_90 -->
+                <!-- hgcs_91 -->
+                <!-- hgcs_92 -->
+                <!-- hgcs_93 -->
+                <!-- hgcs_94 -->
+                <!-- hgcs_95 -->
+                <!-- hgcs_96 -->
+                <!-- hgcs_97 -->
+                <!-- hgcs_98 -->
+                <!-- hgcs_99 -->
+                <!-- hgcs_100 -->
+            </ul>
+        </main>
+        <script>
+            // JavaScript to toggle email details visibility
+            const emailItems = document.querySelectorAll('.email-item');
+            
+            emailItems.forEach(emailItem => {
+                emailItem.addEventListener('click', () => {
+                    emailItem.classList.toggle('expanded');
+                });
+            });
+        
+            // JavaScript to reload the inbox
+            const reloadButton = document.getElementById('reloadInbox');
+            reloadButton.addEventListener('click', () => {
+                reloadButton.classList.add('animate');
+                setTimeout(function() {
+                    reloadButton.classList.remove('animate');
+                }, 1000);
+                location.reload();
+            });
+        
+            // JavaScript to reload the inbox every 10 seconds
+            const reloadEvery7Seconds = () => {
+                location.reload();
+            };
+        
+            // Call the reload function initially and then every 10 seconds
+            setTimeout(reloadEvery7Seconds, 7000); // Call it initially
+        </script>
+        
+    </body>
+    </html>
+    '''
+    with open(f"templates/{inboxfile}", "w") as file:
+            file.write(Inner_html)
+
 def on_webpage():
     def sms_read(jsonfile):
         Identity = ""
@@ -421,13 +1045,11 @@ def on_webpage():
     loginfile    = "sms_forwarder-authentication.html"
     inboxfile    = "sms_forwarder-inbox.html"
     host         = "127.0.0.1"
-    _key         = "JLAHGuBSDJUGDhju"
 
     with open(jsonfile, "w") as file:
         file.write("[]")
 
-
-    localserver = lambda : subprocess.getoutput(f"python {sys.argv[0]} {user_password} {user_port} {jsonfile} {loginfile} {inboxfile} {host} {_key}")
+    localserver = localhost(user_password, user_port, jsonfile, loginfile, inboxfile, host)
     _localserver = threading.Thread(target=localserver)
     try: _localserver.start()
     except: pass
@@ -508,642 +1130,6 @@ def on_webpage():
         echo("  ", red+"║", " ")
         center_input(f"╚════► {yellow}")
         on_webpage()
-
-total_capture = 0
-def _webserver():
-    _input = sys.argv
-    password  = _input[1]
-    port      = _input[2]
-    jsonfile  = _input[3]
-    loginfile = _input[4]
-    inboxfile = _input[5]
-    host      = _input[6]
-
-    def localhost(password, port, jsonfile, loginfile, inboxfile, host="127.0.0.1"):
-        app = Flask("sms_forwarder")
-        set_password = password
-        @app.route('/', methods=['GET', 'POST'])
-        def index():
-            global total_capture
-            if (request.method == 'POST'):
-                password = request.form['password']
-                if (password == set_password):
-                    while True:
-                        log_events = json.loads(open(jsonfile, "r").read())
-                        len_data = len(log_events)
-                        if total_capture > 99:
-                            total_capture = 0
-                            with open(jsonfile, "w") as file:
-                                file.write("[]")
-                            Inner_html = '''<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>Sms Forwarder - Inbox</title>
-        <style>
-            /* Reset some default styles */
-            body, ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-
-            /* Global styles */
-            body {
-                font-family: Arial, sans-serif;
-            }
-
-            /* Header styles */
-            header {
-                background-color: #2d89ef;
-                color: white;
-                padding: 20px;
-                text-align: center;
-            }
-
-            h1 {
-                margin: 0;
-                font-size: 24px;
-            }
-
-            /* Navigation styles */
-            nav ul {
-                background-color: #f0f0f0;
-                text-align: center;
-                padding: 10px;
-            }
-
-            nav li {
-                display: inline;
-                margin: 0 10px;
-            }
-
-            nav .reload-button {
-                display: inline-block;
-                background-color: #5e6e17fb;
-                color: white;
-                padding: 10px 100px;
-                border-radius: 5px;
-                text-decoration: none;
-                cursor: pointer;
-            }
-
-            /* Email list styles */
-            .email-list {
-                padding: 20px;
-            }
-
-            .email-item {
-                background-color: #fff;
-                border: 1px solid #ddd;
-                margin: 10px 0;
-                padding: 15px;
-                border-radius: 5px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-                transition: background-color 0.3s, transform 0.3s;
-            }
-
-            .email-item:hover {
-                background-color: #f5f5f5;
-                transform: translateY(-2px);
-            }
-
-            .email-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-
-            .sender {
-                font-weight: bold;
-            }
-
-            .subject {
-                flex-grow: 1;
-                margin-left: 20px;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-
-            .date {
-                font-size: 12px;
-                color: #888;
-            }
-
-            .email-details {
-                display: none;
-                background-color: #f0f0f0;
-                border: 1px solid #ddd;
-                padding: 10px;
-                margin-top: 10px;
-                border-radius: 5px;
-            }
-
-            .email-item.expanded .email-details {
-                display: block;
-            }
-
-            a {
-                text-decoration: none;
-                color: #2d89ef;
-                font-weight: bold;
-            }
-            /* Define the animation */
-            @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(0.5);
-            }
-            100% {
-                transform: scale(0.1);
-            }
-            }
-
-            /* Apply the animation class */
-            .animate {
-            animation: pulse 1s infinite;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1 style="font-family: algerian; font-size: 50px; color: black;">SMS FORWARDER</h1>
-        </header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#" class="reload-button" id="reloadInbox">Refresh</a>
-                </li>
-            </ul>
-        </nav>
-        <main>
-            <ul>
-                <!-- hgcs_1 -->
-                <!-- hgcs_2 -->
-                <!-- hgcs_3 -->
-                <!-- hgcs_4 -->
-                <!-- hgcs_5 -->
-                <!-- hgcs_6 -->
-                <!-- hgcs_7 -->
-                <!-- hgcs_8 -->
-                <!-- hgcs_9 -->
-                <!-- hgcs_10 -->
-                <!-- hgcs_11 -->
-                <!-- hgcs_12 -->
-                <!-- hgcs_13 -->
-                <!-- hgcs_14 -->
-                <!-- hgcs_15 -->
-                <!-- hgcs_16 -->
-                <!-- hgcs_17 -->
-                <!-- hgcs_18 -->
-                <!-- hgcs_19 -->
-                <!-- hgcs_20 -->
-                <!-- hgcs_21 -->
-                <!-- hgcs_22 -->
-                <!-- hgcs_23 -->
-                <!-- hgcs_24 -->
-                <!-- hgcs_25 -->
-                <!-- hgcs_26 -->
-                <!-- hgcs_27 -->
-                <!-- hgcs_28 -->
-                <!-- hgcs_29 -->
-                <!-- hgcs_30 -->
-                <!-- hgcs_31 -->
-                <!-- hgcs_32 -->
-                <!-- hgcs_33 -->
-                <!-- hgcs_34 -->
-                <!-- hgcs_35 -->
-                <!-- hgcs_36 -->
-                <!-- hgcs_37 -->
-                <!-- hgcs_38 -->
-                <!-- hgcs_39 -->
-                <!-- hgcs_40 -->
-                <!-- hgcs_41 -->
-                <!-- hgcs_42 -->
-                <!-- hgcs_43 -->
-                <!-- hgcs_44 -->
-                <!-- hgcs_45 -->
-                <!-- hgcs_46 -->
-                <!-- hgcs_47 -->
-                <!-- hgcs_48 -->
-                <!-- hgcs_49 -->
-                <!-- hgcs_50 -->
-                <!-- hgcs_51 -->
-                <!-- hgcs_52 -->
-                <!-- hgcs_53 -->
-                <!-- hgcs_54 -->
-                <!-- hgcs_55 -->
-                <!-- hgcs_56 -->
-                <!-- hgcs_57 -->
-                <!-- hgcs_58 -->
-                <!-- hgcs_59 -->
-                <!-- hgcs_60 -->
-                <!-- hgcs_61 -->
-                <!-- hgcs_62 -->
-                <!-- hgcs_63 -->
-                <!-- hgcs_64 -->
-                <!-- hgcs_65 -->
-                <!-- hgcs_66 -->
-                <!-- hgcs_67 -->
-                <!-- hgcs_68 -->
-                <!-- hgcs_69 -->
-                <!-- hgcs_70 -->
-                <!-- hgcs_71 -->
-                <!-- hgcs_72 -->
-                <!-- hgcs_73 -->
-                <!-- hgcs_74 -->
-                <!-- hgcs_75 -->
-                <!-- hgcs_76 -->
-                <!-- hgcs_77 -->
-                <!-- hgcs_78 -->
-                <!-- hgcs_79 -->
-                <!-- hgcs_80 -->
-                <!-- hgcs_81 -->
-                <!-- hgcs_82 -->
-                <!-- hgcs_83 -->
-                <!-- hgcs_84 -->
-                <!-- hgcs_85 -->
-                <!-- hgcs_86 -->
-                <!-- hgcs_87 -->
-                <!-- hgcs_88 -->
-                <!-- hgcs_89 -->
-                <!-- hgcs_90 -->
-                <!-- hgcs_91 -->
-                <!-- hgcs_92 -->
-                <!-- hgcs_93 -->
-                <!-- hgcs_94 -->
-                <!-- hgcs_95 -->
-                <!-- hgcs_96 -->
-                <!-- hgcs_97 -->
-                <!-- hgcs_98 -->
-                <!-- hgcs_99 -->
-                <!-- hgcs_100 -->
-            </ul>
-        </main>
-        <script>
-            // JavaScript to toggle email details visibility
-            const emailItems = document.querySelectorAll('.email-item');
-            
-            emailItems.forEach(emailItem => {
-                emailItem.addEventListener('click', () => {
-                    emailItem.classList.toggle('expanded');
-                });
-            });
-        
-            // JavaScript to reload the inbox
-            const reloadButton = document.getElementById('reloadInbox');
-            reloadButton.addEventListener('click', () => {
-                reloadButton.classList.add('animate');
-                setTimeout(function() {
-                    reloadButton.classList.remove('animate');
-                }, 1000);
-                location.reload();
-            });
-        
-            // JavaScript to reload the inbox every 10 seconds
-            const reloadEvery7Seconds = () => {
-                location.reload();
-            };
-        
-            // Call the reload function initially and then every 10 seconds
-            setTimeout(reloadEvery7Seconds, 7000); // Call it initially
-        </script>
-        
-    </body>
-    </html>
-    '''
-                            with open(f"templates/{inboxfile}", "w") as file:
-                                    file.write(Inner_html)
-                        if (len_data != total_capture):
-                            try:
-                                unsended_info  = int(str(len_data - total_capture).replace("-", ""))
-                                unsend_message = log_events[-unsended_info:]
-                                for unsended_count in range(unsended_info):
-                                    total_capture += 1
-
-                                    name = unsend_message[unsended_count].get("sender")
-                                    number = unsend_message[unsended_count].get("number")
-                                    date = unsend_message[unsended_count].get("date")
-                                    message = unsend_message[unsended_count].get("message")
-
-                                    Html = open(f"templates/{inboxfile}").read()
-                                    Items = f'''
-                    <li class="email-item">
-                        <div class="email-header">
-                            <span class="sender">{name}</span>
-                            <span class="subject">{number}</span>
-                            <span class="date">{date}</span>
-                        </div>
-                        <div class="email-details">
-                            <p>{message}</p>
-                        </div>
-                    </li>'''
-
-                                    with open(f"templates/{inboxfile}", "w") as file:
-                                        file.write(Html.replace(f"<!-- hgcs_{total_capture} -->", Items))
-                            except IndexError: pass
-                        else:
-                            return render_template(inboxfile)
-                else: return render_template(loginfile)
-            return render_template(loginfile)
-
-        app.run(debug=True, host=host, port=port)
-        
-        with open(jsonfile, "w") as file:
-            file.write("[]")
-        Inner_html = '''<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>Sms Forwarder - Inbox</title>
-        <style>
-            /* Reset some default styles */
-            body, ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-
-            /* Global styles */
-            body {
-                font-family: Arial, sans-serif;
-            }
-
-            /* Header styles */
-            header {
-                background-color: #2d89ef;
-                color: white;
-                padding: 20px;
-                text-align: center;
-            }
-
-            h1 {
-                margin: 0;
-                font-size: 24px;
-            }
-
-            /* Navigation styles */
-            nav ul {
-                background-color: #f0f0f0;
-                text-align: center;
-                padding: 10px;
-            }
-
-            nav li {
-                display: inline;
-                margin: 0 10px;
-            }
-
-            nav .reload-button {
-                display: inline-block;
-                background-color: #5e6e17fb;
-                color: white;
-                padding: 10px 100px;
-                border-radius: 5px;
-                text-decoration: none;
-                cursor: pointer;
-            }
-
-            /* Email list styles */
-            .email-list {
-                padding: 20px;
-            }
-
-            .email-item {
-                background-color: #fff;
-                border: 1px solid #ddd;
-                margin: 10px 0;
-                padding: 15px;
-                border-radius: 5px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-                transition: background-color 0.3s, transform 0.3s;
-            }
-
-            .email-item:hover {
-                background-color: #f5f5f5;
-                transform: translateY(-2px);
-            }
-
-            .email-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-
-            .sender {
-                font-weight: bold;
-            }
-
-            .subject {
-                flex-grow: 1;
-                margin-left: 20px;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-
-            .date {
-                font-size: 12px;
-                color: #888;
-            }
-
-            .email-details {
-                display: none;
-                background-color: #f0f0f0;
-                border: 1px solid #ddd;
-                padding: 10px;
-                margin-top: 10px;
-                border-radius: 5px;
-            }
-
-            .email-item.expanded .email-details {
-                display: block;
-            }
-
-            a {
-                text-decoration: none;
-                color: #2d89ef;
-                font-weight: bold;
-            }
-            /* Define the animation */
-            @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(0.5);
-            }
-            100% {
-                transform: scale(0.1);
-            }
-            }
-
-            /* Apply the animation class */
-            .animate {
-            animation: pulse 1s infinite;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1 style="font-family: algerian; font-size: 50px; color: black;">SMS FORWARDER</h1>
-        </header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#" class="reload-button" id="reloadInbox">Refresh</a>
-                </li>
-            </ul>
-        </nav>
-        <main>
-            <ul>
-                <!-- hgcs_1 -->
-                <!-- hgcs_2 -->
-                <!-- hgcs_3 -->
-                <!-- hgcs_4 -->
-                <!-- hgcs_5 -->
-                <!-- hgcs_6 -->
-                <!-- hgcs_7 -->
-                <!-- hgcs_8 -->
-                <!-- hgcs_9 -->
-                <!-- hgcs_10 -->
-                <!-- hgcs_11 -->
-                <!-- hgcs_12 -->
-                <!-- hgcs_13 -->
-                <!-- hgcs_14 -->
-                <!-- hgcs_15 -->
-                <!-- hgcs_16 -->
-                <!-- hgcs_17 -->
-                <!-- hgcs_18 -->
-                <!-- hgcs_19 -->
-                <!-- hgcs_20 -->
-                <!-- hgcs_21 -->
-                <!-- hgcs_22 -->
-                <!-- hgcs_23 -->
-                <!-- hgcs_24 -->
-                <!-- hgcs_25 -->
-                <!-- hgcs_26 -->
-                <!-- hgcs_27 -->
-                <!-- hgcs_28 -->
-                <!-- hgcs_29 -->
-                <!-- hgcs_30 -->
-                <!-- hgcs_31 -->
-                <!-- hgcs_32 -->
-                <!-- hgcs_33 -->
-                <!-- hgcs_34 -->
-                <!-- hgcs_35 -->
-                <!-- hgcs_36 -->
-                <!-- hgcs_37 -->
-                <!-- hgcs_38 -->
-                <!-- hgcs_39 -->
-                <!-- hgcs_40 -->
-                <!-- hgcs_41 -->
-                <!-- hgcs_42 -->
-                <!-- hgcs_43 -->
-                <!-- hgcs_44 -->
-                <!-- hgcs_45 -->
-                <!-- hgcs_46 -->
-                <!-- hgcs_47 -->
-                <!-- hgcs_48 -->
-                <!-- hgcs_49 -->
-                <!-- hgcs_50 -->
-                <!-- hgcs_51 -->
-                <!-- hgcs_52 -->
-                <!-- hgcs_53 -->
-                <!-- hgcs_54 -->
-                <!-- hgcs_55 -->
-                <!-- hgcs_56 -->
-                <!-- hgcs_57 -->
-                <!-- hgcs_58 -->
-                <!-- hgcs_59 -->
-                <!-- hgcs_60 -->
-                <!-- hgcs_61 -->
-                <!-- hgcs_62 -->
-                <!-- hgcs_63 -->
-                <!-- hgcs_64 -->
-                <!-- hgcs_65 -->
-                <!-- hgcs_66 -->
-                <!-- hgcs_67 -->
-                <!-- hgcs_68 -->
-                <!-- hgcs_69 -->
-                <!-- hgcs_70 -->
-                <!-- hgcs_71 -->
-                <!-- hgcs_72 -->
-                <!-- hgcs_73 -->
-                <!-- hgcs_74 -->
-                <!-- hgcs_75 -->
-                <!-- hgcs_76 -->
-                <!-- hgcs_77 -->
-                <!-- hgcs_78 -->
-                <!-- hgcs_79 -->
-                <!-- hgcs_80 -->
-                <!-- hgcs_81 -->
-                <!-- hgcs_82 -->
-                <!-- hgcs_83 -->
-                <!-- hgcs_84 -->
-                <!-- hgcs_85 -->
-                <!-- hgcs_86 -->
-                <!-- hgcs_87 -->
-                <!-- hgcs_88 -->
-                <!-- hgcs_89 -->
-                <!-- hgcs_90 -->
-                <!-- hgcs_91 -->
-                <!-- hgcs_92 -->
-                <!-- hgcs_93 -->
-                <!-- hgcs_94 -->
-                <!-- hgcs_95 -->
-                <!-- hgcs_96 -->
-                <!-- hgcs_97 -->
-                <!-- hgcs_98 -->
-                <!-- hgcs_99 -->
-                <!-- hgcs_100 -->
-            </ul>
-        </main>
-        <script>
-            // JavaScript to toggle email details visibility
-            const emailItems = document.querySelectorAll('.email-item');
-            
-            emailItems.forEach(emailItem => {
-                emailItem.addEventListener('click', () => {
-                    emailItem.classList.toggle('expanded');
-                });
-            });
-        
-            // JavaScript to reload the inbox
-            const reloadButton = document.getElementById('reloadInbox');
-            reloadButton.addEventListener('click', () => {
-                reloadButton.classList.add('animate');
-                setTimeout(function() {
-                    reloadButton.classList.remove('animate');
-                }, 1000);
-                location.reload();
-            });
-        
-            // JavaScript to reload the inbox every 10 seconds
-            const reloadEvery7Seconds = () => {
-                location.reload();
-            };
-        
-            // Call the reload function initially and then every 10 seconds
-            setTimeout(reloadEvery7Seconds, 7000); // Call it initially
-        </script>
-        
-    </body>
-    </html>
-    '''
-        with open(f"templates/{inboxfile}", "w") as file:
-                file.write(Inner_html)
-
-    localhost(password, port, jsonfile, loginfile, inboxfile, host)
 
 def on_email():
     banner()
@@ -1687,32 +1673,48 @@ def update():
         _update = center_input(f"╚════► {yellow}").lower()
         if (_update == "y") or (_update == "yes"): main_work = True
         else: main_work = False
-        
     if (main_work):
         current_path = os.getcwd()
         if not "TWK5XME9V704" in current_path.split("\\"):
             os.chdir("..")
             shutil.rmtree("sms_forwarder")
-            url = "https://github.com/GreyTechno/sms_forwarder/archive/refs/heads/main.zip" + "?raw=true"
+            repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
+            repository_name = "sms_forwarder"
+            url = repository_list[repository_name]['zipurl'] + "?raw=true"
+            dependencies = repository_list[repository_name]['dependencies']
             rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
             zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
             toolname = zipname.split("$")[0]
             block_size = 1024
-            try:
-                    response = requests.get(url, stream=True)
-                    total_size = int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length'])
-                    with open(f"{rname}.zip", 'wb') as f:
-                        for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
-                            f.write(data)
-            except:
-                    response = requests.get(url).text
-                    with open(f"{rname}.zip", 'wb') as f:
-                        f.write(response)
+            response = requests.get(url, stream=True)
+            E = True
+            for i in range(15):
+                try: E, total_size = True, int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length']) ; break
+                except TypeError: E = False
+            if not (E):
+                banner()
+                print()
+                echo_top()
+                echo(f"{bold}{white}Something went's wrong try again later.{reset}")
+                echo_bottom()
+                with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+                sleep(2)
+            with open(f"{rname}.zip", 'wb') as f:
+                for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
+                    f.write(data)
             with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
             os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}/{rname}/{zipname}", toolname)
+            shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
             shutil.rmtree(rname)
-            os.chdir(toolname)
+            Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
+            DEPENDENCIES = threading.Thread(target=Dependencies)
+            DEPENDENCIES.start()
+            while DEPENDENCIES.is_alive():
+                animation = [f'{reset}{bold}{yellow}⠋  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}INstalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}InStalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}InsTalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}InstAlling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}InstaLling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}InstalLing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}InstallIng Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}InstalliNg Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}InstallinG Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing BUilding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing BuIlding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing BuiLding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing BuilDing Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing BuildIng Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing BuildiNg Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing BuildinG Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DEpendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building DePendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building DepEndencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building DepeNdencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building DepenDencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing Building DependEncies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing Building DependeNcies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing Building DependenCies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building DependencIes{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building DependenciEs{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DependencieS{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building Dependencies{blue}...{reset}']
+                for anim in animation:
+                    sys.stdout.write(center(anim, False)+'\r')
+                    sleep(0.05)
+            DEPENDENCIES.join()
             with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
             banner()
             echo_top()
@@ -1727,39 +1729,61 @@ def update():
             subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
             exit()
         else:
-                root_path = pip.__path__[0]
-                os.chdir(root_path)
-                os.chdir("..")
-                os.chdir("TWK5XME9V704")
-                shutil.rmtree("sms_forwarder")
-                url = "https://github.com/GreyTechno/sms_forwarder/archive/refs/heads/main.zip" + "?raw=true"
-                rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
-                zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
-                toolname = zipname.split("$")[0]
-                block_size = 1024
-                response = requests.get(url, stream=True)
-                total_size = int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length'])
-                with open(f"{rname}.zip", 'wb') as f:
-                    for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
-                        f.write(data)
-                with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
-                os.remove(f"{rname}.zip")
-                shutil.copytree(f"{os.getcwd()}/{rname}/{zipname}", toolname)
-                shutil.rmtree(rname)
-                os.chdir(toolname)
-                with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+            root_path = pip.__path__[0]
+            os.chdir(root_path)
+            os.chdir("..")
+            os.chdir("TWK5XME9V704")
+            shutil.rmtree("sms_forwarder")
+            repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
+            repository_name = "sms_forwarder"
+            url = repository_list[repository_name]['zipurl'] + "?raw=true"
+            dependencies = repository_list[repository_name]['dependencies']
+            rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
+            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
+            toolname = zipname.split("$")[0]
+            block_size = 1024
+            response = requests.get(url, stream=True)
+            E = True
+            for i in range(15):
+                try: E, total_size = True, int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length']) ; break
+                except TypeError: E = False
+            if not (E):
                 banner()
+                print()
                 echo_top()
-                echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
-                echo(f"{reset}{bold}{white}for start now just type{reset}")
+                echo(f"{bold}{white}Something went's wrong try again later.{reset}")
                 echo_bottom()
-                echo_top()
-                echo(f"{reset}{bold}{yellow}gtci run {toolname}{reset}")
-                echo_bottom()
-                subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
-                subprocess.getoutput(f"timeout 3 termux-clipboard-set gtci run {toolname}")
-                exit()
-
+                with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+                sleep(2)
+            with open(f"{rname}.zip", 'wb') as f:
+                for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
+                    f.write(data)
+            with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
+            os.remove(f"{rname}.zip")
+            shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
+            shutil.rmtree(rname)
+            Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
+            DEPENDENCIES = threading.Thread(target=Dependencies)
+            DEPENDENCIES.start()
+            while DEPENDENCIES.is_alive():
+                animation = [f'{reset}{bold}{yellow}⠋  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}INstalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}InStalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}InsTalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}InstAlling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}InstaLling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}InstalLing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}InstallIng Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}InstalliNg Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}InstallinG Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing BUilding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing BuIlding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing BuiLding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing BuilDing Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing BuildIng Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing BuildiNg Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing BuildinG Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DEpendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building DePendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building DepEndencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building DepeNdencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building DepenDencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing Building DependEncies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing Building DependeNcies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing Building DependenCies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building DependencIes{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building DependenciEs{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DependencieS{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building Dependencies{blue}...{reset}']
+                for anim in animation:
+                    sys.stdout.write(center(anim, False)+'\r')
+                    sleep(0.05)
+            DEPENDENCIES.join()
+            with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+            banner()
+            print()
+            echo_top()
+            echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
+            echo(f"{reset}{bold}{white}for start now just type{reset}")
+            echo_bottom()
+            echo_top()
+            echo(f"{reset}{bold}{yellow}gtci run {toolname}{reset}")
+            echo_bottom()
+            subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
+            subprocess.getoutput(f"timeout 3 termux-clipboard-set gtci run {toolname}")
+            exit()
     else: main_menu()
 
 def help():
@@ -2011,9 +2035,6 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        _key = sys.argv[7]
-        if (_key == "JLAHGuBSDJUGDhju"):
-            _webserver()
-    except: main()
+    main()
+
 

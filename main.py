@@ -299,6 +299,9 @@ def on_telegram():
 total_capture = 0
 def localhost(password, port, jsonfile, loginfile, inboxfile, host="127.0.0.1"):
     app = Flask("sms_forwarder")
+    import logging
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
     set_password = password
     @app.route('/', methods=['GET', 'POST'])
     def index():
@@ -978,6 +981,7 @@ def on_webpage():
         echo("══", red+"╠", "╝", "═")
         echo("  ", red+"║", " ")
         center_input(f"╚════► {yellow}")
+        banner()
         _install = threading.Thread(target=install_cloudflared)
         _install.start()
         while _install.is_alive():
@@ -1049,7 +1053,7 @@ def on_webpage():
     with open(jsonfile, "w") as file:
         file.write("[]")
 
-    localserver = localhost(user_password, user_port, jsonfile, loginfile, inboxfile, host)
+    localserver = localhost(user_password, user_port, jsonfile, loginfile, inboxfile, host), sleep(2)
     _localserver = threading.Thread(target=localserver)
     try: _localserver.start()
     except: pass
@@ -1064,7 +1068,7 @@ def on_webpage():
             sleep(0.05)
     
 
-
+    banner()
     try: os.remove("cloudflared.log")
     except: pass
 

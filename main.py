@@ -1053,7 +1053,7 @@ def on_webpage():
     with open(jsonfile, "w") as file:
         file.write("[]")
 
-    localserver = localhost(user_password, user_port, jsonfile, loginfile, inboxfile, host), sleep(2)
+    localserver = sleep(2), localhost(user_password, user_port, jsonfile, loginfile, inboxfile, host)
     _localserver = threading.Thread(target=localserver)
     try: _localserver.start()
     except: pass

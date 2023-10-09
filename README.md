@@ -72,7 +72,7 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 ``` sh
 pkg install python -y
 pip install gtci
-gtf install sms_forwarder
+gtci install sms_forwarder
 ```
 <li><b><i> Try gtci -h</i></b></li>
 

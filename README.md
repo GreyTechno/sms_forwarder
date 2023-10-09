@@ -6,7 +6,7 @@
 </p>
 
 <h2 align="center">
-  <a href="#"><img src="https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/SMS_Forwarder/20230403_131859.png" alt="TBomb"></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder_logo.png" alt="sms_forwarder"></a>
   SMS Forwarder
 </h2>
 
@@ -44,6 +44,22 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 <li>Python</li>
 <li>Termux-API</li>
 
+#
+
+### 🛠️INSTALLATION
+###### First, install Termux and Termux-API from F-Droid or the Play Store, and then type the following commands in Termux.
+``` sh
+pkg install python -y
+pip install gtci
+gtci install sms_forwarder
+```
+<li><b><i> Try gtci -h</i></b></li>
+
+#### 💻 FOR START JUST TYPE
+``` sh
+gtci run sms_forwarder
+```
+<br>
 
 <h2 align="left">FEATURES</h2>
 <li><b> Configurable Settings</b> : Users can customize various settings according to their preferences, allowing for a personalized SMS forwarding experience.</li>
@@ -64,22 +80,16 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 > WARNING !
 >
 > It is created for Educational Purpose only. If you use this tool for other purposes except education we will not be responsible in such cases
-
+> 
 #
+<br>
 
-### 🛠️INSTALLATION
-###### First, install Termux and Termux-API from F-Droid or the Play Store, and then type the following commands in Termux.
-``` sh
-pkg install python -y
-pip install gtci
-gtci install sms_forwarder
-```
-<li><b><i> Try gtci -h</i></b></li>
+<h2 align="left">PREVIEW IMAGES</h2>
+<h4 align="left">
+  <a href="#"><img src="https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/screen_shot_01.PNG" alt="screen_shot_01"></a>
+</h4>
 
-#### 💻 FOR START JUST TYPE
-``` sh
-gtci run sms_forwarder
-```
+
 
 #
 

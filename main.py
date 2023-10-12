@@ -8,8 +8,6 @@ import os                 # Operating system operations
 import subprocess         # Subprocess management
 import sys                # System-specific parameters and functions
 import smtplib            # Simple Mail Transfer Protocol (SMTP) for sending emails
-import urllib             # URL handling library
-import tqdm               # Progress bar library
 import random             # Random number generation
 import json               # JSON (JavaScript Object Notation) handling
 import threading          # Threading support for multi-threaded execution

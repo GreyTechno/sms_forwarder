@@ -29,7 +29,7 @@ if sys.version_info >= (3, 6): import zipfile
 else: import zipfile36 as zipfile
 
 
-Current_Version = "1.0.9"
+Current_Version = "1.1.3"
 
 
 def color():

@@ -1103,79 +1103,21 @@ def update():
             rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
             zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
             toolname = zipname.split("$")[0]
-            block_size = 1024
-            response = requests.get(url, stream=True)
-            E = True
-            for i in range(15):
-                try: E, total_size = True, int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length']) ; break
-                except TypeError: E = False
-            if not (E):
-                banner()
-                print()
-                echo_top()
-                echo(f"{bold}{white}Something went's wrong try again later.{reset}")
-                echo_bottom()
-                with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
-                sleep(2)
-            with open(f"{rname}.zip", 'wb') as f:
-                for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
-                    f.write(data)
-            with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
-            os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
-            shutil.rmtree(rname)
-            Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
-            DEPENDENCIES = threading.Thread(target=Dependencies)
-            DEPENDENCIES.start()
-            while DEPENDENCIES.is_alive():
-                animation = [f'{reset}{bold}{yellow}⠋  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}INstalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}InStalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}InsTalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}InstAlling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}InstaLling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}InstalLing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}InstallIng Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}InstalliNg Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}InstallinG Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing BUilding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing BuIlding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing BuiLding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing BuilDing Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing BuildIng Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing BuildiNg Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing BuildinG Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DEpendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building DePendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building DepEndencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building DepeNdencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building DepenDencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing Building DependEncies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing Building DependeNcies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing Building DependenCies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building DependencIes{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building DependenciEs{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DependencieS{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building Dependencies{blue}...{reset}']
+            def _response():
+                response = requests.get(url)
+                with open(f"{rname}.zip", 'wb') as f:
+                    f.write(response.content)
+
+            content = threading.Thread(target=_response)
+            content.start()
+            while content.is_alive():
+                animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']
                 for anim in animation:
                     sys.stdout.write(center(anim, False)+'\r')
                     sleep(0.05)
-            DEPENDENCIES.join()
-            with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
-            banner()
-            echo_top()
-            echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
-            echo(f"{reset}{bold}{white}for start now just type{reset}")
-            echo_bottom()
-            echo_top()
-            current_path = current_path.replace('\\', '/').replace("sms_forwarder", "")
-            echo(f"{reset}{bold}{yellow}{current_path}{toolname}/main.py{reset}")
-            echo_bottom()
-            subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
-            subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
-            exit()
-        else:
-            root_path = pip.__path__[0]
-            os.chdir(root_path)
-            os.chdir("..")
-            os.chdir("TWK5XME9V704")
-            shutil.rmtree("sms_forwarder")
-            repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
-            repository_name = "sms_forwarder"
-            url = repository_list[repository_name]['zipurl'] + "?raw=true"
-            dependencies = repository_list[repository_name]['dependencies']
-            rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
-            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
-            toolname = zipname.split("$")[0]
-            block_size = 1024
-            response = requests.get(url, stream=True)
-            E = True
-            for i in range(15):
-                try: E, total_size = True, int(urllib.request.urlopen(urllib.request.Request(url, method='HEAD')).headers['Content-Length']) ; break
-                except TypeError: E = False
-            if not (E):
-                banner()
-                print()
-                echo_top()
-                echo(f"{bold}{white}Something went's wrong try again later.{reset}")
-                echo_bottom()
-                with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
-                sleep(2)
-            with open(f"{rname}.zip", 'wb') as f:
-                for data in tqdm(iterable = response.iter_content(chunk_size = block_size),total = total_size/block_size, unit = ' KB', desc=f"{bold}{magenta}[{yellow}+{magenta}] {white}Downloading "):
-                    f.write(data)
+            content.join()
+
+
             with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
             os.remove(f"{rname}.zip")
             shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
@@ -1197,7 +1139,61 @@ def update():
             echo(f"{reset}{bold}{white}for start now just type{reset}")
             echo_bottom()
             echo_top()
-            echo(f"{reset}{bold}{yellow}gtci run {toolname}{reset}")
+            echo(f"{reset}{bold}{yellow}python {red}{current_path} {blue}{toolname}{reset}")
+            echo_bottom()
+            subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
+            subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
+            exit()
+        else:
+            root_path = pip.__path__[0]
+            os.chdir(root_path)
+            os.chdir("..")
+            os.chdir("TWK5XME9V704")
+            shutil.rmtree("sms_forwarder")
+            repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
+            repository_name = "sms_forwarder"
+            url = repository_list[repository_name]['zipurl'] + "?raw=true"
+            dependencies = repository_list[repository_name]['dependencies']
+            rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
+            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
+            toolname = zipname.split("$")[0]
+            def _response():
+                response = requests.get(url)
+                with open(f"{rname}.zip", 'wb') as f:
+                    f.write(response.content)
+
+            content = threading.Thread(target=_response)
+            content.start()
+            while content.is_alive():
+                animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']
+                for anim in animation:
+                    sys.stdout.write(center(anim, False)+'\r')
+                    sleep(0.05)
+            content.join()
+
+
+            with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
+            os.remove(f"{rname}.zip")
+            shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
+            shutil.rmtree(rname)
+            Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
+            DEPENDENCIES = threading.Thread(target=Dependencies)
+            DEPENDENCIES.start()
+            while DEPENDENCIES.is_alive():
+                animation = [f'{reset}{bold}{yellow}⠋  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}INstalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}InStalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}InsTalling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}InstAlling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}InstaLling Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}InstalLing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}InstallIng Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}InstalliNg Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}InstallinG Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing BUilding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing BuIlding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing BuiLding Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing BuilDing Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing BuildIng Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing BuildiNg Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing BuildinG Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DEpendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building DePendencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building DepEndencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building DepeNdencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building DepenDencies{blue}...{reset}', f'{reset}{bold}{yellow}⠇  {white}Installing Building DependEncies{blue}...{reset}', f'{reset}{bold}{yellow}⠏  {white}Installing Building DependeNcies{blue}...{reset}', f'{reset}{bold}{yellow}⠋  {white}Installing Building DependenCies{blue}...{reset}', f'{reset}{bold}{yellow}⠙  {white}Installing Building DependencIes{blue}...{reset}', f'{reset}{bold}{yellow}⠹  {white}Installing Building DependenciEs{blue}...{reset}', f'{reset}{bold}{yellow}⠸  {white}Installing Building DependencieS{blue}...{reset}', f'{reset}{bold}{yellow}⠼  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠴  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠦  {white}Installing Building Dependencies{blue}...{reset}', f'{reset}{bold}{yellow}⠧  {white}Installing Building Dependencies{blue}...{reset}']
+                for anim in animation:
+                    sys.stdout.write(center(anim, False)+'\r')
+                    sleep(0.05)
+            DEPENDENCIES.join()
+            with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
+            banner()
+            print()
+            echo_top()
+            echo(f"{reset}{bold}{white}Update sucessfully completed{reset}")
+            echo(f"{reset}{bold}{white}for start now just type{reset}")
+            echo_bottom()
+            echo_top()
+            echo(f"{reset}{bold}{yellow}gtci {red}run {blue}{toolname}{reset}")
             echo_bottom()
             subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
             subprocess.getoutput(f"timeout 3 termux-clipboard-set gtci run {toolname}")
@@ -1454,5 +1450,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
 

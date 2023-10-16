@@ -1108,6 +1108,7 @@ def update():
                     f.write(response.content)
             content = threading.Thread(target=_response)
             content.start()
+            banner
             while content.is_alive():
                 animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']
                 for anim in animation:
@@ -1116,7 +1117,8 @@ def update():
             content.join()
             with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
             os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}\\{rname}\\{toolname}-{zipname}", toolname)
+            cdir = os.getcwd().replace("\\", "/")
+            shutil.copytree(f"{cdir}/{rname}/{toolname}-{zipname}", toolname)
             shutil.rmtree(rname)
             Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
             DEPENDENCIES = threading.Thread(target=Dependencies)
@@ -1160,6 +1162,7 @@ def update():
                     f.write(response.content)
             content = threading.Thread(target=_response)
             content.start()
+            banner
             while content.is_alive():
                 animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']
                 for anim in animation:
@@ -1168,7 +1171,8 @@ def update():
             content.join()
             with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
             os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}\\{rname}\\{toolname}-{zipname}", toolname)
+            cdir = os.getcwd().replace("\\", "/")
+            shutil.copytree(f"{cdir}/{rname}/{toolname}-{zipname}", toolname)
             shutil.rmtree(rname)
             Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
             DEPENDENCIES = threading.Thread(target=Dependencies)

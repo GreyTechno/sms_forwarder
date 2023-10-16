@@ -17,6 +17,7 @@ import platform           # System information retrieval
 import shutil             # High-level file operations
 import time               # Time-related operations
 import pip                # Package installation and management
+import traceback
 
 # Import specific functions and classes from Flask web framework
 from time import sleep
@@ -1091,8 +1092,8 @@ def update():
         if (_update == "y") or (_update == "yes"): main_work = True
         else: main_work = False
     if (main_work):
-        current_path = os.getcwd()
-        if not "TWK5XME9V704" in current_path.split("\\"):
+        current_path = os.getcwd().replace("\\", "/")
+        if not "TWK5XME9V704" in current_path.split("/"):
             os.chdir("..")
             shutil.rmtree("sms_forwarder")
             repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
@@ -1102,13 +1103,13 @@ def update():
             rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
             zipname = url.split("/")[-1].split(".")[0]
             toolname = url.split("/")[4]
+            banner()
             def _response():
                 response = requests.get(url)
                 with open(f"{rname}.zip", 'wb') as f:
                     f.write(response.content)
             content = threading.Thread(target=_response)
             content.start()
-            banner
             while content.is_alive():
                 animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']
                 for anim in animation:
@@ -1120,6 +1121,7 @@ def update():
             cdir = os.getcwd().replace("\\", "/")
             shutil.copytree(f"{cdir}/{rname}/{toolname}-{zipname}", toolname)
             shutil.rmtree(rname)
+            banner()
             Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
             DEPENDENCIES = threading.Thread(target=Dependencies)
             DEPENDENCIES.start()
@@ -1138,7 +1140,8 @@ def update():
             echo(f"{reset}{bold}{white}for start now just type{reset}")
             echo_bottom()
             echo_top()
-            echo(f"{reset}{bold}{yellow}python {red}{current_path} {blue}{toolname}{reset}")
+            cdir = os.getcwd().replace("\\", "/")
+            echo(f"{reset}{bold}{yellow}python {red}{cdir} {blue}{toolname}{reset}")
             echo_bottom()
             subprocess.getoutput("timeout 3 termux-toast -b white -c black -g middle command copied on clipboard !")
             subprocess.getoutput(f"timeout 3 termux-clipboard-set {current_path}{toolname}/main.py")
@@ -1156,13 +1159,13 @@ def update():
             rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
             zipname = url.split("/")[-1].split(".")[0]
             toolname = url.split("/")[4]
+            banner()
             def _response():
                 response = requests.get(url)
                 with open(f"{rname}.zip", 'wb') as f:
                     f.write(response.content)
             content = threading.Thread(target=_response)
             content.start()
-            banner
             while content.is_alive():
                 animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']
                 for anim in animation:
@@ -1174,6 +1177,7 @@ def update():
             cdir = os.getcwd().replace("\\", "/")
             shutil.copytree(f"{cdir}/{rname}/{toolname}-{zipname}", toolname)
             shutil.rmtree(rname)
+            banner()
             Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
             DEPENDENCIES = threading.Thread(target=Dependencies)
             DEPENDENCIES.start()
@@ -1183,6 +1187,7 @@ def update():
                     sys.stdout.write(center(anim, False)+'\r')
                     sleep(0.05)
             DEPENDENCIES.join()
+
             with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
             banner()
             print()
@@ -1440,8 +1445,18 @@ def main():
         main_menu()
     except KeyboardInterrupt : program_exit(True)
     except Exception as exc :
+        last_line = []
+        traceback_info = traceback.format_exc()  # Get the traceback information as a string
+        lines = traceback_info.splitlines()  # Split the traceback text into lines
+        for line in lines:
+            if "File" in line:
+                line_number = line.split(", line ")[1].split(",")[0]
+                last_line.append(line_number)
+        print()
+        print(f"\n{bold}{magenta}[{red}-{magenta}] line number {str(last_line[-1])}")
         print(f"\n{bold}{magenta}[{red}!{magenta}] {lightcyan}{exc}")
-        print(f"{bold}{magenta}[{red}+{magenta}] {white}Repost this issues at {blue}https://github.com/GreyTechno/sms_forwarder/issues")
+        print()
+        print(f"{bold}{white}[{red}+{magenta}] {white}Report this issues at {blue}https://github.com/GreyTechno/sms_forwarder/issues")
         try : os.startfile("https://github.com/GreyTechno/sms_forwarder/issues")
         except: os.system("termux-open-url https://github.com/GreyTechno/sms_forwarder/issues")
 

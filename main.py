@@ -1094,7 +1094,6 @@ def update():
         current_path = os.getcwd()
         if not "TWK5XME9V704" in current_path.split("\\"):
             os.chdir("..")
-            os.chdir("TWK5XME9V704")
             shutil.rmtree("sms_forwarder")
             repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
             repository_name = "sms_forwarder"

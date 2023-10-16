@@ -495,6 +495,7 @@ def on_webpage():
     
     webserver_link = subprocess.getoutput("echo $(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' \"cloudflared.log\")")
     if re.search(".trycloudflare.com", webserver_link):
+        clear()
         terminal_zoom(len(webserver_link)+6)
         banner()
         print()
@@ -1093,19 +1094,19 @@ def update():
         current_path = os.getcwd()
         if not "TWK5XME9V704" in current_path.split("\\"):
             os.chdir("..")
+            os.chdir("TWK5XME9V704")
             shutil.rmtree("sms_forwarder")
             repository_list = requests.get("https://raw.githubusercontent.com/GreyTechno/gtci/main/programs/.programs").json()
             repository_name = "sms_forwarder"
             url = repository_list[repository_name]['zipurl'] + "?raw=true"
             dependencies = repository_list[repository_name]['dependencies']
             rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
-            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
-            toolname = zipname.split("$")[0]
+            zipname = url.split("/")[-1].split(".")[0]
+            toolname = url.split("/")[4]
             def _response():
                 response = requests.get(url)
                 with open(f"{rname}.zip", 'wb') as f:
                     f.write(response.content)
-
             content = threading.Thread(target=_response)
             content.start()
             while content.is_alive():
@@ -1114,11 +1115,9 @@ def update():
                     sys.stdout.write(center(anim, False)+'\r')
                     sleep(0.05)
             content.join()
-
-
             with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
             os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
+            shutil.copytree(f"{os.getcwd()}\\{rname}\\{toolname}-{zipname}", toolname)
             shutil.rmtree(rname)
             Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
             DEPENDENCIES = threading.Thread(target=Dependencies)
@@ -1129,6 +1128,7 @@ def update():
                     sys.stdout.write(center(anim, False)+'\r')
                     sleep(0.05)
             DEPENDENCIES.join()
+            
             with open(pip.__path__[0]+"\\SHFgIGHAQuHSHIHD.zip", "w") as file: file.write('{"usageleft": 2}')
             banner()
             print()
@@ -1153,13 +1153,12 @@ def update():
             url = repository_list[repository_name]['zipurl'] + "?raw=true"
             dependencies = repository_list[repository_name]['dependencies']
             rname = "".join(random.sample("abcdefghijklmnopqrstuvwxyz", 7))
-            zipname = url.split("/")[4] +"$"+ url.split("/")[-1].split(".")[0]
-            toolname = zipname.split("$")[0]
+            zipname = url.split("/")[-1].split(".")[0]
+            toolname = url.split("/")[4]
             def _response():
                 response = requests.get(url)
                 with open(f"{rname}.zip", 'wb') as f:
                     f.write(response.content)
-
             content = threading.Thread(target=_response)
             content.start()
             while content.is_alive():
@@ -1168,11 +1167,9 @@ def update():
                     sys.stdout.write(center(anim, False)+'\r')
                     sleep(0.05)
             content.join()
-
-
             with zipfile.ZipFile(f"{rname}.zip", "r") as zip: zip.extractall(f"{rname}")
             os.remove(f"{rname}.zip")
-            shutil.copytree(f"{os.getcwd()}\\{rname}\\{zipname.replace('$', '-')}", toolname)
+            shutil.copytree(f"{os.getcwd()}\\{rname}\\{toolname}-{zipname}", toolname)
             shutil.rmtree(rname)
             Dependencies = lambda: [subprocess.getoutput(f"pip{execute()} install {i}") for i in dependencies]
             DEPENDENCIES = threading.Thread(target=Dependencies)
@@ -1443,7 +1440,7 @@ def main():
         print(f"\n{bold}{magenta}[{red}!{magenta}] {lightcyan}{exc}")
         print(f"{bold}{magenta}[{red}+{magenta}] {white}Repost this issues at {blue}https://github.com/GreyTechno/sms_forwarder/issues")
         try : os.startfile("https://github.com/GreyTechno/sms_forwarder/issues")
-        except: os.system("termuux-open-url https://github.com/GreyTechno/sms_forwarder/issues")
+        except: os.system("termux-open-url https://github.com/GreyTechno/sms_forwarder/issues")
 
 
 if __name__ == "__main__":

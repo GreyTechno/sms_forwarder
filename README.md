@@ -34,9 +34,6 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 <h2 align="left">AVAILABLE ON</h2>
 <li><a href="https://wiki.termux.com/wiki/Main_Page">Termux</a></li>
 
-<h2 align="left">TESTED ON</h2>
-<li><a href="https://wiki.termux.com/wiki/Main_Page">Termux</a></li>
-
 
 
 <h2 align="left">REQUIREMENTS</h2>
@@ -48,17 +45,38 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 
 ### 🛠️INSTALLATION
 ###### First, install Termux and Termux-API from F-Droid or the Play Store, and then type the following commands in Termux.
+<li><b>Using gtci [Recommended]</b></li>
+
 ``` sh
-pkg install python -y
-pip install gtci
-gtci install sms_forwarder
+pkg install python -y # Install Python (skip if already installed)
+pip install gtci # Install gtci (skip if already installed)
+gtci install sms_forwarder # Install sms_forwarder repository
 ```
-<li><b><i> Try gtci -h</i></b></li>
 
 #### 💻 FOR START JUST TYPE
 ``` sh
 gtci run sms_forwarder
 ```
+
+#
+
+<li><b>By Using Git</b></li>
+
+``` sh
+pkg install python -y # Install Python (skip if already installed)
+pkg install git -y # Install Git (skip if already installed)
+cd $HOME # Move to the home directory
+git clone https://github.com/GreyTechno/sms_forwarder.git # Clone the sms_forwarder repository
+```
+
+#### FOR START
+``` sh
+# Navigate to the sms_forwarder directory
+cd $HOME/sms_forwarder
+# Run the main.py script
+python main.py
+```
+
 <br>
 
 <h2 align="left">FEATURES</h2>
@@ -84,21 +102,9 @@ gtci run sms_forwarder
 #
 <br>
 
-<h2 align="left">PREVIEW IMAGES</h2>
-<h4 align="left">
-  <a href="#"><img src="https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/screen_shot_01.PNG" alt="screen_shot_01"></a>
-</h4>
-
-
-
-#
-
-
 
 <h2><b><i>📡ConnectWithMe</i></b></h2>
-<p align="center">
 <a href="https://github.com/GreyTechno"><img title="Github" src="https://img.shields.io/badge/grey-techno-brightgreen?style=for-the-badge&logo=github"></a>
 <a href="https://instagram.com/grey.techno"><img title="Instagram" src="https://img.shields.io/badge/INSTAGRAM-grey?style=for-the-badge&logo=instagram"></a>
-</p>
 <h3><b><i>🚀Visitors</i></b></h3>
 <img src="https://profile-counter.glitch.me/gtf-counter-smsforwarder/count.svg" alt="Visitors">

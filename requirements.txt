@@ -1,0 +1,7 @@
+requests
+random2
+secure-smtplib
+zipfile36
+flask
+pygsheets
+telebot

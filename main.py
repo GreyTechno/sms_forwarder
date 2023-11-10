@@ -180,7 +180,7 @@ def total_area():
 def echo_func():
     global echo_top, echo, echo_bottom, min_area, max_area, space, clear, execute, current_version, _toolname_, github_page, github_link, github_raw, version_config, update_animation
     secret_code     = "jkwfcr"
-    current_version = "1.1.7"
+    current_version = "1.1.8"
     version_config  = pip.__path__[0].replace("\\", "/") + f"/_internal/metadata/importlib/__pycache__/meta-info_{secret_code}.json"
     _toolname_      = "sms_forwarder"
     github_page     = "https://github.com/GreyTechno"
@@ -582,7 +582,49 @@ def on_termux():
             except: pass
             on_termux()
             exit()
+    def install_cloudflared():
+        if ("cloudflared" in os.listdir()): return True
+        else:
+            _link   = "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm"
+            _data   = requests.get(_link).content
+            _output = "cloudflared"
+            with open(_output, "wb") as file:
+                file.write(_data)
+            os.system(f"chmod +x {_output}")
     
+    if not ("cloudflared" in os.listdir()):
+        banner()
+        echo_top()
+        echo(f"{reset}{bold}{white}Cloudflared Not Found..{reset}")
+        echo_bottom()
+        print()
+        print()
+        echo_top()
+        echo(f"{reset}{bold}{yellow}Press enter for install{reset}")
+        echo("══", red+"╠", "╝", "═")
+        echo("  ", red+"║", " ")
+        center_input(f"╚════► {yellow}")
+        banner()
+        _install = threading.Thread(target=install_cloudflared)
+        _install.start()
+        while _install.is_alive():
+            for _anim in ['⠋  Installing Cloudflared...', '⠙  Installing Cloudflared...', '⠹  installing Cloudflared...', '⠸  INstalling Cloudflared...', '⠼  InStalling Cloudflared...', '⠴  InsTalling Cloudflared...', '⠦  InstAlling Cloudflared...', '⠧  InstaLling Cloudflared...', '⠇  InstalLing Cloudflared...', '⠏  InstallIng Cloudflared...', '⠋  InstalliNg Cloudflared...', '⠙  InstallinG Cloudflared...', '⠹  Installing Cloudflared...', '⠸  Installing cloudflared...', '⠼  Installing CLoudflared...', '⠴  Installing ClOudflared...', '⠦  Installing CloUdflared...', '⠧  Installing ClouDflared...', '⠇  Installing CloudFlared...', '⠏  Installing CloudfLared...', '⠋  Installing CloudflAred...', '⠙  Installing CloudflaRed...', '⠹  Installing CloudflarEd...', '⠸  Installing CloudflareD...', '⠼  Installing Cloudflared...', '⠴  Installing Cloudflared...', '⠦  Installing Cloudflared...', '⠧  Installing Cloudflared...']:
+                bar  = _anim.split(" ")[0]
+                text = " ".join(_anim.split(" ")[2:4])
+                sys.stdout.write(f"\r{center(f'{yellow}{bar}  {white}{text}', False)}")
+                sys.stdout.flush()
+                sleep(0.05)
+        _install.join()
+        banner()
+        print()
+        echo_top()
+        echo(f"{reset}{bold}{white}Cloudflared Sucessfully Installed{reset}")
+        echo_bottom()
+        print()
+        sleep(4)
+        on_termux()
+        exit()
+
     banner()
     print()
     echo_top()

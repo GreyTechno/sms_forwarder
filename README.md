@@ -6,7 +6,7 @@
 </p>
 
 <h2 align="center">
-  <a href="#"><img src="https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder_logo.png" alt="sms_forwarder"></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/sms_forwarder_logo.png" alt="sms_forwarder"></a>
   SMS Forwarder
 </h2>
 

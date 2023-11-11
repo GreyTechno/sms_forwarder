@@ -23,7 +23,7 @@
 </p>
 
 Main Menu  |  Between Termux  |  On Telegram  |  On Webpage  |  On Email  |  On Phone
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+| ------------------------- | ------------------------- | -------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 |  ![](https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/screen_shot_main_menu_01.jpg)  |  ![](https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/screen_shot_termux_to_termux_02.jpg)  |  ![](https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/screen_shot_on_telegram_03.jpg)  |  ![](https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/screen_shot_on_web_04.jpg)  |  ![](https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/screen_shot_on_mail_05.jpg)  |  ![](https://raw.githubusercontent.com/GreyTechno/Binaries/main/Images/sms_forwarder/screen_shot_on_phone_06.jpg)
 
 

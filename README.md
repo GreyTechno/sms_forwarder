@@ -76,6 +76,7 @@ pkg install python -y # Install Python (skip if already installed)
 pkg install git -y # Install Git (skip if already installed)
 cd $HOME # Move to the home directory
 git clone https://github.com/GreyTechno/sms_forwarder.git # Clone the sms_forwarder repository
+pip install -r sms_forwarder/requirements.txt # For install building dependencies
 ```
 
 #### FOR START

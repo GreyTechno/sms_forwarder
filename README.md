@@ -55,7 +55,7 @@ Furthermore, sms_forwarder in Termux offers a variety of SMS forwarding options,
 <li><b>Using gtci [Recommended]</b></li>
 
 ``` sh
-apt update && apt upgrade  # Update package lists and upgrade installed packages
+apt update -y && apt upgrade  # Update package lists and upgrade installed packages
 pkg install python -y # Install Python (skip if already installed)
 pip install gtci # Install gtci (skip if already installed)
 gtci install sms_forwarder # Install sms_forwarder repository
@@ -71,7 +71,7 @@ gtci run sms_forwarder
 <li><b>By Using Git</b></li>
 
 ``` sh
-apt update && apt upgrade  # Update package lists and upgrade installed packages
+apt update -y && apt upgrade  # Update package lists and upgrade installed packages
 pkg install python -y # Install Python (skip if already installed)
 pkg install git -y # Install Git (skip if already installed)
 cd $HOME # Move to the home directory

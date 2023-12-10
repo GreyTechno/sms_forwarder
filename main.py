@@ -180,13 +180,13 @@ def total_area():
 def echo_func():
     global echo_top, echo, echo_bottom, min_area, max_area, space, clear, execute, current_version, _toolname_, github_page, github_link, github_raw, version_config, update_animation
     secret_code     = "jkwfcr"
-    current_version = "1.1.8"
+    current_version = "1.2.1"
     version_config  = pip.__path__[0].replace("\\", "/") + f"/_internal/metadata/importlib/__pycache__/meta-info_{secret_code}.json"
     _toolname_      = "sms_forwarder"
     github_page     = "https://github.com/GreyTechno"
     github_link     = "https://github.com/GreyTechno/sms_forwarder"
     github_raw      = "https://raw.githubusercontent.com/GreyTechno/sms_forwarder"
-    min_area        = 60
+    min_area        = 45
     max_area        = 90
     color()
     update_animation = [f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} UPdating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} UpDating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} UpdAting SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} UpdaTing SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} UpdatIng SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} UpdatiNg SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} UpdatinG SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating sMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SmS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMs_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_Forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_fOrwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_foRwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠇ {white} Updating SMS_forWarder{blue}...{reset}', f'{reset}{bold}{yellow}⠏ {white} Updating SMS_forwArder{blue}...{reset}', f'{reset}{bold}{yellow}⠋ {white} Updating SMS_forwaRder{blue}...{reset}', f'{reset}{bold}{yellow}⠙ {white} Updating SMS_forwarDer{blue}...{reset}', f'{reset}{bold}{yellow}⠹ {white} Updating SMS_forwardEr{blue}...{reset}', f'{reset}{bold}{yellow}⠸ {white} Updating SMS_forwardeR{blue}...{reset}', f'{reset}{bold}{yellow}⠼ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠴ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠦ {white} Updating SMS_forwarder{blue}...{reset}', f'{reset}{bold}{yellow}⠧ {white} Updating SMS_forwarder{blue}...{reset}']

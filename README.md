@@ -115,6 +115,6 @@ python main.py
 
 <h2><b><i>📡ConnectWithMe</i></b></h2>
 <a href="https://github.com/GreyTechno"><img title="Github" src="https://img.shields.io/badge/grey-techno-brightgreen?style=for-the-badge&logo=github"></a>
-<a href="https://instagram.com/grey.techno"><img title="Instagram" src="https://img.shields.io/badge/INSTAGRAM-grey?style=for-the-badge&logo=instagram"></a>
+<a href="https://instagram.com/neoztech"><img title="Instagram" src="https://img.shields.io/badge/INSTAGRAM-grey?style=for-the-badge&logo=instagram"></a>
 <h3><b><i>🚀Visitors</i></b></h3>
 <img src="https://profile-counter.glitch.me/gtf-counter-smsforwarder/count.svg" alt="Visitors">
